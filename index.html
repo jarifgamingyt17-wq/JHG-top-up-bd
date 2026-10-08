@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JHG Top-Up BD | HHH Bazar Style</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background-color: #0d1117; color: #f0f6fc; padding: 12px; display: flex; justify-content: center; }
+        .container { max-width: 480px; width: 100%; }
+
+        /* Header Bar */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: #161b22; border-radius: 12px; margin-bottom: 12px; border: 1px solid #30363d; }
+        .logo { font-size: 18px; font-weight: bold; color: #58a6ff; }
+        .support-btn { background: #238636; color: white; padding: 6px 12px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: bold; }
+
+        /* Marquee Notice */
+        .notice-board { background: #1f6feb22; border: 1px solid #1f6feb; color: #58a6ff; padding: 8px 12px; border-radius: 8px; font-size: 12px; margin-bottom: 12px; display: flex; align-items: center; }
+
+        /* Banner Slider Box */
+        .banner-box { width: 100%; background: linear-gradient(135deg, #1f2937, #111827); border-radius: 12px; padding: 20px; text-align: center; margin-bottom: 15px; border: 1px solid #30363d; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .banner-box h2 { font-size: 20px; color: #f39c12; margin-bottom: 5px; }
+        .banner-box p { font-size: 12px; color: #8b949e; }
+
+        /* Card Section */
+        .card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 15px; margin-bottom: 15px; }
+        .section-title { font-size: 14px; font-weight: bold; color: #f0f6fc; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+
+        .payment-info { background: #21262d; border-left: 4px solid #e91e63; padding: 10px; border-radius: 6px; font-size: 13px; margin-bottom: 12px; text-align: center; }
+        .payment-info strong { color: #f43f5e; font-size: 15px; }
+
+        /* Package Grid */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .pkg-card { background: #21262d; border: 2px solid #30363d; padding: 12px; border-radius: 10px; text-align: center; cursor: pointer; transition: 0.2s; }
+        .pkg-card.active { border-color: #58a6ff; background: #1f6feb15; }
+        .pkg-title { font-size: 13px; font-weight: bold; color: #f0f6fc; }
+        .pkg-price { font-size: 12px; color: #2ea043; font-weight: bold; margin-top: 4px; }
+
+        /* Form Controls */
+        .input-box { margin-bottom: 12px; }
+        .input-box label { font-size: 12px; color: #8b949e; display: block; margin-bottom: 4px; }
+        .input-box input, .input-box select { width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 8px; color: white; outline: none; font-size: 13px; }
+
+        .btn-order { width: 100%; background: #238636; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 14px; cursor: pointer; }
+        .btn-order:hover { background: #2ea043; }
+
+        .footer { text-align: center; font-size: 11px; color: #484f58; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="navbar">
+        <div class="logo">JHG Top-Up BD</div>
+        <a href="https://wa.me/8801314983419" class="support-btn" target="_blank">Helpline</a>
+    </div>
+
+    <div class="notice-board">
+        📢 ১ থেকে ১০ মিনিটের মধ্যে ডায়মন্ড ডেলিভারি দেওয়া হয়!
+    </div>
+
+    <div class="banner-box">
+        <h2>🔥 Free Fire Top-Up Bazar</h2>
+        <p>১০০% সেফ ও ট্রাস্টেড ইন-গেম ইউআইডি টপ-আপ</p>
+    </div>
+
+    <div class="card">
+        <div class="payment-info">
+            bKash Personal (Send Money):<br>
+            <strong>01781511654</strong>
+        </div>
+
+        <div class="input-box">
+            <label>Player UID / ID</label>
+            <input type="number" id="playerId" placeholder="আপনার গেম ID দিন">
+        </div>
+
+        <div class="section-title">💎 সিলেক্ট প্যাকেজ</div>
+        <div class="grid">
+            <div class="pkg-card" onclick="selectPkg(this, '115 Diamond', '80 BDT')">
+                <div class="pkg-title">115 Diamond</div>
+                <div class="pkg-price">80 BDT</div>
+            </div>
+            <div class="pkg-card" onclick="selectPkg(this, '240 Diamond', '160 BDT')">
+                <div class="pkg-title">240 Diamond</div>
+                <div class="pkg-price">160 BDT</div>
+            </div>
+            <div class="pkg-card" onclick="selectPkg(this, '610 Diamond', '400 BDT')">
+                <div class="pkg-title">610 Diamond</div>
+                <div class="pkg-price">400 BDT</div>
+            </div>
+            <div class="pkg-card" onclick="selectPkg(this, 'Weekly Membership', '120 BDT')">
+                <div class="pkg-title">Weekly</div>
+                <div class="pkg-price">120 BDT</div>
+            </div>
+            <div class="pkg-card" onclick="selectPkg(this, 'Monthly Membership', '650 BDT')">
+                <div class="pkg-title">Monthly</div>
+                <div class="pkg-price">650 BDT</div>
+            </div>
+        </div>
+
+        <div class="input-box">
+            <label>পেমেন্ট মেথড</label>
+            <select id="paymentMethod">
+                <option value="bKash">bKash Personal</option>
+            </select>
+        </div>
+
+        <div class="input-box">
+            <label>Transaction ID (TrxID)</label>
+            <input type="text" id="trxId" placeholder="বিকাশের TrxID দিন">
+        </div>
+
+        <button class="btn-order" onclick="submitOrder()">WhatsApp-এ অর্ডার পাঠান</button>
+    </div>
+
+    <div class="footer">
+        © 2026 JHG Top-Up BD | Powered by GitHub
+    </div>
+</div>
+
+<script>
+    let selectedName = "";
+    let selectedPrice = "";
+
+    function selectPkg(el, name, price) {
+        document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
+        selectedName = name;
+        selectedPrice = price;
+    }
+
+    function submitOrder() {
+        let pid = document.getElementById('playerId').value;
+        let trx = document.getElementById('trxId').value;
+        let pay = document.getElementById('paymentMethod').value;
+        let phone = "8801314983419";
+
+        if(!pid) return alert("Player ID দিন!");
+        if(!selectedName) return alert("প্যাকেজ বেছে নিন!");
+        if(!trx) return alert("Transaction ID দিন!");
+
+        let text = `🛒 *NEW ORDER - JHG TOP-UP*%0A%0A` +
+                   `🆔 *Player ID:* ${pid}%0A` +
+                   `💎 *Package:* ${selectedName} (${selectedPrice})%0A` +
+                   `💳 *Payment:* ${pay}%0A` +
+                   `🧾 *TrxID:* ${trx}`;
+
+        window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
