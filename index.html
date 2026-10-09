@@ -12,7 +12,7 @@
         /* Header */
         .header { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
         .logo-text { font-size: 20px; font-weight: bold; color: #ff5722; text-decoration: none; }
-        .login-btn { background: #ff5722; color: #fff; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .login-btn { background: #ff5722; color: #fff; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-weight: bold; text-decoration: none; font-size: 13px; }
         
         /* Notice & Social Bar */
         .notice-bar { background: #fff8e1; color: #d84315; padding: 10px 15px; font-size: 13px; text-align: center; border-bottom: 1px solid #ffe0b2; }
@@ -64,7 +64,7 @@
     <!-- Header -->
     <div class="header">
         <a href="#" class="logo-text" onclick="showHome()">JHG TopUp BD</a>
-        <button class="login-btn">লগইন</button>
+        <button class="login-btn" onclick="alert('লগইন অপশনটি খুব শীঘ্রই আসছে!')">লগইন</button>
     </div>
 
     <!-- Notice -->
@@ -72,11 +72,11 @@
         📢 <strong>নোটিশ:</strong> প্রতিদিন সকাল <strong>৯:০০</strong> টা থেকে বিকেল <strong>৬:০০</strong> টা পর্যন্ত স্কুলের জন্য টপ-আপ বন্ধ থাকে।
     </div>
 
-    <!-- Social Links -->
+    <!-- Helpline / Social Links -->
     <div class="social-bar">
         <a href="https://wa.me/8801314983419" class="social-btn btn-wa" target="_blank">হোয়াটসঅ্যাপ</a>
-        <a href="#" class="social-btn btn-tg">টেলিগ্রাম</a>
-        <a href="#" class="social-btn btn-msg">মেসেঞ্জার</a>
+        <a href="https://t.me" class="social-btn btn-tg" target="_blank">টেলিগ্রাম</a>
+        <a href="https://m.me" class="social-btn btn-msg" target="_blank">মেসেঞ্জার</a>
     </div>
 
     <!-- Home View -->
