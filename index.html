@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
@@ -11,60 +11,159 @@
 
         /* Header Bar */
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: #161b22; border-radius: 12px; margin-bottom: 12px; border: 1px solid #30363d; }
-        .logo { font-size: 18px; font-weight: bold; color: #58a6ff; }
-        .support-btn { background: #238636; color: white; padding: 6px 12px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: bold; }
+        .logo { font-size: 18px; font-weight: bold; color: #f39c12; }
+        .login-btn { background: #ff5722; color: white; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: bold; }
 
-        /* Marquee Notice */
-        .notice-board { background: #1f6feb22; border: 1px solid #1f6feb; color: #58a6ff; padding: 8px 12px; border-radius: 8px; font-size: 12px; margin-bottom: 12px; display: flex; align-items: center; }
+        /* Social Support Buttons */
+        .social-buttons { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 15px; }
+        .social-btn { padding: 8px; border-radius: 8px; color: white; text-align: center; font-size: 11px; font-weight: bold; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 4px; }
+        .btn-wa { background: #25d366; }
+        .btn-tg { background: #0088cc; }
+        .btn-msg { background: #a824fb; }
 
-        /* Banner Slider Box */
-        .banner-box { width: 100%; background: linear-gradient(135deg, #1f2937, #111827); border-radius: 12px; padding: 20px; text-align: center; margin-bottom: 15px; border: 1px solid #30363d; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .banner-box h2 { font-size: 20px; color: #f39c12; margin-bottom: 5px; }
-        .banner-box p { font-size: 12px; color: #8b949e; }
+        /* Section Headings */
+        .section-header { font-size: 16px; font-weight: bold; color: #ffffff; margin: 15px 0 10px 0; text-align: center; }
 
-        /* Card Section */
+        /* Category Grid Layout */
+        .category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px; }
+        .cat-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; transition: 0.2s; }
+        .cat-card:hover { border-color: #f39c12; transform: translateY(-2px); }
+        .cat-icon { width: 100%; height: 60px; background: #21262d; border-radius: 8px; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; color: #f39c12; font-size: 22px; font-weight: bold; }
+        .cat-title { font-size: 11px; font-weight: bold; color: #f0f6fc; line-height: 1.2; }
+
+        /* Rules Box */
+        .rules-box { background: #161b22; border: 1px solid #f39c12; border-radius: 10px; padding: 12px; margin-bottom: 15px; font-size: 12px; color: #d29922; }
+        .rules-box h3 { font-size: 13px; color: #f39c12; margin-bottom: 6px; }
+        .rules-box ul { padding-left: 18px; line-height: 1.6; }
+
+        /* Order Form Box */
         .card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 15px; margin-bottom: 15px; }
-        .section-title { font-size: 14px; font-weight: bold; color: #f0f6fc; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
-
         .payment-info { background: #21262d; border-left: 4px solid #e91e63; padding: 10px; border-radius: 6px; font-size: 13px; margin-bottom: 12px; text-align: center; }
         .payment-info strong { color: #f43f5e; font-size: 15px; }
 
-        /* Package Grid */
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
-        .pkg-card { background: #21262d; border: 2px solid #30363d; padding: 12px; border-radius: 10px; text-align: center; cursor: pointer; transition: 0.2s; }
+        .pkg-card { background: #21262d; border: 2px solid #30363d; padding: 12px; border-radius: 10px; text-align: center; cursor: pointer; }
         .pkg-card.active { border-color: #58a6ff; background: #1f6feb15; }
         .pkg-title { font-size: 13px; font-weight: bold; color: #f0f6fc; }
         .pkg-price { font-size: 12px; color: #2ea043; font-weight: bold; margin-top: 4px; }
 
-        /* Form Controls */
         .input-box { margin-bottom: 12px; }
         .input-box label { font-size: 12px; color: #8b949e; display: block; margin-bottom: 4px; }
         .input-box input, .input-box select { width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 8px; color: white; outline: none; font-size: 13px; }
 
         .btn-order { width: 100%; background: #238636; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 14px; cursor: pointer; }
-        .btn-order:hover { background: #2ea043; }
 
-        .footer { text-align: center; font-size: 11px; color: #484f58; margin-top: 15px; }
+        /* Bottom Nav Bar */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #161b22; border-top: 1px solid #30363d; display: flex; justify-content: space-around; padding: 8px 0; max-width: 480px; margin: 0 auto; }
+        .nav-item { color: #8b949e; text-decoration: none; font-size: 10px; text-align: center; }
+        .nav-item.active { color: #ff5722; }
+
+        .footer { text-align: center; font-size: 11px; color: #484f58; margin-top: 15px; margin-bottom: 60px; }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- Navbar -->
     <div class="navbar">
-        <div class="logo">JHG Top-Up BD</div>
-        <a href="https://wa.me/8801314983419" class="support-btn" target="_blank">Helpline</a>
+        <div class="logo">HHHBAZAR.COM</div>
+        <a href="#" class="login-btn">লগইন</a>
     </div>
 
-    <div class="notice-board">
-        📢 ১ থেকে ১০ মিনিটের মধ্যে ডায়মন্ড ডেলিভারি দেওয়া হয়!
+    <!-- Chat Support Buttons -->
+    <div class="social-buttons">
+        <a href="https://wa.me/8801314983419" class="social-btn btn-wa" target="_blank">হোয়াটসঅ্যাপ</a>
+        <a href="#" class="social-btn btn-tg">টেলিগ্রাম</a>
+        <a href="#" class="social-btn btn-msg">মেসেঞ্জার</a>
     </div>
 
-    <div class="banner-box">
-        <h2>🔥 Free Fire Top-Up Bazar</h2>
-        <p>১০০% সেফ ও ট্রাস্টেড ইন-গেম ইউআইডি টপ-আপ</p>
+    <!-- Offer Section -->
+    <div class="section-header">Offer Offer</div>
+    <div class="category-grid">
+        <div class="cat-card" onclick="scrollToOrder()">
+            <div class="cat-icon">🔥</div>
+            <div class="cat-title">[BD] UID OFFER</div>
+        </div>
+        <div class="cat-card" onclick="scrollToOrder()">
+            <div class="cat-icon">💎</div>
+            <div class="cat-title">Weekly/Monthly Offer</div>
+        </div>
+        <div class="cat-card" onclick="scrollToOrder()">
+            <div class="cat-icon">⚡</div>
+            <div class="cat-title">Friday Offers 🔥</div>
+        </div>
     </div>
 
-    <div class="card">
+    <!-- Main Top-up Categories -->
+    <div class="section-header">Top-up</div>
+    <div class="category-grid">
+        <div class="cat-card" onclick="scrollToOrder()">
+            <div class="cat-icon">💎</div>
+            <div class="cat-title">Uid TOPUP [BD]</div>
+        </div>
+        <div class="cat-card" onclick="scrollToOrder()">
+            <div class="cat-icon">👍</div>
+            <div class="cat-title">Free Fire - 200 LIKE</div>
+        </div>
+        <div class="cat-card" onclick="scrollToOrder()">
+            <div class="cat-icon">👑</div>
+            <div class="cat-title">Weekly Monthly Combo</div>
+        </div>
+        <div class="cat-card" onclick="scrollToOrder()">
+            <div class="cat-icon">⚡</div>
+            <div class="cat-title">Weekly Lite</div>
+        </div>
+        <div class="cat-card" onclick="scrollToOrder()">
+            <div class="cat-icon">🚀</div>
+            <div class="cat-title">Level Up Pass</div>
+        </div>
+        <div class="cat-card" onclick="scrollToOrder()">
+            <div class="cat-icon">🎟️</div>
+            <div class="cat-title">Unipin Voucher</div>
+        </div>
+        <div class="cat-card" onclick="scrollToOrder()">
+            <div class="cat-icon">📅</div>
+            <div class="cat-title">Monthly Offer</div>
+        </div>
+        <div class="cat-card" onclick="scrollToOrder()">
+            <div class="cat-icon">🇮🇩</div>
+            <div class="cat-title">ID CODE INDONESIA</div>
+        </div>
+        <div class="cat-card" onclick="scrollToOrder()">
+            <div class="cat-icon">🇪🇺</div>
+            <div class="cat-title">Singapore/Europe Topup</div>
+        </div>
+    </div>
+
+    <!-- Reseller Section -->
+    <div class="section-header">Reseller Products Only</div>
+    <div class="category-grid">
+        <div class="cat-card" onclick="scrollToOrder()">
+            <div class="cat-icon">🤖</div>
+            <div class="cat-title">Resell Uid TOPUP</div>
+        </div>
+        <div class="cat-card" onclick="scrollToOrder()">
+            <div class="cat-icon">🎮</div>
+            <div class="cat-title">Resell Unipin</div>
+        </div>
+        <div class="cat-card" onclick="scrollToOrder()">
+            <div class="cat-icon">🌍</div>
+            <div class="cat-title">MY/SG/INDO</div>
+        </div>
+    </div>
+
+    <!-- Rules Board -->
+    <div class="rules-box">
+        <h3>⚠️ টপ-আপ করার নিয়মাবলী:</h3>
+        <ul>
+            <li>সঠিক Player ID দিয়ে অর্ডার করুন। ভুল ID দিলে টপ-আপ অন্য আইডিতে চলে যাবে।</li>
+            <li>বিকাশে Send Money করার পর সঠিক Transaction ID (TrxID) দিন।</li>
+            <li>অর্ডার করার পর ১-১০ মিনিট অপেক্ষা করুন।</li>
+        </ul>
+    </div>
+
+    <!-- Order Area -->
+    <div class="card" id="orderArea">
         <div class="payment-info">
             bKash Personal (Send Money):<br>
             <strong>01781511654</strong>
@@ -75,10 +174,97 @@
             <input type="number" id="playerId" placeholder="আপনার গেম ID দিন">
         </div>
 
-        <div class="section-title">💎 সিলেক্ট প্যাকেজ</div>
+        <div class="input-box"><label>প্যাকেজ নির্বাচন করুন</label></div>
         <div class="grid">
-            <div class="pkg-card" onclick="selectPkg(this, '115 Diamond', '80 BDT')">
-                <div class="pkg-title">115 Diamond</div>
-                <div class="pkg-price">80 BDT</div>
+            <div class="pkg-card" onclick="selectPkg(this, 'Weekly Membership', '120 BDT')">
+                <div class="pkg-title">Weekly</div>
+                <div class="pkg-price">120 BDT</div>
             </div>
-            <div class="pkg-card" onclick="selectPkg(this, '240 Diamond  
+            <div class="pkg-card" onclick="selectPkg(this, '100 Diamond', '60 BDT')">
+                <div class="pkg-title">100 Diamond</div>
+                <div class="pkg-price">60 BDT</div>
+            </div>
+            <div class="pkg-card" onclick="selectPkg(this, '200 Diamond', '110 BDT')">
+                <div class="pkg-title">200 Diamond</div>
+                <div class="pkg-price">110 BDT</div>
+            </div>
+            <div class="pkg-card" onclick="selectPkg(this, '300 Diamond', '220 BDT')">
+                <div class="pkg-title">300 Diamond</div>
+                <div class="pkg-price">220 BDT</div>
+            </div>
+            <div class="pkg-card" onclick="selectPkg(this, '800 Diamond', '550 BDT')">
+                <div class="pkg-title">800 Diamond</div>
+                <div class="pkg-price">550 BDT</div>
+            </div>
+            <div class="pkg-card" onclick="selectPkg(this, '1200 Diamond', '890 BDT')">
+                <div class="pkg-title">1200 Diamond</div>
+                <div class="pkg-price">890 BDT</div>
+            </div>
+            <div class="pkg-card" onclick="selectPkg(this, '4900 Diamond', '2950 BDT')">
+                <div class="pkg-title">4900 Diamond</div>
+                <div class="pkg-price">2950 BDT</div>
+            </div>
+            <div class="pkg-card" onclick="selectPkg(this, '12000 Diamond', '6710 BDT')">
+                <div class="pkg-title">12000 Diamond</div>
+                <div class="pkg-price">6710 BDT</div>
+            </div>
+        </div>
+
+        <div class="input-box">
+            <label>Transaction ID (TrxID)</label>
+            <input type="text" id="trxId" placeholder="বিকাশের TrxID দিন">
+        </div>
+
+        <button class="btn-order" onclick="submitOrder()">WhatsApp-এ অর্ডার পাঠান</button>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active">🏠<br>হোম</a>
+        <a href="#" class="nav-item">📦<br>আমার অর্ডার</a>
+        <a href="#" class="nav-item">➕<br>অ্যাড মানি</a>
+        <a href="#" class="nav-item">👛<br>ওয়ালেট</a>
+        <a href="#" class="nav-item">👤<br>প্রোফাইল</a>
+    </div>
+
+    <div class="footer">
+        © 2026 JHG Top-Up BD | Powered by GitHub
+    </div>
+</div>
+
+<script>
+    let selectedName = "";
+    let selectedPrice = "";
+
+    function scrollToOrder() {
+        document.getElementById('orderArea').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function selectPkg(el, name, price) {
+        document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
+        selectedName = name;
+        selectedPrice = price;
+    }
+
+    function submitOrder() {
+        let pid = document.getElementById('playerId').value;
+        let trx = document.getElementById('trxId').value;
+        let phone = "8801314983419";
+
+        if(!pid) return alert("Player ID দিন!");
+        if(!selectedName) return alert("প্যাকেজ বেছে নিন!");
+        if(!trx) return alert("Transaction ID দিন!");
+
+        let text = `🛒 *NEW ORDER - JHG TOP-UP*%0A%0A` +
+                   `🆔 *Player ID:* ${pid}%0A` +
+                   `💎 *Package:* ${selectedName} (${selectedPrice})%0A` +
+                   `💳 *Payment:* bKash Personal%0A` +
+                   `🧾 *TrxID:* ${trx}`;
+
+        window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
