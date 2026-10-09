@@ -5,35 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JHG TopUp BD</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; }
-        .container { max-width: 600px; margin: 0 auto; background: #fff; min-height: 100vh; padding-bottom: 70px; }
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #fff; border-bottom: 1px solid #ddd; }
+        * { box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { margin: 0; padding: 0; background-color: #f4f4f9; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; background: #fff; min-height: 100vh; padding-bottom: 80px; }
+        
+        /* Header */
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
         .logo-text { font-size: 20px; font-weight: bold; color: #ff5722; text-decoration: none; }
-        .login-btn { background: #ff5722; color: #fff; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
-        .notice-bar { background: #fff8e1; color: #d84315; padding: 10px; font-size: 13px; text-align: center; border-bottom: 1px solid #ffe0b2; }
-        .social-bar { display: flex; justify-content: space-around; padding: 10px; background: #fafafa; }
-        .social-btn { padding: 8px 12px; border-radius: 5px; color: #fff; text-decoration: none; font-size: 12px; font-weight: bold; }
+        .login-btn { background: #ff5722; color: #fff; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        
+        /* Notice & Social Bar */
+        .notice-bar { background: #fff8e1; color: #d84315; padding: 10px 15px; font-size: 13px; text-align: center; border-bottom: 1px solid #ffe0b2; }
+        .social-bar { display: flex; justify-content: space-around; padding: 10px 15px; background: #fafafa; border-bottom: 1px solid #eee; }
+        .social-btn { padding: 8px 12px; border-radius: 5px; color: #fff; text-decoration: none; font-size: 12px; font-weight: bold; text-align: center; flex: 1; margin: 0 4px; }
         .btn-wa { background: #25d366; }
         .btn-tg { background: #0088cc; }
-        .btn-msg { background: #a83232; }
+        .btn-msg { background: #0084ff; }
+        
+        /* Section Header & Grids */
         .section-title { font-size: 16px; font-weight: bold; padding: 15px 15px 5px; color: #333; }
         .category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px 15px; }
-        .cat-card { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 10px; text-align: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .cat-icon img { width: 100%; height: 80px; object-fit: cover; border-radius: 5px; }
-        .cat-name { font-size: 12px; margin-top: 5px; font-weight: bold; color: #444; }
+        .cat-card { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 10px; text-align: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.2s; }
+        .cat-card:active { transform: scale(0.97); }
+        .cat-icon img { width: 100%; height: 80px; object-fit: cover; border-radius: 6px; }
+        .cat-name { font-size: 12px; margin-top: 6px; font-weight: bold; color: #444; }
         
-        /* Category View Styles */
+        /* Inner View (Category Detail) */
         #categoryView { display: none; padding: 15px; }
-        .back-btn { background: #666; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; margin-bottom: 15px; }
-        .pkg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
-        .pkg-card { border: 2px solid #ddd; padding: 12px; border-radius: 8px; text-align: center; cursor: pointer; font-weight: bold; }
+        .back-btn { background: #f0f0f0; color: #333; border: 1px solid #ccc; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-bottom: 15px; }
+        .step-box { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; margin-bottom: 15px; }
+        .step-header { font-size: 14px; font-weight: bold; color: #ff5722; margin-bottom: 10px; display: flex; align-items: center; }
+        .step-num { background: #ff5722; color: #fff; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; font-size: 12px; margin-right: 8px; }
+        
+        /* Package Grid */
+        .pkg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .pkg-card { border: 2px solid #e0e0e0; padding: 12px; border-radius: 8px; text-align: center; cursor: pointer; background: #fff; transition: 0.2s; }
         .pkg-card.selected { border-color: #ff5722; background: #fff5f2; }
-        .input-field { width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
-        .submit-btn { width: 100%; background: #25d366; color: #fff; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 5px; cursor: pointer; margin-top: 15px; }
-
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; max-width: 600px; margin: 0 auto; background: #fff; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #ddd; }
-        .nav-item { text-align: center; font-size: 12px; color: #666; cursor: pointer; }
-        .nav-item.active { color: #ff5722; }
+        .pkg-title { font-size: 13px; font-weight: bold; color: #333; }
+        .pkg-price { font-size: 14px; color: #ff5722; font-weight: bold; margin-top: 4px; }
+        
+        /* Inputs & Buttons */
+        .input-field { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; outline: none; }
+        .input-field:focus { border-color: #ff5722; }
+        .pay-options { display: flex; gap: 10px; margin-bottom: 10px; }
+        .pay-btn { flex: 1; padding: 10px; border: 2px solid #ddd; border-radius: 6px; text-align: center; font-weight: bold; cursor: pointer; font-size: 13px; }
+        .pay-btn.selected { border-color: #e91e63; background: #fce4ec; color: #e91e63; }
+        .btn-submit { width: 100%; background: #25d366; color: #fff; border: none; padding: 14px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 10px; }
+        
+        /* Bottom Navigation */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; max-width: 600px; margin: 0 auto; background: #fff; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #ddd; z-index: 100; }
+        .nav-item { text-align: center; font-size: 11px; color: #666; cursor: pointer; }
+        .nav-item.active { color: #ff5722; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -57,7 +79,7 @@
         <a href="#" class="social-btn btn-msg">মেসেঞ্জার</a>
     </div>
 
-    <!-- Main Home View -->
+    <!-- Home View -->
     <div id="homeView">
         <div class="section-title">Offer Offer</div>
         <div class="category-grid">
@@ -102,16 +124,32 @@
 
     <!-- Category Detail View -->
     <div id="categoryView">
-        <button class="back-btn" onclick="showHome()">⬅ ব্যাক করুন</button>
-        <h2 id="catTitle" style="color: #ff5722; margin-top: 0;"></h2>
-        
-        <h3>১. প্যাকেজ সিলেক্ট করুন:</h3>
-        <div id="pkgContainer" class="pkg-grid"></div>
+        <button class="back-btn" onclick="showHome()">⬅ হোম পেজে যান</button>
+        <h2 id="catTitle" style="color: #ff5722; margin-top: 0; font-size: 18px;"></h2>
 
-        <h3>২. প্লেয়ার আইডি দিন:</h3>
-        <input type="number" id="playerUid" class="input-field" placeholder="Player UID দিন (যেমন: 12345678)" required>
+        <!-- Step 1: Package Selection -->
+        <div class="step-box">
+            <div class="step-header"><span class="step-num">১</span>প্যাকেজ নির্বাচন করুন</div>
+            <div id="pkgContainer" class="pkg-grid"></div>
+        </div>
 
-        <button class="submit-btn" onclick="submitOrder()">WhatsApp-এ অর্ডার করুন</button>
+        <!-- Step 2: Player UID -->
+        <div class="step-box">
+            <div class="step-header"><span class="step-num">২</span>প্লেয়ার আইডি (Player UID)</div>
+            <input type="number" id="playerUid" class="input-field" placeholder="Player UID দিন (যেমন: 12345678)">
+        </div>
+
+        <!-- Step 3: Payment Method -->
+        <div class="step-box">
+            <div class="step-header"><span class="step-num">৩</span>পেমেন্ট পদ্ধতি (bKash Personal: 01781511654)</div>
+            <div class="pay-options">
+                <div class="pay-btn selected" onclick="selectPayment('bKash', this)">bKash</div>
+                <div class="pay-btn" onclick="selectPayment('Nagad', this)">Nagad</div>
+                <div class="pay-btn" onclick="selectPayment('Rocket', this)">Rocket</div>
+            </div>
+            <input type="text" id="trxId" class="input-field" placeholder="Transaction ID (TrxID) দিন">
+            <button class="btn-submit" onclick="submitOrder()">WhatsApp-এ অর্ডার নিশ্চিত করুন</button>
+        </div>
     </div>
 
     <!-- Bottom Nav -->
@@ -136,7 +174,7 @@
             ]
         },
         'uid-bd': {
-            title: '[BD] UID OFFER',
+            title: '[BD] UID TOPUP',
             items: [
                 { name: "100 Diamond", price: "60 TK" },
                 { name: "200 Diamond", price: "110 TK" },
@@ -147,7 +185,7 @@
             ]
         },
         'weekly-monthly': {
-            title: 'Weekly/Monthly Offer',
+            title: 'Weekly / Monthly Offers',
             items: [
                 { name: "WEEKLY 🌸", price: "120 TK" },
                 { name: "Monthly 🌸", price: "650 TK" },
@@ -157,7 +195,7 @@
             ]
         },
         'weekly-lite': {
-            title: 'Weekly Lite / Friday Offer',
+            title: 'Weekly Lite / Friday Offers',
             items: [
                 { name: "Weekly Lite", price: "20 TK" },
                 { name: "Weekly Lite 2x", price: "40 TK" },
@@ -177,6 +215,7 @@
     };
 
     let selectedPkg = null;
+    let selectedPayMethod = 'bKash';
 
     function openCategory(catKey) {
         const data = packageData[catKey];
@@ -185,15 +224,16 @@
         document.getElementById('homeView').style.display = 'none';
         document.getElementById('categoryView').style.display = 'block';
         document.getElementById('catTitle').innerText = data.title;
+        window.scrollTo(0, 0);
 
         const pkgContainer = document.getElementById('pkgContainer');
         pkgContainer.innerHTML = '';
         selectedPkg = null;
 
-        data.items.forEach((item, index) => {
+        data.items.forEach((item) => {
             const card = document.createElement('div');
             card.className = 'pkg-card';
-            card.innerHTML = `<div>${item.name}</div><div style="color:#ff5722;">${item.price}</div>`;
+            card.innerHTML = `<div class="pkg-title">${item.name}</div><div class="pkg-price">${item.price}</div>`;
             card.onclick = () => {
                 document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('selected'));
                 card.classList.add('selected');
@@ -206,10 +246,19 @@
     function showHome() {
         document.getElementById('homeView').style.display = 'block';
         document.getElementById('categoryView').style.display = 'none';
+        window.scrollTo(0, 0);
+    }
+
+    function selectPayment(method, element) {
+        selectedPayMethod = method;
+        document.querySelectorAll('.pay-btn').forEach(b => b.classList.remove('selected'));
+        element.classList.add('selected');
     }
 
     function submitOrder() {
-        const uid = document.getElementById('playerUid').value;
+        const uid = document.getElementById('playerUid').value.trim();
+        const trxId = document.getElementById('trxId').value.trim();
+
         if (!selectedPkg) {
             alert('অনুগ্রহ করে একটি প্যাকেজ সিলেক্ট করুন!');
             return;
@@ -218,8 +267,12 @@
             alert('অনুগ্রহ করে আপনার Player UID দিন!');
             return;
         }
+        if (!trxId) {
+            alert('অনুগ্রহ করে Transaction ID (TrxID) দিন!');
+            return;
+        }
 
-        const message = `হ্যালো! আমি একটি অর্ডার করতে চাই:\n\nপ্যাকেজ: ${selectedPkg.name}\nদাম: ${selectedPkg.price}\nPlayer UID: ${uid}`;
+        const message = `হ্যালো! আমি একটি অর্ডার করতে চাই:\n\nপ্যাকেজ: ${selectedPkg.name}\nমূল্য: ${selectedPkg.price}\nPlayer UID: ${uid}\nপেমেন্ট মেথড: ${selectedPayMethod}\nTrxID: ${trxId}`;
         window.open(`https://wa.me/8801314983419?text=${encodeURIComponent(message)}`, '_blank');
     }
 </script>
