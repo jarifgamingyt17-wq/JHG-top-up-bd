@@ -21,6 +21,16 @@
         .cat-card { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 10px; text-align: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .cat-icon img { width: 100%; height: 80px; object-fit: cover; border-radius: 5px; }
         .cat-name { font-size: 12px; margin-top: 5px; font-weight: bold; color: #444; }
+        
+        /* Category View Styles */
+        #categoryView { display: none; padding: 15px; }
+        .back-btn { background: #666; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; margin-bottom: 15px; }
+        .pkg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
+        .pkg-card { border: 2px solid #ddd; padding: 12px; border-radius: 8px; text-align: center; cursor: pointer; font-weight: bold; }
+        .pkg-card.selected { border-color: #ff5722; background: #fff5f2; }
+        .input-field { width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        .submit-btn { width: 100%; background: #25d366; color: #fff; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 5px; cursor: pointer; margin-top: 15px; }
+
         .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; max-width: 600px; margin: 0 auto; background: #fff; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #ddd; }
         .nav-item { text-align: center; font-size: 12px; color: #666; cursor: pointer; }
         .nav-item.active { color: #ff5722; }
@@ -47,7 +57,7 @@
         <a href="#" class="social-btn btn-msg">মেসেঞ্জার</a>
     </div>
 
-    <!-- Category Grid -->
+    <!-- Main Home View -->
     <div id="homeView">
         <div class="section-title">Offer Offer</div>
         <div class="category-grid">
@@ -90,6 +100,20 @@
         </div>
     </div>
 
+    <!-- Category Detail View -->
+    <div id="categoryView">
+        <button class="back-btn" onclick="showHome()">⬅ ব্যাক করুন</button>
+        <h2 id="catTitle" style="color: #ff5722; margin-top: 0;"></h2>
+        
+        <h3>১. প্যাকেজ সিলেক্ট করুন:</h3>
+        <div id="pkgContainer" class="pkg-grid"></div>
+
+        <h3>২. প্লেয়ার আইডি দিন:</h3>
+        <input type="number" id="playerUid" class="input-field" placeholder="Player UID দিন (যেমন: 12345678)" required>
+
+        <button class="submit-btn" onclick="submitOrder()">WhatsApp-এ অর্ডার করুন</button>
+    </div>
+
     <!-- Bottom Nav -->
     <div class="bottom-nav">
         <div class="nav-item active" onclick="showHome()">🏠<br>হোম</div>
@@ -103,6 +127,7 @@
 <script>
     const packageData = {
         'mystery': {
+            title: 'Mystery Shop',
             items: [
                 { name: "Mystery Offer 1", price: "20 TK" },
                 { name: "Mystery Offer 2", price: "60 TK" },
@@ -111,6 +136,7 @@
             ]
         },
         'uid-bd': {
+            title: '[BD] UID OFFER',
             items: [
                 { name: "100 Diamond", price: "60 TK" },
                 { name: "200 Diamond", price: "110 TK" },
@@ -121,6 +147,7 @@
             ]
         },
         'weekly-monthly': {
+            title: 'Weekly/Monthly Offer',
             items: [
                 { name: "WEEKLY 🌸", price: "120 TK" },
                 { name: "Monthly 🌸", price: "650 TK" },
@@ -130,6 +157,7 @@
             ]
         },
         'weekly-lite': {
+            title: 'Weekly Lite / Friday Offer',
             items: [
                 { name: "Weekly Lite", price: "20 TK" },
                 { name: "Weekly Lite 2x", price: "40 TK" },
@@ -138,6 +166,7 @@
             ]
         },
         'levelup-pass': {
+            title: 'Level Up Pass',
             items: [
                 { name: "Level Up Pass 1x", price: "90 TK" },
                 { name: "Level Up Pass 2x", price: "180 TK" },
@@ -147,11 +176,51 @@
         }
     };
 
-    function openCategory(cat) {
-        console.log("Selected category:", cat);
+    let selectedPkg = null;
+
+    function openCategory(catKey) {
+        const data = packageData[catKey];
+        if(!data) return;
+
+        document.getElementById('homeView').style.display = 'none';
+        document.getElementById('categoryView').style.display = 'block';
+        document.getElementById('catTitle').innerText = data.title;
+
+        const pkgContainer = document.getElementById('pkgContainer');
+        pkgContainer.innerHTML = '';
+        selectedPkg = null;
+
+        data.items.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = 'pkg-card';
+            card.innerHTML = `<div>${item.name}</div><div style="color:#ff5722;">${item.price}</div>`;
+            card.onclick = () => {
+                document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                selectedPkg = item;
+            };
+            pkgContainer.appendChild(card);
+        });
     }
+
     function showHome() {
-        console.log("Navigating to home");
+        document.getElementById('homeView').style.display = 'block';
+        document.getElementById('categoryView').style.display = 'none';
+    }
+
+    function submitOrder() {
+        const uid = document.getElementById('playerUid').value;
+        if (!selectedPkg) {
+            alert('অনুগ্রহ করে একটি প্যাকেজ সিলেক্ট করুন!');
+            return;
+        }
+        if (!uid) {
+            alert('অনুগ্রহ করে আপনার Player UID দিন!');
+            return;
+        }
+
+        const message = `হ্যালো! আমি একটি অর্ডার করতে চাই:\n\nপ্যাকেজ: ${selectedPkg.name}\nদাম: ${selectedPkg.price}\nPlayer UID: ${uid}`;
+        window.open(`https://wa.me/8801314983419?text=${encodeURIComponent(message)}`, '_blank');
     }
 </script>
 </body>
