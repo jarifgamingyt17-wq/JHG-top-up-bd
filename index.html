@@ -3,107 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JHG TopUp BD | Free Fire Top Up</title>
+    <title>JHG TopUp BD</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f4f6f9; color: #333; padding-bottom: 70px; display: flex; justify-content: center; }
-        .container { max-width: 480px; width: 100%; background: #ffffff; min-height: 100vh; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
-
-        /* Top Header */
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; border-bottom: 1px solid #eee; }
-        .logo-text { font-size: 20px; font-weight: 800; color: #ff5722; text-decoration: none; }
-        .login-btn { background: #ff5722; color: white; border: none; padding: 8px 18px; border-radius: 6px; font-weight: bold; font-size: 13px; cursor: pointer; }
-
-        /* Time Notice Bar */
-        .notice-bar { background: #fff3cd; color: #856404; padding: 10px 15px; font-size: 11px; text-align: center; border-bottom: 1px solid #ffeba2; line-height: 1.4; }
-        .notice-bar strong { color: #d9534f; }
-
-        /* Social Support Buttons */
-        .social-bar { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 10px 15px; }
-        .social-btn { padding: 8px; border-radius: 6px; color: white; text-align: center; font-size: 11px; font-weight: bold; text-decoration: none; }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; }
+        .container { max-width: 600px; margin: 0 auto; background: #fff; min-height: 100vh; padding-bottom: 70px; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #fff; border-bottom: 1px solid #ddd; }
+        .logo-text { font-size: 20px; font-weight: bold; color: #ff5722; text-decoration: none; }
+        .login-btn { background: #ff5722; color: #fff; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
+        .notice-bar { background: #fff8e1; color: #d84315; padding: 10px; font-size: 13px; text-align: center; border-bottom: 1px solid #ffe0b2; }
+        .social-bar { display: flex; justify-content: space-around; padding: 10px; background: #fafafa; }
+        .social-btn { padding: 8px 12px; border-radius: 5px; color: #fff; text-decoration: none; font-size: 12px; font-weight: bold; }
         .btn-wa { background: #25d366; }
         .btn-tg { background: #0088cc; }
-        .btn-msg { background: #a824fb; }
-
-        /* Home Category Section */
-        .home-view { padding: 15px; }
-        .section-title { font-size: 18px; font-weight: bold; color: #222; text-align: center; margin: 15px 0 10px 0; }
-        .category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
-        .cat-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 8px; text-align: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-        .cat-icon { width: 100%; height: 75px; background: #f8fafc; border-radius: 8px; margin-bottom: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-        .cat-img { width: 100%; height: 100%; object-fit: cover; }
-        .cat-name { font-size: 11px; font-weight: bold; color: #4a5568; line-height: 1.2; }
-
-        /* Product Detail View */
-        .product-view { display: none; padding: 15px; }
-        .back-btn { background: #e2e8f0; color: #333; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; margin-bottom: 12px; }
-
-        .step-box { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-        .step-num { background: #ff5722; color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 13px; }
-        .step-title { font-size: 15px; font-weight: bold; color: #2d3748; }
-
-        /* Pricing Cards Grid */
-        .pkg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .pkg-item { background: #fff; border: 1.5px solid #edf2f7; border-radius: 10px; padding: 12px 10px; cursor: pointer; position: relative; }
-        .pkg-item.active { border-color: #ff5722; background: #fffaf0; }
-        .pkg-name { font-size: 12px; font-weight: bold; color: #2d3748; }
-        .pkg-stock { font-size: 9px; color: #38a169; margin-top: 2px; }
-        .pkg-price { font-size: 13px; font-weight: bold; color: #ff5722; text-align: right; margin-top: 5px; }
-
-        /* Input Controls */
-        .input-field { width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 13px; outline: none; margin-bottom: 10px; }
-        .btn-check { width: 100%; background: #ff5722; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 13px; cursor: pointer; }
-
-        /* Payment Option Buttons */
-        .pay-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
-        .pay-btn { border: 1.5px solid #edf2f7; border-radius: 8px; padding: 10px; text-align: center; cursor: pointer; font-weight: bold; font-size: 12px; }
-        .pay-btn.active { border-color: #ff5722; background: #fffaf0; color: #ff5722; }
-
-        .btn-submit { width: 100%; background: #28a745; color: white; border: none; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 10px; }
-
-        /* Bottom Fixed Navigation */
-        .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: #fff; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-around; padding: 8px 0; z-index: 100; }
-        .nav-item { text-align: center; font-size: 10px; color: #718096; text-decoration: none; cursor: pointer; }
-        .nav-item.active { color: #ff5722; font-weight: bold; }
+        .btn-msg { background: #a83232; }
+        .section-title { font-size: 16px; font-weight: bold; padding: 15px 15px 5px; color: #333; }
+        .category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px 15px; }
+        .cat-card { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 10px; text-align: center; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .cat-icon img { width: 100%; height: 80px; object-fit: cover; border-radius: 5px; }
+        .cat-name { font-size: 12px; margin-top: 5px; font-weight: bold; color: #444; }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; max-width: 600px; margin: 0 auto; background: #fff; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #ddd; }
+        .nav-item { text-align: center; font-size: 12px; color: #666; cursor: pointer; }
+        .nav-item.active { color: #ff5722; }
     </style>
 </head>
 <body>
-<style>
-    .spinner-wrapper {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #ffffff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-    }
-    .spinner {
-        width: 40px;
-        height: 40px;
-        border: 4px solid #f3f3f3;
-        border-top: 4px solid #ff5722;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-</style>
-<div class="spinner-wrapper">
-    <div class="spinner"></div>
-</div>
-<script>
-    window.addEventListener('load', function() {
-        const spinner = document.querySelector('.spinner-wrapper');
-        spinner.style.display = 'none';
-    });
-</script>
 
 <div class="container">
     <!-- Header -->
@@ -112,9 +35,9 @@
         <button class="login-btn">লগইন</button>
     </div>
 
-    <!-- Time Notice -->
+    <!-- Notice -->
     <div class="notice-bar">
-        📢 <strong>নোটিশ:</strong> প্রতিদিন সকাল <strong>৯:০০ টা থেকে বিকেল ৬:০০ টা</strong> পর্যন্ত স্কুলের জন্য টপ-আপ বন্ধ থাকে। এই সময়ের অর্ডারগুলো <strong>বিকেল ৬:০০ টার পর</strong> প্রসেস করা হবে।
+        📢 <strong>নোটিশ:</strong> প্রতিদিন সকাল <strong>৯:০০</strong> টা থেকে বিকেল <strong>৬:০০</strong> টা পর্যন্ত স্কুলের জন্য টপ-আপ বন্ধ থাকে।
     </div>
 
     <!-- Social Links -->
@@ -124,24 +47,24 @@
         <a href="#" class="social-btn btn-msg">মেসেঞ্জার</a>
     </div>
 
-    <!-- HOME PAGE: Category Cards with Images -->
-    <div id="homeView" class="home-view">
+    <!-- Category Grid -->
+    <div id="homeView">
         <div class="section-title">Offer Offer</div>
-        <div class="category-grid"><!-- Mystery Shop Card -->
-<div class="cat-card" onclick="openCategory('mystery')">
-    <div class="cat-icon"><img src="mystery.png" alt="Mystery Shop"></div>
-    <div class="cat-name">Mystery Shop</div>
-</div>
+        <div class="category-grid">
+            <div class="cat-card" onclick="openCategory('mystery')">
+                <div class="cat-icon"><img src="mystery.png" alt="Mystery Shop"></div>
+                <div class="cat-name">Mystery Shop</div>
+            </div>
             <div class="cat-card" onclick="openCategory('uid-bd')">
-                <div class="cat-icon"><img src= https://imgur.com/a/Hd9kNu0 /100x100?text=UID+Offer" class="cat-img"></div>
+                <div class="cat-icon"><img src="uid.png" alt="[BD] UID OFFER"></div>
                 <div class="cat-name">[BD] UID OFFER</div>
             </div>
             <div class="cat-card" onclick="openCategory('weekly-monthly')">
-                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=Weekly" class="cat-img"></div>
+                <div class="cat-icon"><img src="weekly.png" alt="Weekly/Monthly Offer"></div>
                 <div class="cat-name">Weekly/Monthly Offer</div>
             </div>
             <div class="cat-card" onclick="openCategory('weekly-lite')">
-                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=Friday" class="cat-img"></div>
+                <div class="cat-icon"><img src="friday.png" alt="Friday Offers"></div>
                 <div class="cat-name">Friday Offers 🔥</div>
             </div>
         </div>
@@ -149,74 +72,25 @@
         <div class="section-title">Top-up</div>
         <div class="category-grid">
             <div class="cat-card" onclick="openCategory('uid-bd')">
-                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=UID+Topup" class="cat-img"></div>
+                <div class="cat-icon"><img src="uid.png" alt="Uid TOPUP BD"></div>
                 <div class="cat-name">Uid TOPUP [BD]</div>
             </div>
-            <div class="cat-card" onclick="openCategory('like-topup')">
-                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=200+Like" class="cat-img"></div>
-                <div class="cat-name">Free Fire - 200 LIKE</div>
-            </div>
             <div class="cat-card" onclick="openCategory('weekly-monthly')">
-                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=Combo" class="cat-img"></div>
+                <div class="cat-icon"><img src="weekly.png" alt="Weekly Monthly Combo"></div>
                 <div class="cat-name">Weekly Monthly Combo</div>
             </div>
             <div class="cat-card" onclick="openCategory('weekly-lite')">
-                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=Lite" class="cat-img"></div>
+                <div class="cat-icon"><img src="weekly-lite.png" alt="Weekly Lite"></div>
                 <div class="cat-name">Weekly Lite</div>
             </div>
             <div class="cat-card" onclick="openCategory('levelup-pass')">
-                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=LevelUp" class="cat-img"></div>
+                <div class="cat-icon"><img src="levelup.png" alt="Level Up Pass"></div>
                 <div class="cat-name">Level Up Pass</div>
             </div>
-            <div class="cat-card" onclick="openCategory('indo-server')">
-                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=Indo" class="cat-img"></div>
-                <div class="cat-name">ID CODE INDONESIA</div>
-            </div>
         </div>
     </div>
 
-    <!-- PRODUCT DETAIL PAGE -->
-    <div id="productView" class="product-view">
-        <button class="back-btn" onclick="showHome()">← পিছনে যান</button>
-
-        <!-- Step 1: Packages -->
-        <div class="step-box">
-            <div class="step-header">
-                <div class="step-num">1</div>
-                <div class="step-title">রিচার্জ নির্বাচন করুন</div>
-            </div>
-            <div class="pkg-grid" id="packagesGrid"></div>
-        </div>
-
-        <!-- Step 2: Account Info -->
-        <div class="step-box">
-            <div class="step-header">
-                <div class="step-num">2</div>
-                <div class="step-title">অ্যাকাউন্ট তথ্য</div>
-            </div>
-            <p style="font-size: 12px; color: #666; margin-bottom: 8px;">এখানে আইডি কোড দিন।</p>
-            <input type="number" id="playerId" class="input-field" placeholder="এখানে আইডি কোড দিন।">
-            <button class="btn-check" onclick="checkPlayer()">প্লেয়ারের নাম চেক করতে ক্লিক করুন</button>
-            <div id="playerCheckResult" style="font-size: 12px; color: #28a745; margin-top: 6px; font-weight: bold;"></div>
-        </div>
-
-        <!-- Step 3: Payment Method -->
-        <div class="step-box">
-            <div class="step-header">
-                <div class="step-num">3</div>
-                <div class="step-title">পেমেন্ট পদ্ধতি (bKash Personal: 01781511654)</div>
-            </div>
-            <div class="pay-options">
-                <div class="pay-btn active" onclick="selectPayment('bKash')">bKash</div>
-                <div class="pay-btn" onclick="selectPayment('Nagad')">Nagad</div>
-                <div class="pay-btn" onclick="selectPayment('Rocket')">Rocket</div>
-            </div>
-            <input type="text" id="trxId" class="input-field" placeholder="Transaction ID (TrxID) দিন">
-            <button class="btn-submit" onclick="submitOrder()">WhatsApp-এ অর্ডার কনফার্ম করুন</button>
-        </div>
-    </div>
-
-    <!-- Bottom Navigation -->
+    <!-- Bottom Nav -->
     <div class="bottom-nav">
         <div class="nav-item active" onclick="showHome()">🏠<br>হোম</div>
         <div class="nav-item">📦<br>আমার অর্ডার</div>
@@ -226,13 +100,16 @@
     </div>
 </div>
 
-<script>    'mystery': [
-        { name: 'Mystery Offer 1', price: '20' },
-        { name: 'Mystery Offer 2', price: '60' },
-        { name: 'Mystery Offer 3', price: '100' },
-        { name: 'Mystery Offer 4', price: '150' }
-    ],
+<script>
     const packageData = {
+        'mystery': {
+            items: [
+                { name: "Mystery Offer 1", price: "20 TK" },
+                { name: "Mystery Offer 2", price: "60 TK" },
+                { name: "Mystery Offer 3", price: "100 TK" },
+                { name: "Mystery Offer 4", price: "150 TK" }
+            ]
+        },
         'uid-bd': {
             items: [
                 { name: "100 Diamond", price: "60 TK" },
@@ -244,114 +121,4 @@
             ]
         },
         'weekly-monthly': {
-            items: [
-                { name: "WEEKLY 🌸", price: "120 TK" },
-                { name: "Monthly 🌸", price: "650 TK" },
-                { name: "2X WEEKLY", price: "240 TK" },
-                { name: "2X Monthly", price: "1300 TK" },
-                { name: "1 Weekly + 1 Monthly", price: "770 TK" }
-            ]
-        },
-        'weekly-lite': {
-            items: [
-                { name: "Weekly Lite", price: "20 TK" },
-                { name: "Weekly Lite 2x", price: "40 TK" },
-                { name: "Weekly Lite 3x", price: "60 TK" },
-                { name: "Weekly Lite 4x", price: "80 TK" }
-            ]
-        },
-        'levelup-pass': {
-            items: [
-                { name: "Level Up Pass 1x", price: "90 TK" },
-                { name: "Level Up Pass 2x", price: "180 TK" },
-                { name: "Level Up Pass 3x", price: "270 TK" },
-                { name: "Level Up Pass 4x", price: "360 TK" }
-            ]
-        },
-        'indo-server': {
-            items: [
-                { name: "50 Diamond (Indo)", price: "35 TK" },
-                { name: "100 Diamond (Indo)", price: "65 TK" },
-                { name: "355 Diamond (Indo)", price: "220 TK" }
-            ]
-        },
-        'like-topup': {
-            items: [
-                { name: "200 Like (1 Time)", price: "30 TK" }
-            ]
-        }
-    };
-
-    let selectedPkg = "";
-    let selectedPrice = "";
-    let selectedPayMethod = "bKash";
-
-    function openCategory(catKey) {
-        const cat = packageData[catKey];
-        if (!cat) return;
-
-        document.getElementById('homeView').style.display = 'none';
-        const grid = document.getElementById('packagesGrid');
-        grid.innerHTML = "";
-
-        cat.items.forEach(pkg => {
-            const card = document.createElement('div');
-            card.className = 'pkg-item';
-            card.onclick = function() {
-                document.querySelectorAll('.pkg-item').forEach(c => c.classList.remove('active'));
-                card.classList.add('active');
-                selectedPkg = pkg.name;
-                selectedPrice = pkg.price;
-            };
-            card.innerHTML = `<div class="pkg-name">${pkg.name}</div><div class="pkg-stock">5.0M pcs available</div><div class="pkg-price">${pkg.price}</div>`;
-            grid.appendChild(card);
-        });
-
-        document.getElementById('productView').style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        selectedPkg = "";
-        selectedPrice = "";
-    }
-
-    function showHome() {
-        document.getElementById('productView').style.display = 'none';
-        document.getElementById('homeView').style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function checkPlayer() {
-        let pid = document.getElementById('playerId').value;
-        if(!pid) return alert("আইডি কোড দিন!");
-        document.getElementById('playerCheckResult').innerText = "✓ UID Verified: " + pid;
-    }
-
-    function selectPayment(method) {
-        selectedPayMethod = method;
-        document.querySelectorAll('.pay-btn').forEach(btn => {
-            btn.classList.remove('active');
-            if(btn.innerText === method) btn.classList.add('active');
-        });
-    }
-
-    function submitOrder() {
-        let pid = document.getElementById('playerId').value;
-        let trx = document.getElementById('trxId').value;
-        let phone = "8801314983419";
-
-        if(!selectedPkg) return alert("প্যাকেজ নির্বাচন করুন!");
-        if(!pid) return alert("আইডি কোড দিন!");
-        if(!trx) return alert("Transaction ID (TrxID) দিন!");
-
-        let text = `🛒 *NEW ORDER - JHG TOPUP BD*%0A%0A` +
-                   `🆔 *Player ID:* ${pid}%0A` +
-                   `💎 *Package:* ${selectedPkg} (${selectedPrice})%0A` +
-                   `💳 *Payment Method:* ${selectedPayMethod}%0A` +
-                   `🧾 *TrxID:* ${trx}%0A%0A` +
-                   `📌 *Note:* (Delivery will start after 6:00 PM if ordered between 9:00 AM - 6:00 PM)`;
-
-        window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
-    }
-</script>
-
-</body>
-</html>
+            
