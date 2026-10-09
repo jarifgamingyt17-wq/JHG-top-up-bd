@@ -22,6 +22,12 @@
         .btn-tg { background: #0088cc; }
         .btn-msg { background: #0084ff; }
         
+        /* Banner Slider Style */
+        .banner-slider { width: 100%; overflow-x: auto; display: flex; scroll-snap-type: x mandatory; padding: 10px 15px 5px; gap: 10px; scrollbar-width: none; }
+        .banner-slider::-webkit-scrollbar { display: none; }
+        .banner-item { flex: 0 0 100%; scroll-snap-align: start; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .banner-item img { width: 100%; height: 160px; object-fit: cover; display: block; }
+
         /* Section Header & Grids */
         .section-title { font-size: 16px; font-weight: bold; padding: 15px 15px 5px; color: #333; }
         .category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px 15px; }
@@ -81,6 +87,13 @@
 
     <!-- Home View -->
     <div id="homeView">
+        <!-- Banner Slider Section -->
+        <div class="banner-slider">
+            <div class="banner-item"><img src="banner1.png" alt="Banner 1"></div>
+            <div class="banner-item"><img src="banner2.png" alt="Banner 2"></div>
+            <div class="banner-item"><img src="banner3.png" alt="Banner 3"></div>
+        </div>
+
         <div class="section-title">Offer Offer</div>
         <div class="category-grid">
             <div class="cat-card" onclick="openCategory('mystery')">
