@@ -5,253 +5,287 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JHG TopUp BD | Free Fire Top Up</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-        body { background-color: #0d1117; color: #f0f6fc; padding: 12px; display: flex; justify-content: center; }
-        .container { max-width: 480px; width: 100%; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f6f9; color: #333; padding-bottom: 70px; display: flex; justify-content: center; }
+        .container { max-width: 480px; width: 100%; background: #ffffff; min-height: 100vh; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
 
-        /* Header Bar */
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: #161b22; border-radius: 12px; margin-bottom: 12px; border: 1px solid #30363d; }
-        .logo { font-size: 18px; font-weight: bold; color: #f39c12; }
-        .status-badge { background: #e53e3e; color: white; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: bold; }
+        /* Top Header */
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; border-bottom: 1px solid #eee; }
+        .logo-text { font-size: 20px; font-weight: 800; color: #ff5722; text-decoration: none; }
+        .login-btn { background: #ff5722; color: white; border: none; padding: 8px 18px; border-radius: 6px; font-weight: bold; font-size: 13px; cursor: pointer; }
 
-        /* Banner & Time Notice */
-        .banner-box { width: 100%; background: linear-gradient(135deg, #1f2937, #111827); border-radius: 12px; padding: 15px; text-align: center; margin-bottom: 12px; border: 1px solid #f39c12; }
-        .banner-box h2 { font-size: 18px; color: #f39c12; }
-        .time-notice { background: #2d1a1a; border: 1px solid #e53e3e; color: #feb2b2; padding: 10px; border-radius: 8px; font-size: 11px; margin-bottom: 15px; text-align: center; line-height: 1.4; }
+        /* Time Notice Bar */
+        .notice-bar { background: #fff3cd; color: #856404; padding: 10px 15px; font-size: 11px; text-align: center; border-bottom: 1px solid #ffeba2; line-height: 1.4; }
+        .notice-bar strong { color: #d9534f; }
 
         /* Social Support Buttons */
-        .social-buttons { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 15px; }
-        .social-btn { padding: 8px; border-radius: 8px; color: white; text-align: center; font-size: 11px; font-weight: bold; text-decoration: none; display: flex; align-items: center; justify-content: center; }
+        .social-bar { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 10px 15px; }
+        .social-btn { padding: 8px; border-radius: 6px; color: white; text-align: center; font-size: 11px; font-weight: bold; text-decoration: none; }
         .btn-wa { background: #25d366; }
         .btn-tg { background: #0088cc; }
         .btn-msg { background: #a824fb; }
 
-        /* Section Headings */
-        .section-header { font-size: 15px; font-weight: bold; color: #ffffff; margin: 15px 0 10px 0; text-align: center; border-bottom: 1px solid #30363d; padding-bottom: 5px; }
+        /* Home Category Section */
+        .home-view { padding: 15px; }
+        .section-title { font-size: 18px; font-weight: bold; color: #222; text-align: center; margin: 15px 0 10px 0; }
+        .category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+        .cat-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 10px; text-align: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .cat-icon { font-size: 28px; margin-bottom: 5px; }
+        .cat-name { font-size: 11px; font-weight: bold; color: #4a5568; line-height: 1.2; }
 
-        /* Category Grid Layout */
-        .category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px; }
-        .cat-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; transition: 0.2s; }
-        .cat-card:hover { border-color: #f39c12; transform: translateY(-2px); }
-        .cat-icon { width: 100%; height: 55px; background: #21262d; border-radius: 8px; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; color: #f39c12; font-size: 22px; }
-        .cat-title { font-size: 11px; font-weight: bold; color: #f0f6fc; line-height: 1.2; }
+        /* Product Detail View (HHH Bazar Style) */
+        .product-view { display: none; padding: 15px; }
+        .back-btn { background: #e2e8f0; color: #333; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; margin-bottom: 12px; }
 
-        /* Dynamic Order Form Box */
-        .order-section { display: none; background: #161b22; border: 1px solid #f39c12; border-radius: 12px; padding: 15px; margin-bottom: 15px; }
-        .order-section.active { display: block; }
-        .order-title { font-size: 15px; font-weight: bold; color: #f39c12; text-align: center; margin-bottom: 12px; }
+        .step-box { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+        .step-num { background: #ff5722; color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 13px; }
+        .step-title { font-size: 15px; font-weight: bold; color: #2d3748; }
 
-        .payment-info { background: #21262d; border-left: 4px solid #e91e63; padding: 10px; border-radius: 6px; font-size: 12px; margin-bottom: 12px; text-align: center; }
-        .payment-info strong { color: #f43f5e; font-size: 14px; }
+        /* Pricing Cards Grid */
+        .pkg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .pkg-item { background: #fff; border: 1.5px solid #edf2f7; border-radius: 10px; padding: 12px 10px; cursor: pointer; position: relative; }
+        .pkg-item.active { border-color: #ff5722; background: #fffaf0; }
+        .pkg-name { font-size: 12px; font-weight: bold; color: #2d3748; }
+        .pkg-stock { font-size: 9px; color: #38a169; margin-top: 2px; }
+        .pkg-price { font-size: 13px; font-weight: bold; color: #ff5722; text-align: right; margin-top: 5px; }
 
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
-        .pkg-card { background: #21262d; border: 2px solid #30363d; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; }
-        .pkg-card.active { border-color: #58a6ff; background: #1f6feb15; }
-        .pkg-title { font-size: 12px; font-weight: bold; color: #f0f6fc; }
-        .pkg-price { font-size: 11px; color: #2ea043; font-weight: bold; margin-top: 3px; }
+        /* Input Controls */
+        .input-field { width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 13px; outline: none; margin-bottom: 10px; }
+        .btn-check { width: 100%; background: #ff5722; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 13px; cursor: pointer; }
 
-        .input-box { margin-bottom: 12px; }
-        .input-box label { font-size: 11px; color: #8b949e; display: block; margin-bottom: 4px; }
-        .input-box input { width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 8px; color: white; outline: none; font-size: 13px; }
+        /* Payment Option Buttons */
+        .pay-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
+        .pay-btn { border: 1.5px solid #edf2f7; border-radius: 8px; padding: 10px; text-align: center; cursor: pointer; font-weight: bold; font-size: 12px; }
+        .pay-btn.active { border-color: #ff5722; background: #fffaf0; color: #ff5722; }
 
-        .btn-order { width: 100%; background: #238636; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 14px; cursor: pointer; }
+        .btn-submit { width: 100%; background: #28a745; color: white; border: none; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 10px; }
 
-        /* Bottom Nav */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #161b22; border-top: 1px solid #30363d; display: flex; justify-content: space-around; padding: 8px 0; max-width: 480px; margin: 0 auto; }
-        .nav-item { color: #8b949e; text-decoration: none; font-size: 10px; text-align: center; }
-        .nav-item.active { color: #ff5722; }
-
-        .footer { text-align: center; font-size: 11px; color: #484f58; margin-top: 15px; margin-bottom: 60px; }
+        /* Bottom Fixed Navigation */
+        .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: #fff; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-around; padding: 8px 0; z-index: 100; }
+        .nav-item { text-align: center; font-size: 10px; color: #718096; text-decoration: none; cursor: pointer; }
+        .nav-item.active { color: #ff5722; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="logo">JHG TopUp BD</div>
-        <div class="status-badge">⏰ ৯:০০ - ৬:০০ বন্ধ</div>
-    </div>
-
-    <!-- Banner -->
-    <div class="banner-box">
-        <h2>🔥 JHG TopUp BD 🔥</h2>
+    <!-- Header -->
+    <div class="header">
+        <a href="#" class="logo-text" onclick="showHome()">JHG TopUp BD</a>
+        <button class="login-btn">লগইন</button>
     </div>
 
     <!-- Time Notice -->
-    <div class="time-notice">
-        📢 <strong>নোটিশ:</strong> প্রতিদিন সকাল <strong>৯:০০ টা থেকে বিকেল ৬:০০ টা</strong> পর্যন্ত স্কুলের জন্য টপ-আপ বন্ধ থাকবে। এই সময়ের দেওয়া অর্ডারগুলো <strong>বিকেল ৬:০০ টার পর</strong> প্রসেস করা হবে।
+    <div class="notice-bar">
+        📢 <strong>নোটিশ:</strong> প্রতিদিন সকাল <strong>৯:০০ টা থেকে বিকেল ৬:০০ টা</strong> পর্যন্ত স্কুলের জন্য টপ-আপ বন্ধ থাকে। এই সময়ের অর্ডারগুলো <strong>বিকেল ৬:০০ টার পর</strong> প্রসেস করা হবে।
     </div>
 
-    <!-- Social Buttons -->
-    <div class="social-buttons">
+    <!-- Social Links -->
+    <div class="social-bar">
         <a href="https://wa.me/8801314983419" class="social-btn btn-wa" target="_blank">হোয়াটসঅ্যাপ</a>
         <a href="#" class="social-btn btn-tg">টেলিগ্রাম</a>
         <a href="#" class="social-btn btn-msg">মেসেঞ্জার</a>
     </div>
 
-    <!-- Top-up Categories Grid -->
-    <div class="section-header">ক্যাটাগরি নির্বাচন করুন</div>
-    <div class="category-grid">
-        <div class="cat-card" onclick="openCategory('uid-bd')">
-            <div class="cat-icon">💎</div>
-            <div class="cat-title">Uid TOPUP [BD]</div>
+    <!-- HOME PAGE: Category Cards -->
+    <div id="homeView" class="home-view">
+        <div class="section-title">Offer Offer</div>
+        <div class="category-grid">
+            <div class="cat-card" onclick="openCategory('uid-bd')">
+                <div class="cat-icon">🔥</div>
+                <div class="cat-name">[BD] UID OFFER</div>
+            </div>
+            <div class="cat-card" onclick="openCategory('weekly-monthly')">
+                <div class="cat-icon">💎</div>
+                <div class="cat-name">Weekly/Monthly Offer</div>
+            </div>
+            <div class="cat-card" onclick="openCategory('weekly-lite')">
+                <div class="cat-icon">⚡</div>
+                <div class="cat-name">Friday Offers 🔥</div>
+            </div>
         </div>
-        <div class="cat-card" onclick="openCategory('weekly-monthly')">
-            <div class="cat-icon">👑</div>
-            <div class="cat-title">Weekly Monthly Combo</div>
-        </div>
-        <div class="cat-card" onclick="openCategory('weekly-lite')">
-            <div class="cat-icon">⚡</div>
-            <div class="cat-title">Weekly Lite</div>
-        </div>
-        <div class="cat-card" onclick="openCategory('levelup-pass')">
-            <div class="cat-icon">🚀</div>
-            <div class="cat-title">Level Up Pass</div>
-        </div>
-        <div class="cat-card" onclick="openCategory('indo-server')">
-            <div class="cat-icon">🇮🇩</div>
-            <div class="cat-title">ID CODE INDONESIA</div>
-        </div>
-        <div class="cat-card" onclick="openCategory('like-topup')">
-            <div class="cat-icon">👍</div>
-            <div class="cat-title">Free Fire - 200 LIKE</div>
+
+        <div class="section-title">Top-up</div>
+        <div class="category-grid">
+            <div class="cat-card" onclick="openCategory('uid-bd')">
+                <div class="cat-icon">🎮</div>
+                <div class="cat-name">Uid TOPUP [BD]</div>
+            </div>
+            <div class="cat-card" onclick="openCategory('like-topup')">
+                <div class="cat-icon">👍</div>
+                <div class="cat-name">Free Fire - 200 LIKE</div>
+            </div>
+            <div class="cat-card" onclick="openCategory('weekly-monthly')">
+                <div class="cat-icon">👑</div>
+                <div class="cat-name">Weekly Monthly Combo</div>
+            </div>
+            <div class="cat-card" onclick="openCategory('weekly-lite')">
+                <div class="cat-icon">⚡</div>
+                <div class="cat-name">Weekly Lite</div>
+            </div>
+            <div class="cat-card" onclick="openCategory('levelup-pass')">
+                <div class="cat-icon">🚀</div>
+                <div class="cat-name">Level Up Pass</div>
+            </div>
+            <div class="cat-card" onclick="openCategory('indo-server')">
+                <div class="cat-icon">🇮🇩</div>
+                <div class="cat-name">ID CODE INDONESIA</div>
+            </div>
         </div>
     </div>
 
-    <!-- Dynamic Package Display & Order Area -->
-    <div class="order-section" id="orderArea">
-        <div class="order-title" id="catTitle">প্যাকেজ নির্বাচন করুন</div>
+    <!-- PRODUCT DETAIL PAGE (HHH Bazar Style) -->
+    <div id="productView" class="product-view">
+        <button class="back-btn" onclick="showHome()">← পিছনে যান</button>
 
-        <div class="payment-info">
-            bKash Personal (Send Money):<br>
-            <strong>01781511654</strong>
+        <!-- Step 1: Packages -->
+        <div class="step-box">
+            <div class="step-header">
+                <div class="step-num">1</div>
+                <div class="step-title">রিচার্জ নির্বাচন করুন</div>
+            </div>
+            <div class="pkg-grid" id="packagesGrid"></div>
         </div>
 
-        <div class="input-box">
-            <label>Player UID / ID</label>
-            <input type="number" id="playerId" placeholder="আপনার গেম ID দিন">
+        <!-- Step 2: Account Info -->
+        <div class="step-box">
+            <div class="step-header">
+                <div class="step-num">2</div>
+                <div class="step-title">অ্যাকাউন্ট তথ্য</div>
+            </div>
+            <p style="font-size: 12px; color: #666; margin-bottom: 8px;">এখানে আইডি কোড দিন।</p>
+            <input type="number" id="playerId" class="input-field" placeholder="এখানে আইডি কোড দিন।">
+            <button class="btn-check" onclick="checkPlayer()">প্লেয়ারের নাম চেক করতে ক্লিক করুন</button>
+            <div id="playerCheckResult" style="font-size: 12px; color: #28a745; margin-top: 6px; font-weight: bold;"></div>
         </div>
 
-        <!-- Dynamic Packages Grid -->
-        <div class="grid" id="packagesGrid"></div>
-
-        <div class="input-box">
-            <label>Transaction ID (TrxID)</label>
-            <input type="text" id="trxId" placeholder="বিকাশের TrxID দিন">
+        <!-- Step 3: Payment Method -->
+        <div class="step-box">
+            <div class="step-header">
+                <div class="step-num">3</div>
+                <div class="step-title">পেমেন্ট পদ্ধতি (bKash Personal: 01781511654)</div>
+            </div>
+            <div class="pay-options">
+                <div class="pay-btn active" onclick="selectPayment('bKash')">bKash</div>
+                <div class="pay-btn" onclick="selectPayment('Nagad')">Nagad</div>
+                <div class="pay-btn" onclick="selectPayment('Rocket')">Rocket</div>
+            </div>
+            <input type="text" id="trxId" class="input-field" placeholder="Transaction ID (TrxID) দিন">
+            <button class="btn-submit" onclick="submitOrder()">WhatsApp-এ অর্ডার কনফার্ম করুন</button>
         </div>
-
-        <button class="btn-order" onclick="submitOrder()">WhatsApp-এ অর্ডার পাঠান</button>
     </div>
 
-    <!-- Bottom Nav -->
+    <!-- Bottom Fixed Navigation -->
     <div class="bottom-nav">
-        <a href="#" class="nav-item active">🏠<br>হোম</a>
-        <a href="#" class="nav-item">📦<br>আমার অর্ডার</a>
-        <a href="#" class="nav-item">➕<br>অ্যাড মানি</a>
-        <a href="#" class="nav-item">👛<br>ওয়ালেট</a>
-        <a href="#" class="nav-item">👤<br>প্রোফাইল</a>
-    </div>
-
-    <div class="footer">
-        © 2026 JHG TopUp BD | Powered by GitHub
+        <div class="nav-item active" onclick="showHome()">🏠<br>হোম</div>
+        <div class="nav-item">📦<br>আমার অর্ডার</div>
+        <div class="nav-item">➕<br>অ্যাড মানি</div>
+        <div class="nav-item">👛<br>ওয়ালেট</div>
+        <div class="nav-item">👤<br>প্রোফাইল</div>
     </div>
 </div>
 
 <script>
-    // Package Data Lists per Category
     const packageData = {
         'uid-bd': {
-            title: "💎 BD Server UID Diamond Top-Up",
             items: [
-                { name: "100 Diamond", price: "60 BDT" },
-                { name: "200 Diamond", price: "110 BDT" },
-                { name: "300 Diamond", price: "220 BDT" },
-                { name: "800 Diamond", price: "550 BDT" },
-                { name: "1200 Diamond", price: "890 BDT" },
-                { name: "4900 Diamond", price: "2950 BDT" },
-                { name: "12000 Diamond", price: "6710 BDT" }
+                { name: "100 Diamond", price: "60 TK" },
+                { name: "200 Diamond", price: "110 TK" },
+                { name: "300 Diamond", price: "220 TK" },
+                { name: "800 Diamond", price: "550 TK" },
+                { name: "1200 Diamond", price: "890 TK" },
+                { name: "4900 Diamond", price: "2950 TK" }
             ]
         },
         'weekly-monthly': {
-            title: "👑 Weekly & Monthly Membership",
             items: [
-                { name: "Weekly 1x", price: "120 BDT" },
-                { name: "Weekly 2x", price: "240 BDT" },
-                { name: "Weekly 3x", price: "360 BDT" },
-                { name: "Weekly 4x", price: "480 BDT" },
-                { name: "Monthly 1x", price: "650 BDT" },
-                { name: "Monthly 2x", price: "1300 BDT" },
-                { name: "Monthly 3x", price: "1950 BDT" },
-                { name: "Monthly 4x", price: "2600 BDT" }
+                { name: "WEEKLY 🌸", price: "120 TK" },
+                { name: "Monthly 🌸", price: "650 TK" },
+                { name: "2X WEEKLY", price: "240 TK" },
+                { name: "2X Monthly", price: "1300 TK" },
+                { name: "1 Weekly + 1 Monthly", price: "770 TK" }
             ]
         },
         'weekly-lite': {
-            title: "⚡ Weekly Lite Packages",
             items: [
-                { name: "Weekly Lite 1x", price: "20 BDT" },
-                { name: "Weekly Lite 2x", price: "40 BDT" },
-                { name: "Weekly Lite 3x", price: "60 BDT" },
-                { name: "Weekly Lite 4x", price: "80 BDT" }
+                { name: "Weekly Lite", price: "20 TK" },
+                { name: "Weekly Lite 2x", price: "40 TK" },
+                { name: "Weekly Lite 3x", price: "60 TK" },
+                { name: "Weekly Lite 4x", price: "80 TK" }
             ]
         },
         'levelup-pass': {
-            title: "🚀 Level Up Pass (160 Diamond)",
             items: [
-                { name: "Level Up Pass 1x", price: "90 BDT" },
-                { name: "Level Up Pass 2x", price: "180 BDT" },
-                { name: "Level Up Pass 3x", price: "270 BDT" },
-                { name: "Level Up Pass 4x", price: "360 BDT" }
+                { name: "Level Up Pass 1x", price: "90 TK" },
+                { name: "Level Up Pass 2x", price: "180 TK" },
+                { name: "Level Up Pass 3x", price: "270 TK" },
+                { name: "Level Up Pass 4x", price: "360 TK" }
             ]
         },
         'indo-server': {
-            title: "🇮🇩 Indonesia Server Top-Up",
             items: [
-                { name: "50 Diamond (Indo)", price: "35 BDT" },
-                { name: "100 Diamond (Indo)", price: "65 BDT" },
-                { name: "200 Diamond (Indo)", price: "125 BDT" },
-                { name: "355 Diamond (Indo)", price: "220 BDT" },
-                { name: "720 Diamond (Indo)", price: "430 BDT" }
+                { name: "50 Diamond (Indo)", price: "35 TK" },
+                { name: "100 Diamond (Indo)", price: "65 TK" },
+                { name: "355 Diamond (Indo)", price: "220 TK" }
             ]
         },
         'like-topup': {
-            title: "👍 Free Fire 200 Like",
             items: [
-                { name: "200 Like (1 Time)", price: "30 BDT" }
+                { name: "200 Like (1 Time)", price: "30 TK" }
             ]
         }
     };
 
-    let selectedName = "";
+    let selectedPkg = "";
     let selectedPrice = "";
+    let selectedPayMethod = "bKash";
 
     function openCategory(catKey) {
         const cat = packageData[catKey];
         if (!cat) return;
 
-        document.getElementById('catTitle').innerText = cat.title;
+        document.getElementById('homeView').style.display = 'none';
         const grid = document.getElementById('packagesGrid');
         grid.innerHTML = "";
 
         cat.items.forEach(pkg => {
             const card = document.createElement('div');
-            card.className = 'pkg-card';
+            card.className = 'pkg-item';
             card.onclick = function() {
-                document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('active'));
+                document.querySelectorAll('.pkg-item').forEach(c => c.classList.remove('active'));
                 card.classList.add('active');
-                selectedName = pkg.name;
+                selectedPkg = pkg.name;
                 selectedPrice = pkg.price;
             };
-            card.innerHTML = `<div class="pkg-title">${pkg.name}</div><div class="pkg-price">${pkg.price}</div>`;
+            card.innerHTML = `<div class="pkg-name">${pkg.name}</div><div class="pkg-stock">5.0M pcs available</div><div class="pkg-price">${pkg.price}</div>`;
             grid.appendChild(card);
         });
 
-        const orderArea = document.getElementById('orderArea');
-        orderArea.classList.add('active');
-        orderArea.scrollIntoView({ behavior: 'smooth' });
-
-        selectedName = "";
+        document.getElementById('productView').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        selectedPkg = "";
         selectedPrice = "";
+    }
+
+    function showHome() {
+        document.getElementById('productView').style.display = 'none';
+        document.getElementById('homeView').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function checkPlayer() {
+        let pid = document.getElementById('playerId').value;
+        if(!pid) return alert("আইডি কোড দিন!");
+        document.getElementById('playerCheckResult').innerText = "✓ UID Verified: " + pid;
+    }
+
+    function selectPayment(method) {
+        selectedPayMethod = method;
+        document.querySelectorAll('.pay-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if(btn.innerText === method) btn.classList.add('active');
+        });
     }
 
     function submitOrder() {
@@ -259,14 +293,14 @@
         let trx = document.getElementById('trxId').value;
         let phone = "8801314983419";
 
-        if(!pid) return alert("Player ID দিন!");
-        if(!selectedName) return alert("প্যাকেজ বেছে নিন!");
-        if(!trx) return alert("Transaction ID দিন!");
+        if(!selectedPkg) return alert("প্যাকেজ নির্বাচন করুন!");
+        if(!pid) return alert("আইডি কোড দিন!");
+        if(!trx) return alert("Transaction ID (TrxID) দিন!");
 
         let text = `🛒 *NEW ORDER - JHG TOPUP BD*%0A%0A` +
                    `🆔 *Player ID:* ${pid}%0A` +
-                   `💎 *Package:* ${selectedName} (${selectedPrice})%0A` +
-                   `💳 *Payment:* bKash Personal%0A` +
+                   `💎 *Package:* ${selectedPkg} (${selectedPrice})%0A` +
+                   `💳 *Payment Method:* ${selectedPayMethod}%0A` +
                    `🧾 *TrxID:* ${trx}%0A%0A` +
                    `📌 *Note:* (Delivery will start after 6:00 PM if ordered between 9:00 AM - 6:00 PM)`;
 
