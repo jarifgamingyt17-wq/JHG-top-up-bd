@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JHG Top-Up BD | Free Fire Top Up</title>
+    <title>JHG TopUp BD | Free Fire Top Up</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
         body { background-color: #0d1117; color: #f0f6fc; padding: 12px; display: flex; justify-content: center; }
@@ -14,41 +14,49 @@
         .logo { font-size: 18px; font-weight: bold; color: #f39c12; }
         .status-badge { background: #e53e3e; color: white; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: bold; }
 
-        /* Banner Box */
-        .banner-box { width: 100%; background: linear-gradient(135deg, #1f2937, #111827); border-radius: 12px; padding: 18px; text-align: center; margin-bottom: 15px; border: 1px solid #f39c12; box-shadow: 0 4px 15px rgba(243, 156, 18, 0.2); }
-        .banner-box h2 { font-size: 18px; color: #f39c12; margin-bottom: 5px; }
-        .banner-box p { font-size: 12px; color: #8b949e; }
-
-        /* Notice Box for Time */
-        .time-notice { background: #2d1a1a; border: 1px solid #e53e3e; color: #feb2b2; padding: 12px; border-radius: 10px; font-size: 12px; margin-bottom: 15px; text-align: center; line-height: 1.5; }
-        .time-notice strong { color: #fff; font-size: 13px; }
+        /* Banner & Time Notice */
+        .banner-box { width: 100%; background: linear-gradient(135deg, #1f2937, #111827); border-radius: 12px; padding: 15px; text-align: center; margin-bottom: 12px; border: 1px solid #f39c12; }
+        .banner-box h2 { font-size: 18px; color: #f39c12; }
+        .time-notice { background: #2d1a1a; border: 1px solid #e53e3e; color: #feb2b2; padding: 10px; border-radius: 8px; font-size: 11px; margin-bottom: 15px; text-align: center; line-height: 1.4; }
 
         /* Social Support Buttons */
         .social-buttons { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 15px; }
-        .social-btn { padding: 8px; border-radius: 8px; color: white; text-align: center; font-size: 11px; font-weight: bold; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 4px; }
+        .social-btn { padding: 8px; border-radius: 8px; color: white; text-align: center; font-size: 11px; font-weight: bold; text-decoration: none; display: flex; align-items: center; justify-content: center; }
         .btn-wa { background: #25d366; }
         .btn-tg { background: #0088cc; }
         .btn-msg { background: #a824fb; }
 
-        /* Order Form Box */
-        .card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 15px; margin-bottom: 15px; }
-        .payment-info { background: #21262d; border-left: 4px solid #e91e63; padding: 10px; border-radius: 6px; font-size: 13px; margin-bottom: 12px; text-align: center; }
-        .payment-info strong { color: #f43f5e; font-size: 15px; }
+        /* Section Headings */
+        .section-header { font-size: 15px; font-weight: bold; color: #ffffff; margin: 15px 0 10px 0; text-align: center; border-bottom: 1px solid #30363d; padding-bottom: 5px; }
 
-        .pkg-group-title { font-size: 13px; font-weight: bold; color: #f39c12; margin: 15px 0 8px 0; border-bottom: 1px solid #30363d; padding-bottom: 4px; }
+        /* Category Grid Layout */
+        .category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px; }
+        .cat-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 10px; text-align: center; cursor: pointer; transition: 0.2s; }
+        .cat-card:hover { border-color: #f39c12; transform: translateY(-2px); }
+        .cat-icon { width: 100%; height: 55px; background: #21262d; border-radius: 8px; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; color: #f39c12; font-size: 22px; }
+        .cat-title { font-size: 11px; font-weight: bold; color: #f0f6fc; line-height: 1.2; }
+
+        /* Dynamic Order Form Box */
+        .order-section { display: none; background: #161b22; border: 1px solid #f39c12; border-radius: 12px; padding: 15px; margin-bottom: 15px; }
+        .order-section.active { display: block; }
+        .order-title { font-size: 15px; font-weight: bold; color: #f39c12; text-align: center; margin-bottom: 12px; }
+
+        .payment-info { background: #21262d; border-left: 4px solid #e91e63; padding: 10px; border-radius: 6px; font-size: 12px; margin-bottom: 12px; text-align: center; }
+        .payment-info strong { color: #f43f5e; font-size: 14px; }
+
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
-        .pkg-card { background: #21262d; border: 2px solid #30363d; padding: 12px; border-radius: 10px; text-align: center; cursor: pointer; }
+        .pkg-card { background: #21262d; border: 2px solid #30363d; padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; }
         .pkg-card.active { border-color: #58a6ff; background: #1f6feb15; }
-        .pkg-title { font-size: 13px; font-weight: bold; color: #f0f6fc; }
-        .pkg-price { font-size: 12px; color: #2ea043; font-weight: bold; margin-top: 4px; }
+        .pkg-title { font-size: 12px; font-weight: bold; color: #f0f6fc; }
+        .pkg-price { font-size: 11px; color: #2ea043; font-weight: bold; margin-top: 3px; }
 
         .input-box { margin-bottom: 12px; }
-        .input-box label { font-size: 12px; color: #8b949e; display: block; margin-bottom: 4px; }
-        .input-box input, .input-box select { width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 8px; color: white; outline: none; font-size: 13px; }
+        .input-box label { font-size: 11px; color: #8b949e; display: block; margin-bottom: 4px; }
+        .input-box input { width: 100%; padding: 10px; background: #0d1117; border: 1px solid #30363d; border-radius: 8px; color: white; outline: none; font-size: 13px; }
 
         .btn-order { width: 100%; background: #238636; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 14px; cursor: pointer; }
 
-        /* Bottom Nav Bar */
+        /* Bottom Nav */
         .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #161b22; border-top: 1px solid #30363d; display: flex; justify-content: space-around; padding: 8px 0; max-width: 480px; margin: 0 auto; }
         .nav-item { color: #8b949e; text-decoration: none; font-size: 10px; text-align: center; }
         .nav-item.active { color: #ff5722; }
@@ -61,30 +69,60 @@
 <div class="container">
     <!-- Navbar -->
     <div class="navbar">
-        <div class="logo">JHG TOP-UP BD</div>
+        <div class="logo">JHG TopUp BD</div>
         <div class="status-badge">⏰ ৯:০০ - ৬:০০ বন্ধ</div>
     </div>
 
-    <!-- Top Banner -->
+    <!-- Banner -->
     <div class="banner-box">
-        <h2>🔥 JHG TOP-UP BAZAR 🔥</h2>
-        <p>১০০% সেফ ও ট্রাস্টেড ইন-গেম ইউআইডি টপ-আপ</p>
+        <h2>🔥 JHG TopUp BD 🔥</h2>
     </div>
 
     <!-- Time Notice -->
     <div class="time-notice">
-        📢 <strong>নোটিশ:</strong> প্রতিদিন সকাল <strong>৯:০০ টা থেকে বিকেল ৬:০০ টা</strong> পর্যন্ত স্কুলের কারণে টপ-আপ ডেলিভারি বন্ধ থাকবে। এই সময়ের দেওয়া অর্ডারগুলো <strong>বিকেল ৬:০০ টার পর</strong> পর্যায়ক্রমে দ্রুত ডেলিভারি দেওয়া হবে।
+        📢 <strong>নোটিশ:</strong> প্রতিদিন সকাল <strong>৯:০০ টা থেকে বিকেল ৬:০০ টা</strong> পর্যন্ত স্কুলের জন্য টপ-আপ বন্ধ থাকবে। এই সময়ের দেওয়া অর্ডারগুলো <strong>বিকেল ৬:০০ টার পর</strong> প্রসেস করা হবে।
     </div>
 
-    <!-- Chat Support Buttons -->
+    <!-- Social Buttons -->
     <div class="social-buttons">
         <a href="https://wa.me/8801314983419" class="social-btn btn-wa" target="_blank">হোয়াটসঅ্যাপ</a>
         <a href="#" class="social-btn btn-tg">টেলিগ্রাম</a>
         <a href="#" class="social-btn btn-msg">মেসেঞ্জার</a>
     </div>
 
-    <!-- Order Area -->
-    <div class="card" id="orderArea">
+    <!-- Top-up Categories Grid -->
+    <div class="section-header">ক্যাটাগরি নির্বাচন করুন</div>
+    <div class="category-grid">
+        <div class="cat-card" onclick="openCategory('uid-bd')">
+            <div class="cat-icon">💎</div>
+            <div class="cat-title">Uid TOPUP [BD]</div>
+        </div>
+        <div class="cat-card" onclick="openCategory('weekly-monthly')">
+            <div class="cat-icon">👑</div>
+            <div class="cat-title">Weekly Monthly Combo</div>
+        </div>
+        <div class="cat-card" onclick="openCategory('weekly-lite')">
+            <div class="cat-icon">⚡</div>
+            <div class="cat-title">Weekly Lite</div>
+        </div>
+        <div class="cat-card" onclick="openCategory('levelup-pass')">
+            <div class="cat-icon">🚀</div>
+            <div class="cat-title">Level Up Pass</div>
+        </div>
+        <div class="cat-card" onclick="openCategory('indo-server')">
+            <div class="cat-icon">🇮🇩</div>
+            <div class="cat-title">ID CODE INDONESIA</div>
+        </div>
+        <div class="cat-card" onclick="openCategory('like-topup')">
+            <div class="cat-icon">👍</div>
+            <div class="cat-title">Free Fire - 200 LIKE</div>
+        </div>
+    </div>
+
+    <!-- Dynamic Package Display & Order Area -->
+    <div class="order-section" id="orderArea">
+        <div class="order-title" id="catTitle">প্যাকেজ নির্বাচন করুন</div>
+
         <div class="payment-info">
             bKash Personal (Send Money):<br>
             <strong>01781511654</strong>
@@ -95,117 +133,8 @@
             <input type="number" id="playerId" placeholder="আপনার গেম ID দিন">
         </div>
 
-        <!-- 💎 BD Server UID Diamond Section -->
-        <div class="pkg-group-title">💎 BD Server UID Diamond Top-Up</div>
-        <div class="grid">
-            <div class="pkg-card" onclick="selectPkg(this, '100 Diamond (BD)', '60 BDT')">
-                <div class="pkg-title">100 Diamond</div>
-                <div class="pkg-price">60 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, '200 Diamond (BD)', '110 BDT')">
-                <div class="pkg-title">200 Diamond</div>
-                <div class="pkg-price">110 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, '300 Diamond (BD)', '220 BDT')">
-                <div class="pkg-title">300 Diamond</div>
-                <div class="pkg-price">220 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, '800 Diamond (BD)', '550 BDT')">
-                <div class="pkg-title">800 Diamond</div>
-                <div class="pkg-price">550 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, '1200 Diamond (BD)', '890 BDT')">
-                <div class="pkg-title">1200 Diamond</div>
-                <div class="pkg-price">890 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, '4900 Diamond (BD)', '2950 BDT')">
-                <div class="pkg-title">4900 Diamond</div>
-                <div class="pkg-price">2950 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, '12000 Diamond (BD)', '6710 BDT')">
-                <div class="pkg-title">12000 Diamond</div>
-                <div class="pkg-price">6710 BDT</div>
-            </div>
-        </div>
-
-        <!-- ⚡ Weekly Lite Section -->
-        <div class="pkg-group-title">⚡ Weekly Lite</div>
-        <div class="grid">
-            <div class="pkg-card" onclick="selectPkg(this, 'Weekly Lite 1x', '20 BDT')">
-                <div class="pkg-title">Weekly Lite 1x</div>
-                <div class="pkg-price">20 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, 'Weekly Lite 2x', '40 BDT')">
-                <div class="pkg-title">Weekly Lite 2x</div>
-                <div class="pkg-price">40 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, 'Weekly Lite 3x', '60 BDT')">
-                <div class="pkg-title">Weekly Lite 3x</div>
-                <div class="pkg-price">60 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, 'Weekly Lite 4x', '80 BDT')">
-                <div class="pkg-title">Weekly Lite 4x</div>
-                <div class="pkg-price">80 BDT</div>
-            </div>
-        </div>
-
-        <!-- 🚀 Level Up Pass Section -->
-        <div class="pkg-group-title">🚀 Level Up Pass (160 Diamond)</div>
-        <div class="grid">
-            <div class="pkg-card" onclick="selectPkg(this, 'Level Up Pass 1x', '90 BDT')">
-                <div class="pkg-title">Level Up Pass 1x</div>
-                <div class="pkg-price">90 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, 'Level Up Pass 2x', '180 BDT')">
-                <div class="pkg-title">Level Up Pass 2x</div>
-                <div class="pkg-price">180 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, 'Level Up Pass 3x', '270 BDT')">
-                <div class="pkg-title">Level Up Pass 3x</div>
-                <div class="pkg-price">270 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, 'Level Up Pass 4x', '360 BDT')">
-                <div class="pkg-title">Level Up Pass 4x</div>
-                <div class="pkg-price">360 BDT</div>
-            </div>
-        </div>
-
-        <!-- 👑 Weekly & Monthly Section -->
-        <div class="pkg-group-title">👑 Weekly & Monthly Membership</div>
-        <div class="grid">
-            <div class="pkg-card" onclick="selectPkg(this, 'Weekly 1x', '120 BDT')">
-                <div class="pkg-title">Weekly 1x</div>
-                <div class="pkg-price">120 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, 'Weekly 2x', '240 BDT')">
-                <div class="pkg-title">Weekly 2x</div>
-                <div class="pkg-price">240 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, 'Weekly 3x', '360 BDT')">
-                <div class="pkg-title">Weekly 3x</div>
-                <div class="pkg-price">360 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, 'Weekly 4x', '480 BDT')">
-                <div class="pkg-title">Weekly 4x</div>
-                <div class="pkg-price">480 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, 'Monthly 1x', '650 BDT')">
-                <div class="pkg-title">Monthly 1x</div>
-                <div class="pkg-price">650 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, 'Monthly 2x', '1300 BDT')">
-                <div class="pkg-title">Monthly 2x</div>
-                <div class="pkg-price">1300 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, 'Monthly 3x', '1950 BDT')">
-                <div class="pkg-title">Monthly 3x</div>
-                <div class="pkg-price">1950 BDT</div>
-            </div>
-            <div class="pkg-card" onclick="selectPkg(this, 'Monthly 4x', '2600 BDT')">
-                <div class="pkg-title">Monthly 4x</div>
-                <div class="pkg-price">2600 BDT</div>
-            </div>
-        </div>
+        <!-- Dynamic Packages Grid -->
+        <div class="grid" id="packagesGrid"></div>
 
         <div class="input-box">
             <label>Transaction ID (TrxID)</label>
@@ -215,7 +144,7 @@
         <button class="btn-order" onclick="submitOrder()">WhatsApp-এ অর্ডার পাঠান</button>
     </div>
 
-    <!-- Bottom Nav Bar -->
+    <!-- Bottom Nav -->
     <div class="bottom-nav">
         <a href="#" class="nav-item active">🏠<br>হোম</a>
         <a href="#" class="nav-item">📦<br>আমার অর্ডার</a>
@@ -225,19 +154,104 @@
     </div>
 
     <div class="footer">
-        © 2026 JHG Top-Up BD | Powered by GitHub
+        © 2026 JHG TopUp BD | Powered by GitHub
     </div>
 </div>
 
 <script>
+    // Package Data Lists per Category
+    const packageData = {
+        'uid-bd': {
+            title: "💎 BD Server UID Diamond Top-Up",
+            items: [
+                { name: "100 Diamond", price: "60 BDT" },
+                { name: "200 Diamond", price: "110 BDT" },
+                { name: "300 Diamond", price: "220 BDT" },
+                { name: "800 Diamond", price: "550 BDT" },
+                { name: "1200 Diamond", price: "890 BDT" },
+                { name: "4900 Diamond", price: "2950 BDT" },
+                { name: "12000 Diamond", price: "6710 BDT" }
+            ]
+        },
+        'weekly-monthly': {
+            title: "👑 Weekly & Monthly Membership",
+            items: [
+                { name: "Weekly 1x", price: "120 BDT" },
+                { name: "Weekly 2x", price: "240 BDT" },
+                { name: "Weekly 3x", price: "360 BDT" },
+                { name: "Weekly 4x", price: "480 BDT" },
+                { name: "Monthly 1x", price: "650 BDT" },
+                { name: "Monthly 2x", price: "1300 BDT" },
+                { name: "Monthly 3x", price: "1950 BDT" },
+                { name: "Monthly 4x", price: "2600 BDT" }
+            ]
+        },
+        'weekly-lite': {
+            title: "⚡ Weekly Lite Packages",
+            items: [
+                { name: "Weekly Lite 1x", price: "20 BDT" },
+                { name: "Weekly Lite 2x", price: "40 BDT" },
+                { name: "Weekly Lite 3x", price: "60 BDT" },
+                { name: "Weekly Lite 4x", price: "80 BDT" }
+            ]
+        },
+        'levelup-pass': {
+            title: "🚀 Level Up Pass (160 Diamond)",
+            items: [
+                { name: "Level Up Pass 1x", price: "90 BDT" },
+                { name: "Level Up Pass 2x", price: "180 BDT" },
+                { name: "Level Up Pass 3x", price: "270 BDT" },
+                { name: "Level Up Pass 4x", price: "360 BDT" }
+            ]
+        },
+        'indo-server': {
+            title: "🇮🇩 Indonesia Server Top-Up",
+            items: [
+                { name: "50 Diamond (Indo)", price: "35 BDT" },
+                { name: "100 Diamond (Indo)", price: "65 BDT" },
+                { name: "200 Diamond (Indo)", price: "125 BDT" },
+                { name: "355 Diamond (Indo)", price: "220 BDT" },
+                { name: "720 Diamond (Indo)", price: "430 BDT" }
+            ]
+        },
+        'like-topup': {
+            title: "👍 Free Fire 200 Like",
+            items: [
+                { name: "200 Like (1 Time)", price: "30 BDT" }
+            ]
+        }
+    };
+
     let selectedName = "";
     let selectedPrice = "";
 
-    function selectPkg(el, name, price) {
-        document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('active'));
-        el.classList.add('active');
-        selectedName = name;
-        selectedPrice = price;
+    function openCategory(catKey) {
+        const cat = packageData[catKey];
+        if (!cat) return;
+
+        document.getElementById('catTitle').innerText = cat.title;
+        const grid = document.getElementById('packagesGrid');
+        grid.innerHTML = "";
+
+        cat.items.forEach(pkg => {
+            const card = document.createElement('div');
+            card.className = 'pkg-card';
+            card.onclick = function() {
+                document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                selectedName = pkg.name;
+                selectedPrice = pkg.price;
+            };
+            card.innerHTML = `<div class="pkg-title">${pkg.name}</div><div class="pkg-price">${pkg.price}</div>`;
+            grid.appendChild(card);
+        });
+
+        const orderArea = document.getElementById('orderArea');
+        orderArea.classList.add('active');
+        orderArea.scrollIntoView({ behavior: 'smooth' });
+
+        selectedName = "";
+        selectedPrice = "";
     }
 
     function submitOrder() {
@@ -249,7 +263,7 @@
         if(!selectedName) return alert("প্যাকেজ বেছে নিন!");
         if(!trx) return alert("Transaction ID দিন!");
 
-        let text = `🛒 *NEW ORDER - JHG TOP-UP*%0A%0A` +
+        let text = `🛒 *NEW ORDER - JHG TOPUP BD*%0A%0A` +
                    `🆔 *Player ID:* ${pid}%0A` +
                    `💎 *Package:* ${selectedName} (${selectedPrice})%0A` +
                    `💳 *Payment:* bKash Personal%0A` +
