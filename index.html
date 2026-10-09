@@ -29,11 +29,12 @@
         .home-view { padding: 15px; }
         .section-title { font-size: 18px; font-weight: bold; color: #222; text-align: center; margin: 15px 0 10px 0; }
         .category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
-        .cat-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 10px; text-align: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-        .cat-icon { font-size: 28px; margin-bottom: 5px; }
+        .cat-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 8px; text-align: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .cat-icon { width: 100%; height: 75px; background: #f8fafc; border-radius: 8px; margin-bottom: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .cat-img { width: 100%; height: 100%; object-fit: cover; }
         .cat-name { font-size: 11px; font-weight: bold; color: #4a5568; line-height: 1.2; }
 
-        /* Product Detail View (HHH Bazar Style) */
+        /* Product Detail View */
         .product-view { display: none; padding: 15px; }
         .back-btn { background: #e2e8f0; color: #333; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; margin-bottom: 12px; }
 
@@ -88,20 +89,20 @@
         <a href="#" class="social-btn btn-msg">মেসেঞ্জার</a>
     </div>
 
-    <!-- HOME PAGE: Category Cards -->
+    <!-- HOME PAGE: Category Cards with Images -->
     <div id="homeView" class="home-view">
         <div class="section-title">Offer Offer</div>
         <div class="category-grid">
             <div class="cat-card" onclick="openCategory('uid-bd')">
-                <div class="cat-icon">🔥</div>
+                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=UID+Offer" class="cat-img"></div>
                 <div class="cat-name">[BD] UID OFFER</div>
             </div>
             <div class="cat-card" onclick="openCategory('weekly-monthly')">
-                <div class="cat-icon">💎</div>
+                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=Weekly" class="cat-img"></div>
                 <div class="cat-name">Weekly/Monthly Offer</div>
             </div>
             <div class="cat-card" onclick="openCategory('weekly-lite')">
-                <div class="cat-icon">⚡</div>
+                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=Friday" class="cat-img"></div>
                 <div class="cat-name">Friday Offers 🔥</div>
             </div>
         </div>
@@ -109,33 +110,33 @@
         <div class="section-title">Top-up</div>
         <div class="category-grid">
             <div class="cat-card" onclick="openCategory('uid-bd')">
-                <div class="cat-icon">🎮</div>
+                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=UID+Topup" class="cat-img"></div>
                 <div class="cat-name">Uid TOPUP [BD]</div>
             </div>
             <div class="cat-card" onclick="openCategory('like-topup')">
-                <div class="cat-icon">👍</div>
+                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=200+Like" class="cat-img"></div>
                 <div class="cat-name">Free Fire - 200 LIKE</div>
             </div>
             <div class="cat-card" onclick="openCategory('weekly-monthly')">
-                <div class="cat-icon">👑</div>
+                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=Combo" class="cat-img"></div>
                 <div class="cat-name">Weekly Monthly Combo</div>
             </div>
             <div class="cat-card" onclick="openCategory('weekly-lite')">
-                <div class="cat-icon">⚡</div>
+                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=Lite" class="cat-img"></div>
                 <div class="cat-name">Weekly Lite</div>
             </div>
             <div class="cat-card" onclick="openCategory('levelup-pass')">
-                <div class="cat-icon">🚀</div>
+                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=LevelUp" class="cat-img"></div>
                 <div class="cat-name">Level Up Pass</div>
             </div>
             <div class="cat-card" onclick="openCategory('indo-server')">
-                <div class="cat-icon">🇮🇩</div>
+                <div class="cat-icon"><img src="https://via.placeholder.com/100x100?text=Indo" class="cat-img"></div>
                 <div class="cat-name">ID CODE INDONESIA</div>
             </div>
         </div>
     </div>
 
-    <!-- PRODUCT DETAIL PAGE (HHH Bazar Style) -->
+    <!-- PRODUCT DETAIL PAGE -->
     <div id="productView" class="product-view">
         <button class="back-btn" onclick="showHome()">← পিছনে যান</button>
 
@@ -176,7 +177,7 @@
         </div>
     </div>
 
-    <!-- Bottom Fixed Navigation -->
+    <!-- Bottom Navigation -->
     <div class="bottom-nav">
         <div class="nav-item active" onclick="showHome()">🏠<br>হোম</div>
         <div class="nav-item">📦<br>আমার অর্ডার</div>
