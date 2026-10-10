@@ -31,18 +31,40 @@
             color: #ff5722;
             font-size: 20px;
             margin: 0;
+            cursor: pointer;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .login-btn {
             background-color: #ff5722;
             color: white;
             border: none;
-            padding: 6px 16px;
+            padding: 6px 14px;
             border-radius: 6px;
             font-weight: bold;
             font-size: 13px;
             cursor: pointer;
             text-decoration: none;
+        }
+
+        .profile-icon-btn {
+            background-color: #e2136e;
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
         }
 
         .container {
@@ -255,7 +277,7 @@
             position: relative;
         }
 
-        /* হুবহু স্ক্রিনশটের মতো বিকাশের গোলাপি ব্যাকগ্রাউন্ড স্ক্রিন */
+        /* হুবহু স্ক্রিনশটের মতো বিকাশের থিমযুক্ত স্ক্রিন */
         .bkash-screen {
             background: #e2136e !important;
         }
@@ -275,24 +297,38 @@
         }
 
         /* স্ক্রিনশটের মতো বিকাশ পেমেন্ট নির্দেশিকা বক্স */
-        .bkash-payment-instructions {
+        .bkash-payment-box {
             background: white;
             color: #333;
             border-radius: 10px;
-            padding: 18px;
-            margin-bottom: 20px;
+            padding: 15px;
+            margin-bottom: 15px;
             font-size: 13px;
             line-height: 1.8;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .bkash-payment-instructions h4 {
-            margin: 0 0 12px 0;
+        .bkash-payment-box h4 {
+            margin: 0 0 10px 0;
             text-align: center;
             font-size: 16px;
             color: #e2136e;
             border-bottom: 1px solid #ddd;
-            padding-bottom: 8px;
+            padding-bottom: 6px;
+        }
+
+        .yellow-num {
+            color: #d97706;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .white-amount {
+            color: white;
+            background: #ff5722;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: bold;
         }
 
         .input-group {
@@ -372,6 +408,8 @@
             font-size: 11px;
             cursor: pointer;
             flex: 1;
+            background: none;
+            border: none;
         }
 
         .nav-item.active {
@@ -418,11 +456,14 @@
 
     <!-- হেডার -->
     <div class="header">
-        <h1>JHG TopUp BD</h1>
-        <button onclick="openLogin()" class="login-btn">লগইন</button>
+        <h1 onclick="goHome()">JHG TopUp BD</h1>
+        <div class="header-right">
+            <button onclick="openLogin()" class="login-btn">লগইন</button>
+            <div class="profile-icon-btn" onclick="openProfile()">👤</div>
+        </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="homeContainer">
         <!-- শপ খোলা স্ট্যাটাস নোটিশ -->
         <div class="shop-status">
             🟢 শপ সবসময় খোলা আছে! আপনি যেকোনো সময় অর্ডার করতে পারেন।
@@ -446,16 +487,12 @@
                 <img src="uid.png" alt="UID Offer">
                 <span>[BD] UID OFFER</span>
             </div>
-            <div class="main-category-card" onclick="openComboOptions()">
-                <img src="weekly.png" alt="Weekly/Monthly">
-                <span>Weekly + Monthly</span>
-            </div>
-        </div>
-        <div class="card-grid-3" style="margin-top: 8px;">
             <div class="main-category-card" onclick="openFridayModal()">
                 <img src="friday.png" alt="Friday Offers">
                 <span>Friday Offers</span>
             </div>
+        </div>
+        <div class="card-grid-3" style="margin-top: 8px;">
             <div class="main-category-card" onclick="openLevelUpModal()">
                 <img src="levelup.png" alt="Level Up Pass">
                 <span>Level Up Pass</span>
@@ -498,20 +535,6 @@
         </div>
     </div>
 
-    <!-- Weekly + Monthly Combo ফুল স্ক্রিন পেজ (শুধু ৭৭০ টাকা প্যাক) -->
-    <div id="comboModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('comboModal')">&times;</span>
-            <h3 style="color: #ff5722; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">Weekly + Monthly Combo</h3>
-            <div class="card-grid-2">
-                <div class="pro-card" onclick="startOrderProcess('Weekly + Monthly Combo', '৭৭০ টাকা')">
-                    <div class="card-top"><span class="package-name">Weekly + Monthly</span><span class="package-price">770 TK</span></div>
-                    <div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Friday Offers ফুল স্ক্রিন পেজ -->
     <div id="fridayModal" class="modal">
         <div class="modal-content">
@@ -550,27 +573,90 @@
         </div>
     </div>
 
-    <!-- ধাপ ২: হুবহু স্ক্রিনশটের মতো বিকাশের ব্যাকগ্রাউন্ড ওয়ালা Transaction ID পেজ -->
+    <!-- ধাপ ২: স্ক্রিনশটের মতো হুবহু বিকাশ থিম ওয়ালা Transaction ID পেজ -->
     <div id="trxModal" class="modal">
         <div class="modal-content bkash-screen">
             <span class="close-btn" onclick="closeModal('trxModal')">&times;</span>
-            <h3 style="color: white; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">ট্রানজেকশন আইডি দিন</h3>
             
-            <div class="bkash-payment-instructions">
+            <div class="bkash-payment-box">
                 <h4>bKash Personal</h4>
-                • *247# ডায়াল করে আপনার bKash মোবাইল মেনুতে যান অথবা bKash অ্যাপ খুলুন।<br>
-                • Send Money-এ ক্লিক করুন।<br>
-                • এই নম্বরে টাকা পাঠান: <b>01781511654</b><br>
-                • টাকা পাঠান এবং ট্রানজেকশন আইডি কপি করুন।<br>
-                • ট্রানজেকশন আইডি লিখে নিচের বাটনে চাপুন।
+                • *247# ডায়াল করে আপনার bKash মোবাইল মেনুতে যান অথবা bKash অ্যাপ খুলুন[span_2](start_span)[span_2](end_span)।<br>
+                • Send Money-এ ক্লিক করুন[span_3](start_span)[span_3](end_span)।<br>
+                • এই নম্বরে টাকা পাঠান: <span class="yellow-num">01781511654</span>[span_4](start_span)[span_4](end_span)<br>
+                • টাকার পরিমাণ: <span id="displayAmountBadge" class="white-amount">০ টাকা</span><br>
+                • টাকা পাঠান এবং ট্রানজেকশন আইডি কপি করুন[span_5](start_span)[span_5](end_span)।<br>
+                • ট্রানজেকশন আইডি লিখে নিচের বাটনে চাপুন[span_6](start_span)[span_6](end_span)।
             </div>
 
             <div class="input-group">
-                <label>ট্রানজেকশন আইডি দিন:</label>
+                <label style="color: white;">ট্রানজেকশন আইডি দিন:</label>
                 <input type="text" id="trxId" class="green-input" placeholder="ট্রানজেকশন আইডি দিন">
             </div>
 
             <button class="action-btn whatsapp-order-btn" onclick="sendWhatsApp()">WhatsApp-এ অর্ডার নিশ্চিত করুন</button>
+        </div>
+    </div>
+
+    <!-- অ্যাড মানি পেজ মডাল -->
+    <div id="addMoneyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('addMoneyModal')">&times;</span>
+            <h3 style="color: #ff5722; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">অ্যাড মানি (Add Money)</h3>
+            <div class="bkash-payment-box" style="background: #e2136e; color: white;">
+                <h4 style="color: white;">bKash Add Money</h4>
+                আমাদের মার্চেন্ট বা পার্সোনাল নাম্বারে ক্যাশ আউট বা সেন্ড মানি করে নিচের বক্সে আপনার ওয়ালেট নাম্বার ও অ্যামাউন্ট দিয়ে রিকোয়েস্ট পাঠান।
+            </div>
+            <div class="input-group">
+                <label>আপনার বিকাশ বা নগদ নাম্বার:</label>
+                <input type="text" class="orange-input" placeholder="নাম্বার লিখুন">
+            </div>
+            <div class="input-group">
+                <label>টাকার পরিমাণ:</label>
+                <input type="text" class="orange-input" placeholder="টাকা (যেমন: 500)">
+            </div>
+            <button class="action-btn" onclick="alert('অ্যাড মানি রিকোয়েস্ট সফলভাবে জমা হয়েছে!'); closeModal('addMoneyModal');">রিকোয়েস্ট পাঠান</button>
+        </div>
+    </div>
+
+    <!-- ওয়ালেট পেজ মডাল -->
+    <div id="walletModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('walletModal')">&times;</span>
+            <h3 style="color: #ff5722; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">আপনার ওয়ালেট (Wallet)</h3>
+            <div style="background: #fffaf8; border: 2px dashed #ff5722; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 14px; color: #666;">বর্তমান ব্যালেন্স</div>
+                <div style="font-size: 28px; font-weight: bold; color: #ff5722; margin-top: 5px;">৳ 0.00</div>
+            </div>
+            <button class="action-btn" onclick="openAddMoney()">অ্যাড মানি করুন</button>
+        </div>
+    </div>
+
+    <!-- প্রোফাইল পেজ মডাল -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('profileModal')">&times;</span>
+            <h3 style="color: #ff5722; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">ইউজার প্রোফাইল</h3>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="width: 70px; height: 70px; background: #e2136e; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; margin: 0 auto 10px auto;">👤</div>
+                <div style="font-weight: bold; font-size: 16px;">Jarif YT (Guest User)</div>
+                <div style="font-size: 13px; color: #666;">ID: #JHG8823</div>
+            </div>
+            <div class="input-group">
+                <label>মোবাইল নাম্বার:</label>
+                <input type="text" value="01781511654" readonly style="background: #f1f1f1;">
+            </div>
+            <button class="action-btn" onclick="openLogin()">লগআউট / পরিবর্তন করুন</button>
+        </div>
+    </div>
+
+    <!-- অর্ডার লিস্ট মডাল (আমার অর্ডার) -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('orderModal')">&times;</span>
+            <h3 style="color: #ff5722; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">আপনার অর্ডারসমূহ</h3>
+            <div style="text-align: center; color: #666; padding: 40px 0; font-size: 14px;">
+                বর্তমানে কোনো চলমান অর্ডার নেই!
+            </div>
         </div>
     </div>
 
@@ -596,22 +682,22 @@
 
     <!-- বটম নেভিগেশন বার -->
     <div class="bottom-nav">
-        <a href="#" class="nav-item active">
+        <button onclick="goHome()" class="nav-item active">
             <div>🏠</div>হোম
-        </a>
-        <a href="javascript:showNav('আমার অর্ডার');" class="nav-item">
+        </button>
+        <button onclick="openOrders()" class="nav-item">
             <div>📦</div>আমার অর্ডার
-        </a>
-        <div class="center-btn-container" onclick="showNav('অ্যাড মানি')">
+        </button>
+        <div class="center-btn-container" onclick="openAddMoney()">
             <div class="center-add-btn">+</div>
             <span class="center-label">অ্যাড মানি</span>
         </div>
-        <a href="javascript:showNav('ওয়ালেট');" class="nav-item">
+        <button onclick="openWallet()" class="nav-item">
             <div>👛</div>ওয়ালেট
-        </a>
-        <a href="javascript:showNav('প্রোফাইল');" class="nav-item">
+        </button>
+        <button onclick="openProfile()" class="nav-item">
             <div>👤</div>প্রোফাইল
-        </a>
+        </button>
     </div>
 
     <script>
@@ -625,6 +711,11 @@
         setInterval(nextSlide, 3000);
 
         let selectedPkgInfo = "";
+        let selectedNumericPrice = 0;
+
+        function goHome() {
+            closeAllModals();
+        }
 
         // সঠিক দাম এবং ১ থেকে ৪ গুণ হিসাব করে প্যাক লোড করার ফাংশন
         function openPackageOptions(categoryName) {
@@ -656,7 +747,7 @@
                 card.className = 'pro-card';
                 card.onclick = function() {
                     closeModal('packageModal');
-                    startOrderProcess(pkgTitle, currentPrice + " টাকা");
+                    startOrderProcess(pkgTitle, currentPrice);
                 };
                 card.innerHTML = `
                     <div class="card-top">
@@ -671,10 +762,6 @@
             document.getElementById("packageModal").style.display = "block";
         }
 
-        function openComboOptions() {
-            document.getElementById("comboModal").style.display = "block";
-        }
-
         // Friday Offers অপশন
         function openFridayModal() {
             const container = document.getElementById("fridayListContainer");
@@ -687,7 +774,7 @@
                 card.className = 'pro-card';
                 card.onclick = function() {
                     closeModal('fridayModal');
-                    startOrderProcess(title, p + " টাকা");
+                    startOrderProcess(title, p);
                 };
                 card.innerHTML = `<div class="card-top"><span class="package-name">${title}</span><span class="package-price">${p} TK</span></div><div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>`;
                 container.appendChild(card);
@@ -700,7 +787,7 @@
                 card.className = 'pro-card';
                 card.onclick = function() {
                     closeModal('fridayModal');
-                    startOrderProcess(title, p + " টাকা");
+                    startOrderProcess(title, p);
                 };
                 card.innerHTML = `<div class="card-top"><span class="package-name">${title}</span><span class="package-price">${p} TK</span></div><div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>`;
                 container.appendChild(card);
@@ -727,7 +814,7 @@
                 card.className = 'pro-card';
                 card.onclick = function() {
                     closeModal('levelUpModal');
-                    startOrderProcess(title, p + " টাকা");
+                    startOrderProcess(title, p);
                 };
                 card.innerHTML = `<div class="card-top"><span class="package-name">${title}</span><span class="package-price">${p} TK</span></div><div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>`;
                 container.appendChild(card);
@@ -737,10 +824,14 @@
         }
 
         function startOrderProcess(pkgName, pkgPrice) {
-            selectedPkgInfo = pkgName + " - " + pkgPrice;
+            selectedNumericPrice = pkgPrice;
+            selectedPkgInfo = pkgName + " - " + pkgPrice + " টাকা";
             document.getElementById("displayPackageName").value = selectedPkgInfo;
+            
+            // বিকাশ স্ক্রিনের টাকার অ্যামাউন্ট ব্যাজ আপডেট করা
+            document.getElementById("displayAmountBadge").innerText = pkgPrice + " টাকা";
+
             closeModal('packageModal');
-            closeModal('comboModal');
             closeModal('fridayModal');
             closeModal('levelUpModal');
             document.getElementById("gameUid").value = "";
@@ -759,11 +850,37 @@
         }
 
         function openLogin() {
+            closeAllModals();
             document.getElementById("loginModal").style.display = "block";
+        }
+
+        function openProfile() {
+            closeAllModals();
+            document.getElementById("profileModal").style.display = "block";
+        }
+
+        function openAddMoney() {
+            closeAllModals();
+            document.getElementById("addMoneyModal").style.display = "block";
+        }
+
+        function openWallet() {
+            closeAllModals();
+            document.getElementById("walletModal").style.display = "block";
+        }
+
+        function openOrders() {
+            closeAllModals();
+            document.getElementById("orderModal").style.display = "block";
         }
 
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = "none";
+        }
+
+        function closeAllModals() {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(m => m.style.display = 'none');
         }
 
         function submitLogin() {
@@ -774,10 +891,6 @@
             }
             alert("লগইন সফল হয়েছে! (ডেমো মোড)");
             closeModal('loginModal');
-        }
-
-        function showNav(pageName) {
-            alert(pageName + " অপশনটিতে খুব শীঘ্রই কাজের সুবিধা যুক্ত করা হবে!");
         }
 
         function sendWhatsApp() {
