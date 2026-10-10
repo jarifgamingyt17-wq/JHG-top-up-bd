@@ -277,7 +277,7 @@
             position: relative;
         }
 
-        /* হুবহু বিকাশের থিমযুক্ত স্ক্রিন */
+        /* বিকাশ থিমযুক্ত পেমেন্ট স্ক্রিন */
         .bkash-screen {
             background: #e2136e !important;
         }
@@ -625,27 +625,41 @@
             <h3 style="color: #ff5722; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">আপনার ওয়ালেট (Wallet)</h3>
             <div style="background: #fffaf8; border: 2px dashed #ff5722; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
                 <div style="font-size: 14px; color: #666;">বর্তমান ব্যালেন্স</div>
-                <div style="font-size: 28px; font-weight: bold; color: #ff5722; margin-top: 5px;">৳ 0.00</div>
+                <div style="font-size: 28px; font-weight: bold; color: #ff5722; margin-top: 5px;">৳ <span id="walletBalanceText">0.00</span></div>
             </div>
             <button class="action-btn" onclick="openAddMoney()">অ্যাড মানি করুন</button>
         </div>
     </div>
 
-    <!-- প্রোফাইল পেজ মডাল -->
+    <!-- প্রোফাইল পেজ মডাল (স্ক্রিনশটের মতো প্রফেশনাল ডিজাইন) -->
     <div id="profileModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content" style="background: #f8fafc; padding-top: 30px;">
             <span class="close-btn" onclick="closeModal('profileModal')">&times;</span>
-            <h3 style="color: #ff5722; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">ইউজার প্রোফাইল</h3>
+            
             <div style="text-align: center; margin-bottom: 20px;">
-                <div style="width: 70px; height: 70px; background: #e2136e; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; margin: 0 auto 10px auto;">👤</div>
-                <div id="profileUserName" style="font-weight: bold; font-size: 16px;">Jarif YT (Guest)</div>
-                <div style="font-size: 13px; color: #666;">ID: #JHG8823</div>
+                <div style="width: 80px; height: 80px; background: #9333ea; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 36px; font-weight: bold; margin: 0 auto 12px auto; box-shadow: 0 4px 10px rgba(147,51,234,0.3);" id="profileAvatarLetter">J</div>
+                <div id="profileUserName" style="font-weight: bold; font-size: 20px; color: #111;">Jarif YT</div>
+                <div style="display: inline-block; background: #d1fae5; color: #065f46; padding: 3px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-top: 6px;">✔ Verified</div>
             </div>
-            <div class="input-group">
-                <label>মোবাইল নাম্বার / ইমেল:</label>
-                <input type="text" id="profileUserContact" value="লগইন করা নেই" readonly style="background: #f1f1f1;">
+
+            <div style="background: white; border-radius: 10px; padding: 12px 15px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 13px;">
+                <span style="color: #666;">Support PIN:</span>
+                <span style="font-weight: bold; color: #111;">326048</span>
             </div>
-            <button class="action-btn" onclick="openLogin()">লগইন / অ্যাকাউন্ট পরিবর্তন</button>
+
+            <div style="background: white; border-radius: 10px; padding: 12px 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05); font-size: 13px;">
+                <span style="color: #666;">Account Type:</span>
+                <span style="font-weight: bold; color: #9333ea;">Gold Member (Level 3)</span>
+            </div>
+
+            <!-- ওয়ালেট ব্যালেন্স কার্ড -->
+            <div style="background: white; border-radius: 10px; padding: 15px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                <div style="font-size: 13px; color: #666; margin-bottom: 5px;">Wallet Balance</div>
+                <div style="font-size: 24px; font-weight: bold; color: #111; margin-bottom: 12px;">Tk <span id="profileWalletTk">0</span></div>
+                <button style="width: 100%; background: #2563eb; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer;" onclick="openAddMoney()">Add Money</button>
+            </div>
+
+            <button class="action-btn" style="background: #e11d48;" onclick="openLogin()">লগআউট / অ্যাকাউন্ট পরিবর্তন</button>
         </div>
     </div>
 
@@ -712,7 +726,8 @@
 
         let selectedPkgInfo = "";
         let selectedNumericPrice = 0;
-        let loggedInUser = "";
+        let loggedInName = "Jarif YT";
+        let userWalletBalance = 0;
 
         function goHome() {
             closeAllModals();
@@ -852,13 +867,9 @@
 
         function openProfile() {
             closeAllModals();
-            if(loggedInUser) {
-                document.getElementById("profileUserName").innerText = "Jarif YT (Verified)";
-                document.getElementById("profileUserContact").value = loggedInUser;
-            } else {
-                document.getElementById("profileUserName").innerText = "Jarif YT (Guest)";
-                document.getElementById("profileUserContact").value = "লগইন করা নেই";
-            }
+            document.getElementById("profileUserName").innerText = loggedInName;
+            document.getElementById("profileAvatarLetter").innerText = loggedInName.charAt(0).toUpperCase();
+            document.getElementById("profileWalletTk").innerText = userWalletBalance;
             document.getElementById("profileModal").style.display = "block";
         }
 
@@ -869,6 +880,7 @@
 
         function openWallet() {
             closeAllModals();
+            document.getElementById("walletBalanceText").innerText = userWalletBalance.toFixed(2);
             document.getElementById("walletModal").style.display = "block";
         }
 
@@ -893,10 +905,11 @@
                 alert("দয়া করে আপনার মোবাইল নম্বর/ইমেল এবং পাসওয়ার্ড দিন!");
                 return;
             }
-            loggedInUser = user;
+            loggedInName = user.split('@')[0];
             document.getElementById("headerLoginBtn").innerText = "লগআউট";
             alert("অভিনন্দন! আপনার অ্যাকাউন্ট সফলভাবে লগইন হয়েছে।");
             closeModal('loginModal');
+            openProfile();
         }
 
         function submitAddMoney() {
@@ -906,8 +919,10 @@
                 alert("দয়া করে সঠিক তথ্য দিন!");
                 return;
             }
-            alert("আপনার অ্যাড মানি রিকোয়েস্ট সফলভাবে সাবমিট হয়েছে!");
+            userWalletBalance += parseFloat(amt) || 0;
+            alert("আপনার অ্যাড মানি রিকোয়েস্ট সফলভাবে সাবমিট হয়েছে! ব্যালেন্স আপডেট করা হয়েছে।");
             closeModal('addMoneyModal');
+            openWallet();
         }
 
         function sendWhatsApp() {
