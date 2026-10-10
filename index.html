@@ -64,7 +64,7 @@
             margin-bottom: 12px;
         }
 
-        /* ব্যানার স্লাইডার স্টাইল */
+        /* তিনটি ব্যানার স্লাইডার স্টাইল */
         .banner-container {
             width: 100%;
             height: 150px;
@@ -94,7 +94,7 @@
             color: #111;
         }
 
-        /* কার্ড গ্রিড */
+        /* স্ক্রিনশটের মতো গ্রিড লেআউট */
         .card-grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -228,7 +228,7 @@
             display: inline-block;
         }
 
-        /* অর্ডার এবং লগইন পপআপ মডাল */
+        /* পপআপ মডাল (সাদা ব্যাকগ্রাউন্ড পেজ) */
         .modal {
             display: none;
             position: fixed;
@@ -277,7 +277,7 @@
         }
 
         .input-group {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .input-group label {
@@ -289,29 +289,26 @@
 
         .input-group input {
             width: 100%;
-            padding: 10px;
+            padding: 11px;
             font-size: 14px;
-            border: 1px solid #ccc;
             border-radius: 6px;
             outline: none;
             box-sizing: border-box;
         }
 
-        .whatsapp-btn {
-            width: 100%;
-            background-color: #25d366;
-            color: white;
-            text-align: center;
-            font-weight: bold;
-            padding: 11px;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-            margin-top: 5px;
+        /* কমলা কালারের UID ইনপুট বক্স */
+        .orange-input {
+            border: 2px solid #ff5722 !important;
+            background-color: #fffaf8;
         }
 
-        .login-submit-btn {
+        /* সবুজ কালারের TrxID ইনপুট বক্স */
+        .green-input {
+            border: 2px solid #25d366 !important;
+            background-color: #f2fbf6;
+        }
+
+        .action-btn {
             width: 100%;
             background-color: #ff5722;
             color: white;
@@ -323,6 +320,10 @@
             cursor: pointer;
             font-size: 14px;
             margin-top: 5px;
+        }
+
+        .whatsapp-btn {
+            background-color: #25d366;
         }
 
         /* বটম নেভিগেশন বার */
@@ -414,15 +415,15 @@
         <!-- Offer Offer Section -->
         <div class="section-title">Offer Offer</div>
         <div class="card-grid-3">
-            <div class="main-category-card" onclick="openOrder('Mystery Shop (1x)', '২০ টাকা')">
+            <div class="main-category-card" onclick="openPackageOptions('Mystery Shop')">
                 <img src="mystery.png" alt="Mystery Shop">
                 <span>Mystery Shop</span>
             </div>
-            <div class="main-category-card" onclick="openOrder('[BD] UID OFFER', '৮০ টাকা')">
+            <div class="main-category-card" onclick="openPackageOptions('[BD] UID Offer')">
                 <img src="uid.png" alt="UID Offer">
                 <span>[BD] UID OFFER</span>
             </div>
-            <div class="main-category-card" onclick="openOrder('Weekly + Monthly Combo', '৭৭০ টাকা')">
+            <div class="main-category-card" onclick="openPackageOptions('Weekly/Monthly Combo')">
                 <img src="weekly.png" alt="Weekly/Monthly">
                 <span>Weekly/Monthly</span>
             </div>
@@ -441,15 +442,15 @@
         <!-- Top-up Section -->
         <div class="section-title">Top-up</div>
         <div class="card-grid-3">
-            <div class="main-category-card" onclick="openOrder('Uid TOPUP [BD]', '৬০ টাকা')">
+            <div class="main-category-card" onclick="openPackageOptions('Uid TOPUP [BD]')">
                 <img src="uid.png" alt="Uid TOPUP">
                 <span>Uid TOPUP [BD]</span>
             </div>
-            <div class="main-category-card" onclick="openOrder('Weekly Monthly Combo', '৭৭০ টাকা')">
+            <div class="main-category-card" onclick="openPackageOptions('Weekly Monthly Combo')">
                 <img src="weekly.png" alt="Combo">
                 <span>Weekly Monthly Combo</span>
             </div>
-            <div class="main-category-card" onclick="openOrder('Weekly Lite', '৮০ টাকা')">
+            <div class="main-category-card" onclick="openPackageOptions('Weekly Lite')">
                 <img src="weekly-lite.png" alt="Weekly Lite">
                 <span>Weekly Lite</span>
             </div>
@@ -465,96 +466,97 @@
         </div>
     </div>
 
-    <!-- Friday Offers অপশন পপআপ মডাল -->
+    <!-- প্যাকেজ অপশন পপআপ (সাদা ব্যাকগ্রাউন্ড) -->
+    <div id="packageModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('packageModal')">&times;</span>
+            <h3 id="packageModalTitle" style="color: #ff5722; margin-top: 0; margin-bottom: 15px; font-size: 16px; text-align: center;">প্যাকেজ নির্বাচন করুন</h3>
+            <div id="packageListContainer" class="card-grid-2">
+                <!-- ডায়নামিক্যালি প্যাকগুলো এখানে লোড হবে -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Friday Offers পপআপ মডাল -->
     <div id="fridayModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('fridayModal')">&times;</span>
             <h3 style="color: #ff5722; margin-top: 0; margin-bottom: 15px; font-size: 16px; text-align: center;">Friday Offers Packages</h3>
-            
             <div class="card-grid-2">
-                <div class="pro-card" onclick="selectFriday('Friday Weekly', '১০০ টাকা')">
-                    <div class="card-top">
-                        <span class="package-name">Weekly</span>
-                        <span class="package-price">100 TK</span>
-                    </div>
+                <div class="pro-card" onclick="startOrderProcess('Friday Weekly', '১০০ টাকা')">
+                    <div class="card-top"><span class="package-name">Weekly</span><span class="package-price">100 TK</span></div>
                     <div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>
                 </div>
-                <div class="pro-card" onclick="selectFriday('Friday Monthly', '৬০০ টাকা')">
-                    <div class="card-top">
-                        <span class="package-name">Monthly</span>
-                        <span class="package-price">600 TK</span>
-                    </div>
+                <div class="pro-card" onclick="startOrderProcess('Friday Monthly', '৬০০ টাকা')">
+                    <div class="card-top"><span class="package-name">Monthly</span><span class="package-price">600 TK</span></div>
                     <div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Level Up Pass অপশন পপআপ মডাল -->
+    <!-- Level Up Pass পপআপ মডাল -->
     <div id="levelUpModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('levelUpModal')">&times;</span>
             <h3 style="color: #ff5722; margin-top: 0; margin-bottom: 15px; font-size: 16px; text-align: center;">Level Up Pass Packages</h3>
-            
             <div class="card-grid-2">
-                <div class="pro-card" onclick="selectLevelUp('150 Diamond (1x)', '৭০ টাকা')">
-                    <div class="card-top">
-                        <span class="package-name">150 Diamond (1x)</span>
-                        <span class="package-price">70 TK</span>
-                    </div>
+                <div class="pro-card" onclick="startOrderProcess('Level Up Pass (1x - 150 Diamonds)', '৭০ টাকা')">
+                    <div class="card-top"><span class="package-name">150 Diamond (1x)</span><span class="package-price">70 TK</span></div>
                     <div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>
                 </div>
-                <div class="pro-card" onclick="selectLevelUp('300 Diamond (2x)', '১৪০ টাকা')">
-                    <div class="card-top">
-                        <span class="package-name">300 Diamond (2x)</span>
-                        <span class="package-price">140 TK</span>
-                    </div>
+                <div class="pro-card" onclick="startOrderProcess('Level Up Pass (2x - 300 Diamonds)', '১৪০ টাকা')">
+                    <div class="card-top"><span class="package-name">300 Diamond (2x)</span><span class="package-price">140 TK</span></div>
                     <div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>
                 </div>
-                <div class="pro-card" onclick="selectLevelUp('450 Diamond (3x)', '২১০ টাকা')">
-                    <div class="card-top">
-                        <span class="package-name">450 Diamond (3x)</span>
-                        <span class="package-price">210 TK</span>
-                    </div>
+                <div class="pro-card" onclick="startOrderProcess('Level Up Pass (3x - 450 Diamonds)', '২১০ টাকা')">
+                    <div class="card-top"><span class="package-name">450 Diamond (3x)</span><span class="package-price">210 TK</span></div>
                     <div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>
                 </div>
-                <div class="pro-card" onclick="selectLevelUp('600 Diamond (4x)', '২৮০ টাকা')">
-                    <div class="card-top">
-                        <span class="package-name">600 Diamond (4x)</span>
-                        <span class="package-price">280 TK</span>
-                    </div>
+                <div class="pro-card" onclick="startOrderProcess('Level Up Pass (4x - 600 Diamonds)', '২৮০ টাকা')">
+                    <div class="card-top"><span class="package-name">600 Diamond (4x)</span><span class="package-price">280 TK</span></div>
                     <div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- মূল অর্ডার পপআপ মডাল -->
-    <div id="orderModal" class="modal">
+    <!-- ধাপ ১: Player UID ইনপুট পেজ (সাদা ব্যাকগ্রাউন্ড ও কমলা কালার ইনপুট) -->
+    <div id="uidModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('orderModal')">&times;</span>
-            <h3 id="modalTitle" style="color: #ff5722; margin-top: 0; margin-bottom: 10px; font-size: 16px; text-align: center;">অর্ডার ফর্ম</h3>
+            <span class="close-btn" onclick="closeModal('uidModal')">&times;</span>
+            <h3 style="color: #ff5722; margin-top: 0; margin-bottom: 10px; font-size: 16px; text-align: center;">গেম UID প্রদান করুন</h3>
+            
+            <div class="input-group">
+                <label>নির্বাচিত প্যাকেজ:</label>
+                <input type="text" id="displayPackageName" readonly style="background: #f1f1f1; font-weight: bold; color: #e2136e;">
+            </div>
+
+            <div class="input-group">
+                <label style="color: #ff5722; font-weight: bold;">Player UID (কমলা কালার):</label>
+                <input type="text" id="gameUid" class="orange-input" placeholder="আপনার গেম UID লিখুন">
+            </div>
+
+            <button class="action-btn" onclick="goToTrxModal()">পরবর্তী ধাপ</button>
+        </div>
+    </div>
+
+    <!-- ধাপ ২: Transaction ID ইনপুট পেজ (সাদা ব্যাকগ্রাউন্ড ও সবুজ কালার ইনপুট) -->
+    <div id="trxModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('trxModal')">&times;</span>
+            <h3 style="color: #25d366; margin-top: 0; margin-bottom: 10px; font-size: 16px; text-align: center;">পেমেন্ট নিশ্চিত করুন</h3>
             
             <div class="bkash-info">
                 পেমেন্ট পদ্ধতি (bKash Personal):<br>01781511654
             </div>
 
             <div class="input-group">
-                <label>নির্বাচিত প্যাকেজ ও দাম:</label>
-                <input type="text" id="selectedPackage" readonly style="background: #f1f1f1; font-weight: bold; color: #e2136e;">
+                <label style="color: #25d366; font-weight: bold;">বিকাশ Transaction ID (সবুজ কালার):</label>
+                <input type="text" id="trxId" class="green-input" placeholder="টাকা পাঠিয়ে TrxID দিন">
             </div>
 
-            <div class="input-group">
-                <label>গেম UID:</label>
-                <input type="text" id="gameUid" placeholder="আপনার গেম UID লিখুন">
-            </div>
-
-            <div class="input-group">
-                <label>বিকাশ TrxID:</label>
-                <input type="text" id="trxId" placeholder="টাকা পাঠিয়ে TrxID দিন">
-            </div>
-
-            <button class="whatsapp-btn" onclick="sendWhatsApp()">WhatsApp-এ অর্ডার নিশ্চিত করুন</button>
+            <button class="action-btn whatsapp-btn" onclick="sendWhatsApp()">WhatsApp-এ অর্ডার নিশ্চিত করুন</button>
         </div>
     </div>
 
@@ -574,7 +576,7 @@
                 <input type="password" id="loginPass" placeholder="পাসওয়ার্ড লিখুন">
             </div>
 
-            <button class="login-submit-btn" onclick="submitLogin()">লগইন করুন</button>
+            <button class="action-btn" onclick="submitLogin()">লগইন করুন</button>
         </div>
     </div>
 
@@ -599,7 +601,7 @@
     </div>
 
     <script>
-        // ব্যানার অটো স্লাইড শো স্ক্রিপ্ট
+        // ব্যানার অটো স্লাইড শো
         let currentSlide = 0;
         const slides = document.querySelectorAll('.banner-slide');
         function nextSlide() {
@@ -609,28 +611,78 @@
         }
         setInterval(nextSlide, 3000);
 
-        function openFridayModal() {
-            document.getElementById("fridayModal").style.display = "flex";
+        let selectedPkgInfo = "";
+
+        // ক্যাটাগরি অনুযায়ী ১ থেকে ৪ গুণের প্যাকেজ লিস্ট লোড করার ফাংশন
+        function openPackageOptions(categoryName) {
+            document.getElementById("packageModalTitle").innerText = categoryName + " Packages";
+            const container = document.getElementById("packageListContainer");
+            container.innerHTML = "";
+
+            let unitPrice = 20;
+            let unitName = categoryName;
+
+            if (categoryName.includes('Mystery Shop')) {
+                unitPrice = 20;
+            } else if (categoryName.includes('UID')) {
+                unitPrice = 80;
+            } else if (categoryName.includes('Weekly/Monthly') || categoryName.includes('Combo')) {
+                unitPrice = 770;
+            } else if (categoryName.includes('Weekly Lite')) {
+                unitPrice = 80;
+            }
+
+            // ১ থেকে ৪ গুণ তৈরি করা
+            for (let i = 1; i <= 4; i++) {
+                let currentPrice = unitPrice * i;
+                let pkgTitle = `${categoryName} (${i}x)`;
+                let priceText = `${currentPrice} টাকা`;
+
+                let card = document.createElement('div');
+                card.className = 'pro-card';
+                card.onclick = function() {
+                    closeModal('packageModal');
+                    startOrderProcess(pkgTitle, priceText);
+                };
+                card.innerHTML = `
+                    <div class="card-top">
+                        <span class="package-name">${pkgTitle}</span>
+                        <span class="package-price">${currentPrice} TK</span>
+                    </div>
+                    <div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>
+                `;
+                container.appendChild(card);
+            }
+
+            document.getElementById("packageModal").style.display = "flex";
         }
 
-        function selectFriday(pkgName, pkgPrice) {
-            closeModal('fridayModal');
-            openOrder(pkgName, pkgPrice);
+        function openFridayModal() {
+            document.getElementById("fridayModal").style.display = "flex";
         }
 
         function openLevelUpModal() {
             document.getElementById("levelUpModal").style.display = "flex";
         }
 
-        function selectLevelUp(pkgName, pkgPrice) {
+        function startOrderProcess(pkgName, pkgPrice) {
+            selectedPkgInfo = pkgName + " - " + pkgPrice;
+            document.getElementById("displayPackageName").value = selectedPkgInfo;
+            closeModal('fridayModal');
             closeModal('levelUpModal');
-            openOrder("Level Up Pass - " + pkgName, pkgPrice);
+            document.getElementById("gameUid").value = "";
+            document.getElementById("uidModal").style.display = "flex";
         }
 
-        function openOrder(packageName, packagePrice) {
-            document.getElementById("selectedPackage").value = packageName + " - " + packagePrice;
-            document.getElementById("modalTitle").innerText = "অর্ডার করুন: " + packageName;
-            document.getElementById("orderModal").style.display = "flex";
+        function goToTrxModal() {
+            const uid = document.getElementById("gameUid").value;
+            if(!uid.trim()) {
+                alert("দয়া করে আপনার গেম UID লিখুন!");
+                return;
+            }
+            closeModal('uidModal');
+            document.getElementById("trxId").value = "";
+            document.getElementById("trxModal").style.display = "flex";
         }
 
         function openLogin() {
@@ -656,20 +708,15 @@
         }
 
         function sendWhatsApp() {
-            const pkg = document.getElementById("selectedPackage").value;
             const uid = document.getElementById("gameUid").value;
             const trx = document.getElementById("trxId").value;
 
-            if(!uid.trim()) {
-                alert("দয়া করে আপনার গেম UID লিখুন!");
-                return;
-            }
             if(!trx.trim()) {
-                alert("দয়া করে বিকাশ TrxID দিন!");
+                alert("দয়া করে বিকাশ Transaction ID দিন!");
                 return;
             }
 
-            const message = `Hello, I want to order Top-Up.%0A*Package:* ${encodeURIComponent(pkg)}%0A*UID:* ${encodeURIComponent(uid)}%0A*TrxID:* ${encodeURIComponent(trx)}`;
+            const message = `Hello, I want to order Top-Up.%0A*Package:* ${encodeURIComponent(selectedPkgInfo)}%0A*UID:* ${encodeURIComponent(uid)}%0A*TrxID:* ${encodeURIComponent(trx)}`;
             window.open(`https://wa.me/8801781511654?text=${message}`, '_blank');
         }
     </script>
