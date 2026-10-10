@@ -255,6 +255,11 @@
             position: relative;
         }
 
+        /* হুবহু স্ক্রিনশটের মতো বিকাশের গোলাপি ব্যাকগ্রাউন্ড স্ক্রিন */
+        .bkash-screen {
+            background: #e2136e !important;
+        }
+
         .close-btn {
             position: absolute;
             top: 15px;
@@ -265,23 +270,29 @@
             cursor: pointer;
         }
 
-        /* বিকাশ পেমেন্ট কার্ড বক্স */
-        .bkash-payment-box {
-            background: #e2136e;
+        .bkash-screen .close-btn {
             color: white;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            font-size: 13px;
-            line-height: 1.6;
         }
 
-        .bkash-payment-box h4 {
-            margin: 0 0 10px 0;
+        /* স্ক্রিনশটের মতো বিকাশ পেমেন্ট নির্দেশিকা বক্স */
+        .bkash-payment-instructions {
+            background: white;
+            color: #333;
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            line-height: 1.8;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .bkash-payment-instructions h4 {
+            margin: 0 0 12px 0;
             text-align: center;
             font-size: 16px;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            padding-bottom: 6px;
+            color: #e2136e;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
         }
 
         .input-group {
@@ -294,6 +305,10 @@
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
+        }
+
+        .bkash-screen .input-group label {
+            color: white !important;
         }
 
         .input-group input {
@@ -331,6 +346,7 @@
 
         .whatsapp-order-btn {
             background-color: #25d366 !important;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         /* বটম নেভিগেশন বার */
@@ -446,7 +462,7 @@
             </div>
         </div>
 
-        <!-- Top-up Section (আলাদা আলাদা Weekly এবং Monthly) -->
+        <!-- Top-up Section -->
         <div class="section-title">Top-up</div>
         <div class="card-grid-3">
             <div class="main-category-card" onclick="openPackageOptions('Weekly')">
@@ -514,7 +530,7 @@
         </div>
     </div>
 
-    <!-- ধাপ ১: Player UID ইনপুট ফুল স্ক্রিন পেজ (কমলা কালার বর্ডার) -->
+    <!-- ধাপ ১: Player UID ইনপুট ফুল স্ক্রিন পেজ -->
     <div id="uidModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('uidModal')">&times;</span>
@@ -534,22 +550,23 @@
         </div>
     </div>
 
-    <!-- ধাপ ২: বিকাশ পেমেন্ট ও Transaction ID ইনপুট ফুল স্ক্রিন পেজ (সবুজ কালার বর্ডার) -->
+    <!-- ধাপ ২: হুবহু স্ক্রিনশটের মতো বিকাশের ব্যাকগ্রাউন্ড ওয়ালা Transaction ID পেজ -->
     <div id="trxModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content bkash-screen">
             <span class="close-btn" onclick="closeModal('trxModal')">&times;</span>
-            <h3 style="color: #e2136e; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">বিকাশ পেমেন্ট ও ট্রানজেকশন আইডি</h3>
+            <h3 style="color: white; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">ট্রানজেকশন আইডি দিন</h3>
             
-            <div class="bkash-payment-box">
+            <div class="bkash-payment-instructions">
                 <h4>bKash Personal</h4>
-                • *247# ডায়াল করে অথবা বিকাশ অ্যাপে যান।<br>
+                • *247# ডায়াল করে আপনার bKash মোবাইল মেনুতে যান অথবা bKash অ্যাপ খুলুন।<br>
                 • Send Money-এ ক্লিক করুন।<br>
                 • এই নম্বরে টাকা পাঠান: <b>01781511654</b><br>
-                • টাকা পাঠিয়ে ট্রানজেকশন আইডি (TrxID) নিচে লিখুন।
+                • টাকা পাঠান এবং ট্রানজেকশন আইডি কপি করুন।<br>
+                • ট্রানজেকশন আইডি লিখে নিচের বাটনে চাপুন।
             </div>
 
             <div class="input-group">
-                <label style="color: #25d366;">ট্রানজেকশন আইডি দিন (সবুজ কালার):</label>
+                <label>ট্রানজেকশন আইডি দিন:</label>
                 <input type="text" id="trxId" class="green-input" placeholder="ট্রানজেকশন আইডি দিন">
             </div>
 
