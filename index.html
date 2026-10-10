@@ -15,7 +15,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #0f172a;
             color: #f8fafc;
-            padding-bottom: 60px;
+            padding-bottom: 40px;
         }
 
         /* হেডার ডিজাইন */
@@ -31,12 +31,12 @@
 
         header h1 {
             color: #e2136e;
-            font-size: 22px;
-            margin-bottom: 5px;
+            font-size: 20px;
+            margin-bottom: 4px;
         }
 
         header p {
-            font-size: 13px;
+            font-size: 12px;
             color: #94a3b8;
         }
 
@@ -50,11 +50,12 @@
         .notice-board {
             background: #1e293b;
             border-left: 4px solid #e2136e;
-            padding: 10px 15px;
+            padding: 10px 12px;
             border-radius: 6px;
             font-size: 13px;
             margin-bottom: 15px;
             color: #cbd5e1;
+            line-height: 1.4;
         }
 
         .notice-board span {
@@ -64,11 +65,12 @@
 
         /* সেকশন হেডিং */
         .section-title {
-            font-size: 16px;
+            font-size: 15px;
             color: #38bdf8;
             margin: 15px 0 10px 0;
             border-bottom: 1px solid #334155;
             padding-bottom: 5px;
+            font-weight: bold;
         }
 
         /* প্যাকেজ বা কার্ড ডিজাইন */
@@ -93,8 +95,8 @@
         }
 
         .package-card h3 {
-            font-size: 14px;
-            margin-bottom: 8px;
+            font-size: 13px;
+            margin-bottom: 6px;
             color: #f1f5f9;
         }
 
@@ -109,11 +111,12 @@
             background-color: #3b82f6;
             color: white;
             border: none;
-            padding: 6px 12px;
+            padding: 6px 10px;
             font-size: 12px;
             border-radius: 4px;
             cursor: pointer;
             width: 100%;
+            font-weight: bold;
         }
 
         .select-btn:hover {
@@ -124,10 +127,15 @@
         .spinner-section {
             background: #1e293b;
             border: 1px solid #6366f1;
-            padding: 15px;
-            border-radius: 10px;
+            padding: 12px;
+            border-radius: 8px;
             text-align: center;
             margin-bottom: 15px;
+        }
+
+        .spinner-section h3 {
+            font-size: 15px;
+            color: #a5b4fc;
         }
 
         .spin-btn {
@@ -135,16 +143,20 @@
             color: white;
             border: none;
             padding: 8px 16px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
             margin-top: 8px;
         }
 
+        .spin-btn:hover {
+            background-color: #4f46e5;
+        }
+
         #spinResult {
             margin-top: 8px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: bold;
             color: #10b981;
         }
@@ -153,7 +165,7 @@
         .payment-container {
             background: #1e293b;
             padding: 15px;
-            border-radius: 10px;
+            border-radius: 8px;
             display: flex;
             flex-direction: column;
             gap: 12px;
@@ -168,10 +180,22 @@
             border-radius: 6px;
             font-weight: bold;
             text-align: center;
-            font-size: 14px;
+            font-size: 13px;
+            line-height: 1.5;
         }
 
-        input, select {
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .input-group label {
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        input {
             width: 100%;
             padding: 10px;
             font-size: 14px;
@@ -182,7 +206,7 @@
             outline: none;
         }
 
-        input:focus, select:focus {
+        input:focus {
             border-color: #e2136e;
         }
 
@@ -208,7 +232,7 @@
         /* ফুটার */
         footer {
             text-align: center;
-            margin-top: 25px;
+            margin-top: 20px;
             font-size: 12px;
             color: #64748b;
         }
@@ -267,18 +291,18 @@
                 বিকাশ পার্সোনাল (Send Money):<br>01781511654
             </div>
 
-            <div>
-                <label style="font-size: 12px; color: #94a3b8; display: block; margin-bottom: 4px;">নির্বাচিত প্যাকেজ:</label>
+            <div class="input-group">
+                <label>নির্বাচিত প্যাকেজ:</label>
                 <input type="text" id="selectedPackageName" placeholder="উপরে থেকে প্যাকেজ সিলেক্ট করুন" readonly>
             </div>
             
-            <div>
-                <label style="font-size: 12px; color: #94a3b8; display: block; margin-bottom: 4px;">গেম UID:</label>
+            <div class="input-group">
+                <label>গেম UID:</label>
                 <input type="text" id="gameUid" placeholder="আপনার গেম UID লিখুন">
             </div>
 
-            <div>
-                <label style="font-size: 12px; color: #94a3b8; display: block; margin-bottom: 4px;">বিকাশ TrxID:</label>
+            <div class="input-group">
+                <label>বিকাশ TrxID:</label>
                 <input type="text" id="trxId" placeholder="টাকা পাঠিয়ে TrxID দিন">
             </div>
             
