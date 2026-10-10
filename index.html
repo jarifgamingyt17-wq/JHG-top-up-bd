@@ -140,7 +140,7 @@
             display: block;
         }
 
-        /* প্রফেশনাল সাব-প্যাকেজ কার্ড */
+        /* প্রফেশনাল সাব-প্যাকেজ কার্ড (স্ক্রিনশটের মতো স্টাইল) */
         .pro-card {
             background: #fff;
             border: 1px solid #e0e0e0;
@@ -177,7 +177,7 @@
         .package-price {
             font-size: 15px;
             font-weight: bold;
-            color: #e2136e;
+            color: #ff5722;
         }
 
         .card-bottom {
@@ -228,7 +228,7 @@
             display: inline-block;
         }
 
-        /* পপআপ মডাল (সাদা ব্যাকগ্রাউন্ড পেজ) */
+        /* পপআপ মডাল */
         .modal {
             display: none;
             position: fixed;
@@ -264,16 +264,23 @@
             cursor: pointer;
         }
 
-        .bkash-info {
-            color: #e2136e;
-            font-weight: bold;
+        /* বিকাশ পেমেন্ট কার্ড বক্স (স্ক্রিনশটের মতো গোলাপি ডিজাইন) */
+        .bkash-payment-box {
+            background: #e2136e;
+            color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
             font-size: 13px;
-            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .bkash-payment-box h4 {
+            margin: 0 0 10px 0;
             text-align: center;
-            background: #fdf2f4;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid #e2136e;
+            font-size: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 6px;
         }
 
         .input-group {
@@ -282,9 +289,10 @@
 
         .input-group label {
             font-size: 12px;
-            color: #666;
+            color: #444;
             display: block;
             margin-bottom: 3px;
+            font-weight: bold;
         }
 
         .input-group input {
@@ -296,13 +304,13 @@
             box-sizing: border-box;
         }
 
-        /* কমলা কালারের UID ইনপুট বক্স */
+        /* ১. Player UID ইনপুট - কমলা কালার বর্ডার */
         .orange-input {
             border: 2px solid #ff5722 !important;
             background-color: #fffaf8;
         }
 
-        /* সবুজ কালারের TrxID ইনপুট বক্স */
+        /* ২. Transaction ID ইনপুট - সবুজ কালার বর্ডার */
         .green-input {
             border: 2px solid #25d366 !important;
             background-color: #f2fbf6;
@@ -314,7 +322,7 @@
             color: white;
             text-align: center;
             font-weight: bold;
-            padding: 11px;
+            padding: 12px;
             border-radius: 6px;
             border: none;
             cursor: pointer;
@@ -322,8 +330,9 @@
             margin-top: 5px;
         }
 
-        .whatsapp-btn {
-            background-color: #25d366;
+        /* WhatsApp বাটন (ভেরিফাই এর বদলে) */
+        .whatsapp-order-btn {
+            background-color: #25d366 !important;
         }
 
         /* বটম নেভিগেশন বার */
@@ -525,7 +534,7 @@
     <div id="uidModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('uidModal')">&times;</span>
-            <h3 style="color: #ff5722; margin-top: 0; margin-bottom: 10px; font-size: 16px; text-align: center;">গেম UID প্রদান করুন</h3>
+            <h3 style="color: #ff5722; margin-top: 0; margin-bottom: 10px; font-size: 16px; text-align: center;">Account Info</h3>
             
             <div class="input-group">
                 <label>নির্বাচিত প্যাকেজ:</label>
@@ -533,7 +542,7 @@
             </div>
 
             <div class="input-group">
-                <label style="color: #ff5722; font-weight: bold;">Player UID (কমলা কালার):</label>
+                <label style="color: #ff5722;">এখানে গেমের আইডি কোড দিন:</label>
                 <input type="text" id="gameUid" class="orange-input" placeholder="আপনার গেম UID লিখুন">
             </div>
 
@@ -541,22 +550,28 @@
         </div>
     </div>
 
-    <!-- ধাপ ২: Transaction ID ইনপুট পেজ (সাদা ব্যাকগ্রাউন্ড ও সবুজ কালার ইনপুট) -->
+    <!-- ধাপ ২: বিকাশ পেমেন্ট ও Transaction ID ইনপুট পেজ (সাদা ব্যাকগ্রাউন্ড ও সবুজ কালার ইনপুট) -->
     <div id="trxModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('trxModal')">&times;</span>
-            <h3 style="color: #25d366; margin-top: 0; margin-bottom: 10px; font-size: 16px; text-align: center;">পেমেন্ট নিশ্চিত করুন</h3>
+            <h3 style="color: #e2136e; margin-top: 0; margin-bottom: 10px; font-size: 16px; text-align: center;">বিকাশ পেমেন্ট ও ট্রানজেকশন আইডি</h3>
             
-            <div class="bkash-info">
-                পেমেন্ট পদ্ধতি (bKash Personal):<br>01781511654
+            <!-- স্ক্রিনশটের মতো বিকাশ পেমেন্ট বক্স -->
+            <div class="bkash-payment-box">
+                <h4>bKash Personal</h4>
+                • *247# ডায়াল করে অথবা বিকাশ অ্যাপে যান।<br>
+                • Send Money-এ ক্লিক করুন।<br>
+                • এই নম্বরে টাকা পাঠান: <b>01781511654</b><br>
+                • টাকা পাঠিয়ে ট্রানজেকশন আইডি (TrxID) নিচে লিখুন।
             </div>
 
             <div class="input-group">
-                <label style="color: #25d366; font-weight: bold;">বিকাশ Transaction ID (সবুজ কালার):</label>
-                <input type="text" id="trxId" class="green-input" placeholder="টাকা পাঠিয়ে TrxID দিন">
+                <label style="color: #25d366;">ট্রানজেকশন আইডি দিন (সবুজ কালার):</label>
+                <input type="text" id="trxId" class="green-input" placeholder="ট্রানজেকশন আইডি দিন">
             </div>
 
-            <button class="action-btn whatsapp-btn" onclick="sendWhatsApp()">WhatsApp-এ অর্ডার নিশ্চিত করুন</button>
+            <!-- ভেরিফাই এর বদলে সরাসরি WhatsApp অর্ডার বাটন -->
+            <button class="action-btn whatsapp-order-btn" onclick="sendWhatsApp()">WhatsApp-এ অর্ডার নিশ্চিত করুন</button>
         </div>
     </div>
 
@@ -613,14 +628,13 @@
 
         let selectedPkgInfo = "";
 
-        // ক্যাটাগরি অনুযায়ী ১ থেকে ৪ গুণের প্যাকেজ লিস্ট লোড করার ফাংশন
+        // ১ থেকে ৪ গুণের প্যাকেজ লিস্ট লোড করার ফাংশন
         function openPackageOptions(categoryName) {
             document.getElementById("packageModalTitle").innerText = categoryName + " Packages";
             const container = document.getElementById("packageListContainer");
             container.innerHTML = "";
 
             let unitPrice = 20;
-            let unitName = categoryName;
 
             if (categoryName.includes('Mystery Shop')) {
                 unitPrice = 20;
@@ -636,13 +650,12 @@
             for (let i = 1; i <= 4; i++) {
                 let currentPrice = unitPrice * i;
                 let pkgTitle = `${categoryName} (${i}x)`;
-                let priceText = `${currentPrice} টাকা`;
 
                 let card = document.createElement('div');
                 card.className = 'pro-card';
                 card.onclick = function() {
                     closeModal('packageModal');
-                    startOrderProcess(pkgTitle, priceText);
+                    startOrderProcess(pkgTitle, currentPrice + " টাকা");
                 };
                 card.innerHTML = `
                     <div class="card-top">
@@ -668,6 +681,7 @@
         function startOrderProcess(pkgName, pkgPrice) {
             selectedPkgInfo = pkgName + " - " + pkgPrice;
             document.getElementById("displayPackageName").value = selectedPkgInfo;
+            closeModal('packageModal');
             closeModal('fridayModal');
             closeModal('levelUpModal');
             document.getElementById("gameUid").value = "";
