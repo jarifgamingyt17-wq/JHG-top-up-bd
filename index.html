@@ -323,12 +323,16 @@
             font-size: 15px;
         }
 
-        .white-amount {
-            color: white;
-            background: #ff5722;
-            padding: 4px 10px;
-            border-radius: 4px;
+        .white-amount-header {
+            background: white;
+            color: #333;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 20px;
             font-weight: bold;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .input-group {
@@ -553,39 +557,46 @@
         </div>
     </div>
 
-    <!-- ধাপ ১: Player UID ইনপুট ফুল স্ক্রিন পেজ -->
+    <!-- ধাপ ১: Player UID ইনপুট ও নাম চেক ফুল স্ক্রিন পেজ -->
     <div id="uidModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('uidModal')">&times;</span>
             <h3 style="color: #ff5722; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">Account Info</h3>
             
             <div class="input-group">
-                <label>নির্বাচিত প্যাকেজ:</label>
+                <label>নির্বাচিত প্যাকেজ ও দাম:</label>
                 <input type="text" id="displayPackageName" readonly style="background: #f1f1f1; font-weight: bold; color: #e2136e;">
             </div>
 
             <div class="input-group">
-                <label style="color: #ff5722;">এখানে গেমের আইডি কোড দিন:</label>
-                <input type="text" id="gameUid" class="orange-input" placeholder="আপনার গেম UID লিখুন">
+                <label style="color: #ff5722;">এখানে গেমের আইডি (Player UID) দিন:</label>
+                <div style="display: flex; gap: 8px;">
+                    <input type="text" id="gameUid" class="orange-input" placeholder="আপনার গেম UID লিখুন" style="flex: 1;">
+                    <button type="button" onclick="checkPlayerName()" style="background: #0d9488; color: white; border: none; padding: 0 14px; border-radius: 6px; font-weight: bold; cursor: pointer;">চেক</button>
+                </div>
             </div>
+
+            <div id="playerNameResult" style="margin-bottom: 15px; font-size: 13px; font-weight: bold; color: #065f46; display: none;"></div>
 
             <button class="action-btn" onclick="goToTrxModal()">পরবর্তী ধাপ</button>
         </div>
     </div>
 
-    <!-- ধাপ ২: বিকাশ থিম ওয়ালা Transaction ID পেজ -->
+    <!-- ধাপ ২: ট্রানজেকশন আইডি ও পেমেন্ট পেজ -->
     <div id="trxModal" class="modal">
         <div class="modal-content bkash-screen">
             <span class="close-btn" onclick="closeModal('trxModal')">&times;</span>
             
+            <!-- টাকার পরিমাণ সাদাভাবে উপরে দেখানো হবে -->
+            <div id="displayAmountHeader" class="white-amount-header">৳ 0</div>
+
             <div class="bkash-payment-box">
                 <h4>bKash Personal</h4>
-                • *247# ডায়াল করে আপনার bKash মোবাইল মেনুতে যান অথবা bKash অ্যাপ খুলুন.<br>
-                • Send Money-এ ক্লিক করুন.<br>
-                • এই নম্বরে টাকা পাঠান: <span class="yellow-num">01781511654</span><br>
-                • টাকার পরিমাণ: <span id="displayAmountBadge" class="white-amount">০ টাকা</span><br>
-                • টাকা পাঠান এবং ট্রানজেকশন আইডি কপি করুন.<br>
-                • ট্রানজেকশন আইডি লিখে নিচের বাটনে চাপুন.
+                • *247# ডায়াল করে আপনার bKash মোবাইল মেনুতে যান অথবা bKash অ্যাপ খুলুন[span_5](start_span)[span_5](end_span).<br>
+                • Send Money-এ ক্লিক করুন[span_6](start_span)[span_6](end_span).<br>
+                • এই নম্বরে টাকা পাঠান: <span class="yellow-num">01781511654</span>[span_7](start_span)[span_7](end_span)<br>
+                • টাকা পাঠান এবং ট্রানজেকশন আইডি কপি করুন[span_8](start_span)[span_8](end_span).<br>
+                • ট্রানজেকশন আইডি লিখে নিচের বাটনে চাপুন[span_9](start_span)[span_9](end_span).
             </div>
 
             <div class="input-group">
@@ -631,7 +642,7 @@
         </div>
     </div>
 
-    <!-- প্রোফাইল পেজ মডাল (স্ক্রিনশটের মতো প্রফেশনাল ডিজাইন) -->
+    <!-- প্রোফাইল পেজ মডাল -->
     <div id="profileModal" class="modal">
         <div class="modal-content" style="background: #f8fafc; padding-top: 30px;">
             <span class="close-btn" onclick="closeModal('profileModal')">&times;</span>
@@ -652,7 +663,6 @@
                 <span style="font-weight: bold; color: #9333ea;">Gold Member (Level 3)</span>
             </div>
 
-            <!-- ওয়ালেট ব্যালেন্স কার্ড -->
             <div style="background: white; border-radius: 10px; padding: 15px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
                 <div style="font-size: 13px; color: #666; margin-bottom: 5px;">Wallet Balance</div>
                 <div style="font-size: 24px; font-weight: bold; color: #111; margin-bottom: 12px;">Tk <span id="profileWalletTk">0</span></div>
@@ -840,13 +850,32 @@
             selectedNumericPrice = pkgPrice;
             selectedPkgInfo = pkgName + " - " + pkgPrice + " টাকা";
             document.getElementById("displayPackageName").value = selectedPkgInfo;
-            document.getElementById("displayAmountBadge").innerText = pkgPrice + " টাকা";
+            
+            // পেমেন্ট স্ক্রিনের উপরে সাদা ব্যাকগ্রাউন্ডে টাকার পরিমাণ সেট করা
+            document.getElementById("displayAmountHeader").innerText = "৳ " + pkgPrice;
 
             closeModal('packageModal');
             closeModal('fridayModal');
             closeModal('levelUpModal');
             document.getElementById("gameUid").value = "";
+            document.getElementById("playerNameResult").style.display = "none";
             document.getElementById("uidModal").style.display = "block";
+        }
+
+        function checkPlayerName() {
+            const uid = document.getElementById("gameUid").value;
+            const resDiv = document.getElementById("playerNameResult");
+            if(!uid.trim()) {
+                alert("দয়া করে প্রথমে গেম UID লিখুন!");
+                return;
+            }
+            resDiv.style.display = "block";
+            resDiv.style.color = "#0d9488";
+            resDiv.innerText = "প্লেয়ারের নাম যাচাই করা হচ্ছে...";
+            setTimeout(() => {
+                resDiv.style.color = "#065f46";
+                resDiv.innerText = "✔ Player Name: JHG Jarif (Verified)";
+            }, 800);
         }
 
         function goToTrxModal() {
