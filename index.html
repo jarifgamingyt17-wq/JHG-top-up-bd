@@ -10,7 +10,7 @@
             background-color: #f4f6f8;
             margin: 0;
             padding: 0;
-            padding-bottom: 70px;
+            padding-bottom: 80px;
             color: #333;
         }
 
@@ -37,7 +37,7 @@
             background-color: #ff5722;
             color: white;
             border: none;
-            padding: 6px 14px;
+            padding: 6px 16px;
             border-radius: 6px;
             font-weight: bold;
             font-size: 13px;
@@ -51,23 +51,51 @@
             margin: 0 auto;
         }
 
-        /* শপ খোলা স্ট্যাটাস নোটিশ */
-        .shop-status {
-            background-color: #d1fae5;
-            color: #065f46;
-            border: 1px solid #34d399;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 13px;
+        /* রিচার্জ স্টেপ টাইটেল বক্স */
+        .step-title-box {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .step-num {
+            background: #ff5722;
+            color: white;
+            width: 26px;
+            height: 26px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
             font-weight: bold;
-            text-align: center;
-            margin-bottom: 12px;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        .step-text {
+            font-weight: bold;
+            font-size: 15px;
+            color: #222;
+            display: flex;
+            align-items: center;
+        }
+
+        .coin-bonus {
+            font-size: 13px;
+            color: #e2136e;
+            font-weight: bold;
         }
 
         /* ব্যানার স্লাইডার স্টাইল */
         .banner-container {
             width: 100%;
-            height: 150px;
+            height: 140px;
             border-radius: 10px;
             overflow: hidden;
             margin-bottom: 15px;
@@ -93,50 +121,66 @@
             color: #111;
         }
 
-        /* অফার কার্ড গ্রিড */
-        .card-grid {
+        /* টু-কলাম কার্ড গ্রিড */
+        .card-grid-2 {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
             margin-bottom: 10px;
         }
 
-        .offer-card {
+        .pro-card {
             background: #fff;
             border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 8px 6px;
-            text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            padding: 12px;
+            position: relative;
             cursor: pointer;
             transition: 0.2s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .offer-card:hover {
+        .pro-card:hover {
             border-color: #ff5722;
             background-color: #fffaf8;
         }
 
-        .offer-card img {
-            width: 100%;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 4px;
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
-        .offer-card span {
-            font-size: 11px;
+        .package-name {
+            font-size: 13px;
             font-weight: bold;
             color: #333;
-            display: block;
-            margin-bottom: 2px;
+            line-height: 1.3;
+            max-width: 65%;
         }
 
-        .offer-card .price {
-            font-size: 11px;
-            color: #e2136e;
+        .package-price {
+            font-size: 15px;
             font-weight: bold;
+            color: #e2136e;
+        }
+
+        .card-bottom {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 11px;
+            color: #0d9488;
+            font-weight: bold;
+        }
+
+        .stock-icon {
+            color: #eab308;
+            margin-right: 4px;
+            font-size: 13px;
         }
 
         /* হেল্পলাইন কার্ড সেকশন */
@@ -267,7 +311,7 @@
             margin-top: 5px;
         }
 
-        /* একদম নিচের বটম নেভিগেশন বার */
+        /* বটম নেভিগেশন বার */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -277,8 +321,10 @@
             border-top: 1px solid #ddd;
             display: flex;
             justify-content: space-around;
-            padding: 8px 0;
+            align-items: center;
+            padding: 6px 0;
             z-index: 1000;
+            height: 55px;
         }
 
         .nav-item {
@@ -287,6 +333,7 @@
             color: #666;
             font-size: 11px;
             cursor: pointer;
+            flex: 1;
         }
 
         .nav-item.active {
@@ -296,7 +343,36 @@
 
         .nav-item div {
             font-size: 16px;
-            margin-bottom: 2px;
+            margin-bottom: 1px;
+        }
+
+        .center-btn-container {
+            position: relative;
+            flex: 1;
+            text-align: center;
+            top: -15px;
+        }
+
+        .center-add-btn {
+            background-color: #ff5722;
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 26px;
+            box-shadow: 0 4px 8px rgba(255,87,34,0.4);
+            border: 3px solid #fff;
+            cursor: pointer;
+        }
+
+        .center-label {
+            font-size: 10px;
+            color: #666;
+            margin-top: 2px;
+            display: block;
         }
     </style>
 </head>
@@ -310,7 +386,7 @@
 
     <div class="container">
         <!-- শপ খোলা স্ট্যাটাস নোটিশ -->
-        <div class="shop-status">
+        <div class="shop-status" style="background-color: #d1fae5; color: #065f46; border: 1px solid #34d399; padding: 8px 12px; border-radius: 6px; font-size: 13px; font-weight: bold; text-align: center; margin-bottom: 12px;">
             🟢 শপ সবসময় খোলা আছে! আপনি যেকোনো সময় অর্ডার করতে পারেন।
         </div>
 
@@ -321,63 +397,189 @@
             <img src="banner3.png" class="banner-slide" alt="Banner 3">
         </div>
 
-        <!-- Offer Offer Section -->
-        <div class="section-title">Offer Offer</div>
-        <div class="card-grid">
-            <div class="offer-card" onclick="openOrder('Mystery Shop', '১৬০ টাকা')">
-                <img src="mystery.png" alt="Mystery Shop">
-                <span>Mystery Shop</span>
-                <div class="price">১৬০ ৳</div>
+        <!-- স্টেপ হেডার -->
+        <div class="step-title-box">
+            <div class="step-text">
+                <span class="step-num">1</span> রিচার্জ নির্বাচন করুন
             </div>
-            <div class="offer-card" onclick="openOrder('[BD] UID OFFER', '৮০ টাকা')">
-                <img src="uid.png" alt="UID Offer">
-                <span>[BD] UID OFFER</span>
-                <div class="price">৮০ ৳</div>
+            <div class="coin-bonus">0 কয়েন জিতুন 🪙</div>
+        </div>
+
+        <!-- Mystery Shop গুণিতক প্যাক সেকশন -->
+        <div class="section-title">Mystery Shop (20৳ Each)</div>
+        <div class="card-grid-2">
+            <div class="pro-card" onclick="openOrder('Mystery Shop (1x)', '২০ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">Mystery Shop (1x)</span>
+                    <span class="package-price">20 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
             </div>
-            <div class="offer-card" onclick="openOrder('Friday Weekly Offer', '১০০ টাকা')">
-                <img src="friday.png" alt="Friday Weekly">
-                <span>Friday Weekly</span>
-                <div class="price">১০০ ৳</div>
+            <div class="pro-card" onclick="openOrder('Mystery Shop (2x)', '৪০ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">Mystery Shop (2x)</span>
+                    <span class="package-price">40 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
             </div>
-            <div class="offer-card" onclick="openOrder('Friday Monthly Offer', '৬০০ টাকা')">
-                <img src="friday.png" alt="Friday Monthly">
-                <span>Friday Monthly</span>
-                <div class="price">৬০০ ৳</div>
+            <div class="pro-card" onclick="openOrder('Mystery Shop (3x)', '৬০ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">Mystery Shop (3x)</span>
+                    <span class="package-price">60 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
             </div>
-            <div class="offer-card" onclick="openOrder('Level Up Pass (600 Diamonds)', '২৮০ টাকা')">
-                <img src="levelup.png" alt="Level Up">
-                <span>Level Up Pass</span>
-                <div class="price">২৮০ ৳</div>
+            <div class="pro-card" onclick="openOrder('Mystery Shop (4x)', '৮০ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">Mystery Shop (4x)</span>
+                    <span class="package-price">80 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
             </div>
         </div>
 
-        <!-- Top-up Section -->
+        <!-- Weekly গুণিতক প্যাক সেকশন -->
+        <div class="section-title">Weekly Packages (120৳ Each)</div>
+        <div class="card-grid-2">
+            <div class="pro-card" onclick="openOrder('Weekly (1x)', '১২০ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">Weekly (1x)</span>
+                    <span class="package-price">120 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
+            </div>
+            <div class="pro-card" onclick="openOrder('Weekly (2x)', '২৪০ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">Weekly (2x)</span>
+                    <span class="package-price">240 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
+            </div>
+            <div class="pro-card" onclick="openOrder('Weekly (3x)', '৩৬০ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">Weekly (3x)</span>
+                    <span class="package-price">360 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
+            </div>
+            <div class="pro-card" onclick="openOrder('Weekly (4x)', '৪৮০ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">Weekly (4x)</span>
+                    <span class="package-price">480 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
+            </div>
+        </div>
+
+        <!-- Monthly গুণিতক প্যাক সেকশন -->
+        <div class="section-title">Monthly Packages (650৳ Each)</div>
+        <div class="card-grid-2">
+            <div class="pro-card" onclick="openOrder('Monthly (1x)', '৬৫০ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">Monthly (1x)</span>
+                    <span class="package-price">650 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
+            </div>
+            <div class="pro-card" onclick="openOrder('Monthly (2x)', '১৩০০ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">Monthly (2x)</span>
+                    <span class="package-price">1300 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
+            </div>
+            <div class="pro-card" onclick="openOrder('Monthly (3x)', '১৯৫০ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">Monthly (3x)</span>
+                    <span class="package-price">1950 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
+            </div>
+            <div class="pro-card" onclick="openOrder('Monthly (4x)', '২৬০০ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">Monthly (4x)</span>
+                    <span class="package-price">2600 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
+            </div>
+        </div>
+
+        <!-- Combo Pack (Weekly + Monthly) -->
+        <div class="section-title">Combo Offers</div>
+        <div class="card-grid-2">
+            <div class="pro-card" onclick="openOrder('Weekly + Monthly Combo', '৭৭০ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">Weekly + Monthly</span>
+                    <span class="package-price">770 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
+            </div>
+        </div>
+
+        <!-- UID টপ-আপ সেকশন -->
         <div class="section-title">Uid TOPUP [BD]</div>
-        <div class="card-grid">
-            <div class="offer-card" onclick="openOrder('100 Diamonds (UID)', '৬০ টাকা')">
-                <img src="uid.png" alt="100 Diamonds">
-                <span>100 Diamonds</span>
-                <div class="price">৬০ ৳</div>
+        <div class="card-grid-2">
+            <div class="pro-card" onclick="openOrder('100 Diamonds (UID)', '৬০ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">100 Diamond</span>
+                    <span class="package-price">60 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
             </div>
-            <div class="offer-card" onclick="openOrder('250 Diamonds (UID)', '১২০ টাকা')">
-                <img src="uid.png" alt="250 Diamonds">
-                <span>250 Diamonds</span>
-                <div class="price">১২০ ৳</div>
+            <div class="pro-card" onclick="openOrder('250 Diamonds (UID)', '১২০ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">250 Diamond</span>
+                    <span class="package-price">120 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
             </div>
-            <div class="offer-card" onclick="openOrder('700 Diamonds (UID)', '৩৫৫ টাকা')">
-                <img src="uid.png" alt="700 Diamonds">
-                <span>700 Diamonds</span>
-                <div class="price">৩৫৫ ৳</div>
+            <div class="pro-card" onclick="openOrder('700 Diamonds (UID)', '৩৫৫ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">700 Diamond</span>
+                    <span class="package-price">355 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
             </div>
-            <div class="offer-card" onclick="openOrder('1200 Diamonds (UID)', '৮০০ টাকা')">
-                <img src="uid.png" alt="1200 Diamonds">
-                <span>1200 Diamonds</span>
-                <div class="price">৮০০ ৳</div>
-            </div>
-            <div class="offer-card" onclick="openOrder('Weekly Lite', '৮০ টাকা')">
-                <img src="weekly-lite.png" alt="Weekly Lite">
-                <span>Weekly Lite</span>
-                <div class="price">৮০ ৳</div>
+            <div class="pro-card" onclick="openOrder('1200 Diamonds (UID)', '৮০০ টাকা')">
+                <div class="card-top">
+                    <span class="package-name">1200 Diamond</span>
+                    <span class="package-price">800 TK</span>
+                </div>
+                <div class="card-bottom">
+                    <span class="stock-icon">⚡</span> 5.0M pcs available
+                </div>
             </div>
         </div>
 
@@ -440,7 +642,7 @@
         </div>
     </div>
 
-    <!-- নিচের বটম নেভিগেশন বার -->
+    <!-- বটম নেভিগেশন বার -->
     <div class="bottom-nav">
         <a href="#" class="nav-item active">
             <div>🏠</div>হোম
@@ -448,9 +650,10 @@
         <a href="javascript:showNav('আমার অর্ডার');" class="nav-item">
             <div>📦</div>আমার অর্ডার
         </a>
-        <a href="javascript:showNav('অ্যাড মানি');" class="nav-item">
-            <div>➕</div>অ্যাড মানি
-        </a>
+        <div class="center-btn-container" onclick="showNav('অ্যাড মানি')">
+            <div class="center-add-btn">+</div>
+            <span class="center-label">অ্যাড মানি</span>
+        </div>
         <a href="javascript:showNav('ওয়ালেট');" class="nav-item">
             <div>👛</div>ওয়ালেট
         </a>
