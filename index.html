@@ -51,32 +51,46 @@
             margin: 0 auto;
         }
 
-        /* ব্যানার ডিজাইন */
-        .banner-box {
-            width: 100%;
-            height: 120px;
-            background: linear-gradient(135deg, #ff5722, #e2136e);
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
+        /* শপ স্ট্যাটাস নোটিশ (খোলা বা বন্ধ দেখানোর জন্য) */
+        .shop-status {
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
             font-weight: bold;
             text-align: center;
+            margin-bottom: 12px;
+        }
+        .shop-open {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #34d399;
+        }
+        .shop-closed {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #f87171;
+        }
+
+        /* ব্যানার স্লাইডার স্টাইল */
+        .banner-container {
+            width: 100%;
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
             margin-bottom: 15px;
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            position: relative;
         }
 
-        .banner-box h2 {
-            font-size: 18px;
-            margin: 0 0 4px 0;
+        .banner-slide {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
         }
 
-        .banner-box p {
-            font-size: 12px;
-            margin: 0;
-            opacity: 0.9;
+        .banner-slide.active {
+            display: block;
         }
 
         .section-title {
@@ -86,7 +100,7 @@
             color: #111;
         }
 
-        /* অফার কার্ড গ্রিড */
+        /* অফার কার্ড গ্রিড (আপনার আপলোড করা ছবি সহ) */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -98,7 +112,7 @@
             background: #fff;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
-            padding: 12px 8px;
+            padding: 8px;
             text-align: center;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
             cursor: pointer;
@@ -110,9 +124,12 @@
             background-color: #fffaf8;
         }
 
-        .card-icon {
-            font-size: 26px;
-            margin-bottom: 4px;
+        .offer-card img {
+            width: 100%;
+            height: 65px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 5px;
         }
 
         .offer-card span {
@@ -122,7 +139,7 @@
             display: block;
         }
 
-        /* অর্ডার পপআপ মডাল (আইটেমে ক্লিক করলে যা আসবে) */
+        /* অর্ডার পপআপ মডাল */
         #orderModal {
             display: none;
             position: fixed;
@@ -245,29 +262,35 @@
     </div>
 
     <div class="container">
-        <!-- ব্যানার সেকশন -->
-        <div class="banner-box">
-            <h2>🔥 JHG TopUp BD 🔥</h2>
-            <p>১০০% বিশ্বস্ত ও দ্রুত ফ্রি ফায়ার টপ-আপ শপ</p>
+        <!-- শপ খোলা বা বন্ধ স্ট্যাটাস নোটিশ -->
+        <div id="shopStatusBox" class="shop-status shop-open">
+            🟢 শপ খোলা আছে! আপনি অর্ডার করতে পারেন।
+        </div>
+
+        <!-- ব্যানার স্লাইডার (আপনার আপলোড করা ৩টি ব্যানার) -->
+        <div class="banner-container">
+            <img src="banner1.png" class="banner-slide active" alt="Banner 1">
+            <img src="banner2.png" class="banner-slide" alt="Banner 2">
+            <img src="banner3.png" class="banner-slide" alt="Banner 3">
         </div>
 
         <!-- Offer Offer Section -->
         <div class="section-title">Offer Offer</div>
         <div class="card-grid">
             <div class="offer-card" onclick="openOrder('Mystery Shop')">
-                <div class="card-icon">🎁</div>
+                <img src="mystery.png" alt="Mystery Shop">
                 <span>Mystery Shop</span>
             </div>
             <div class="offer-card" onclick="openOrder('[BD] UID OFFER')">
-                <div class="card-icon">⚡</div>
+                <img src="uid.png" alt="UID Offer">
                 <span>[BD] UID OFFER</span>
             </div>
             <div class="offer-card" onclick="openOrder('Weekly/Monthly Offer')">
-                <div class="card-icon">💎</div>
+                <img src="weekly.png" alt="Weekly">
                 <span>Weekly/Monthly</span>
             </div>
             <div class="offer-card" onclick="openOrder('Friday Offers')">
-                <div class="card-icon">🔥</div>
+                <img src="friday.png" alt="Friday">
                 <span>Friday Offers</span>
             </div>
         </div>
@@ -275,22 +298,22 @@
         <!-- Top-up Section -->
         <div class="section-title">Top-up</div>
         <div class="card-grid">
-            <div class="offer-card" onclick="openOrder('Uid TOPUP [BD]')">
-                <div class="card-icon">🛒</div>
-                <span>Uid TOPUP [BD]</span>
-            </div>
-            <div class="offer-card" onclick="openOrder('Weekly Monthly Combo')">
-                <div class="card-icon">⭐</div>
-                <span>Weekly Combo</span>
+            <div class="offer-card" onclick="openOrder('Level Up Pass')">
+                <img src="levelup.png" alt="Level Up">
+                <span>Level Up Pass</span>
             </div>
             <div class="offer-card" onclick="openOrder('Weekly Lite')">
-                <div class="card-icon">📦</div>
+                <img src="weekly-lite.png" alt="Weekly Lite">
                 <span>Weekly Lite</span>
+            </div>
+            <div class="offer-card" onclick="openOrder('Uid TOPUP [BD]')">
+                <img src="uid.png" alt="UID Topup">
+                <span>Uid TOPUP [BD]</span>
             </div>
         </div>
     </div>
 
-    <!-- অর্ডার পপআপ উইন্ডো (আইটেমে ক্লিক করলেই এটি ওপেন হবে) -->
+    <!-- অর্ডার পপআপ উইন্ডো -->
     <div id="orderModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeOrder()">&times;</span>
@@ -339,7 +362,42 @@
     </div>
 
     <script>
+        // ব্যানার অটো স্লাইড শো করার কোড
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 3000); // প্রতি ৩ সেকেন্ড পর পর ব্যানার বদলাবে
+
+        // সকাল ৯টা থেকে সন্ধ্যা ৬টা পর্যন্ত শপ বন্ধ রাখার নিয়ম চেক করার ফাংশন
+        function checkShopTime() {
+            const now = new Date();
+            const hour = now.getHours(); // ২৪ ঘণ্টার ফরম্যাটে সময় (যেমন সকাল ৯টা = 9, সন্ধ্যা ৬টা = 18)
+            
+            const statusBox = document.getElementById("shopStatusBox");
+            
+            // যদি সকাল ৯টা (9) থেকে সন্ধ্যা ৬টার (18) মধ্যে হয়, শপ বন্ধ থাকবে
+            if (hour >= 9 && hour < 18) {
+                statusBox.className = "shop-status shop-closed";
+                statusBox.innerHTML = "🔴 দুঃখিত! শপ বর্তমানে বন্ধ আছে। (সময়: সকাল ৯টা - সন্ধ্যা ৬টা বন্ধ)";
+            } else {
+                statusBox.className = "shop-status shop-open";
+                statusBox.innerHTML = "🟢 শপ খোলা আছে! আপনি নিশ্চিন্তে অর্ডার করতে পারেন।";
+            }
+        }
+        checkShopTime();
+
         function openOrder(packageName) {
+            const now = new Date();
+            const hour = now.getHours();
+            if (hour >= 9 && hour < 18) {
+                alert("দুঃখিত! সকাল ৯টা থেকে সন্ধ্যা ৬টা পর্যন্ত শপ বন্ধ থাকে। এই সময়ে অর্ডার নেওয়া হয় না।");
+                return;
+            }
+
             document.getElementById("selectedPackage").value = packageName;
             document.getElementById("modalTitle").innerText = "অর্ডার করুন: " + packageName;
             document.getElementById("orderModal").style.display = "flex";
