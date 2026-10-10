@@ -228,7 +228,7 @@
             display: inline-block;
         }
 
-        /* ফুল স্ক্রিন মডাল উইন্ডো ফিক্সড */
+        /* স্ক্রিনশটের মতো ফুল স্ক্রিন পেজ স্টাইল */
         .modal {
             display: none;
             position: fixed;
@@ -236,38 +236,34 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.6);
+            background: #f4f6f8;
             z-index: 2000;
-            justify-content: center;
-            align-items: center;
             overflow-y: auto;
-            padding: 10px;
             box-sizing: border-box;
         }
 
         .modal-content {
             background: #fff;
             width: 100%;
-            max-width: 420px;
-            padding: 25px 20px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            position: relative;
-            margin: auto;
+            max-width: 500px;
+            min-height: 100vh;
+            margin: 0 auto;
+            padding: 20px 15px 40px 15px;
             box-sizing: border-box;
+            position: relative;
         }
 
         .close-btn {
             position: absolute;
-            top: 12px;
-            right: 15px;
-            font-size: 22px;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
             font-weight: bold;
-            color: #888;
+            color: #666;
             cursor: pointer;
         }
 
-        /* বিকাশ পেমেন্ট কার্ড বক্স */
+        /* স্ক্রিনশটের মতো বিকাশ পেমেন্ট কার্ড বক্স */
         .bkash-payment-box {
             background: #e2136e;
             color: white;
@@ -287,14 +283,14 @@
         }
 
         .input-group {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .input-group label {
-            font-size: 12px;
+            font-size: 13px;
             color: #444;
             display: block;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
             font-weight: bold;
         }
 
@@ -323,12 +319,12 @@
             color: white;
             text-align: center;
             font-weight: bold;
-            padding: 12px;
+            padding: 14px;
             border-radius: 6px;
             border: none;
             cursor: pointer;
-            font-size: 14px;
-            margin-top: 5px;
+            font-size: 15px;
+            margin-top: 10px;
         }
 
         .whatsapp-order-btn {
@@ -410,17 +406,6 @@
 
     <div class="container">
         <!-- শপ খোলা স্ট্যাটাস নোটিশ -->
-        .shop-status {
-            background-color: #d1fae5;
-            color: #065f46;
-            border: 1px solid #34d399;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 12px;
-        }
         <div class="shop-status">
             🟢 শপ সবসময় খোলা আছে! আপনি যেকোনো সময় অর্ডার করতে পারেন।
         </div>
@@ -459,16 +444,16 @@
             </div>
         </div>
 
-        <!-- Top-up Section -->
+        <!-- Top-up Section (আলাদা আলাদা Weekly এবং Monthly) -->
         <div class="section-title">Top-up</div>
         <div class="card-grid-3">
-            <div class="main-category-card" onclick="openPackageOptions('Uid TOPUP [BD]')">
-                <img src="uid.png" alt="Uid TOPUP">
-                <span>Uid TOPUP [BD]</span>
+            <div class="main-category-card" onclick="openPackageOptions('Weekly')">
+                <img src="weekly.png" alt="Weekly">
+                <span>Weekly</span>
             </div>
-            <div class="main-category-card" onclick="openPackageOptions('Weekly Monthly Combo')">
-                <img src="weekly.png" alt="Combo">
-                <span>Weekly Monthly Combo</span>
+            <div class="main-category-card" onclick="openPackageOptions('Monthly')">
+                <img src="weekly.png" alt="Monthly">
+                <span>Monthly</span>
             </div>
             <div class="main-category-card" onclick="openPackageOptions('Weekly Lite')">
                 <img src="weekly-lite.png" alt="Weekly Lite">
@@ -486,64 +471,38 @@
         </div>
     </div>
 
-    <!-- প্যাকেজ অপশন পপআপ -->
+    <!-- প্যাকেজ অপশন ফুল স্ক্রিন পেজ -->
     <div id="packageModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('packageModal')">&times;</span>
-            <h3 id="packageModalTitle" style="color: #ff5722; margin-top: 0; margin-bottom: 15px; font-size: 16px; text-align: center;">প্যাকেজ নির্বাচন করুন</h3>
+            <h3 id="packageModalTitle" style="color: #ff5722; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">প্যাকেজ নির্বাচন করুন</h3>
             <div id="packageListContainer" class="card-grid-2"></div>
         </div>
     </div>
 
-    <!-- Friday Offers পপআপ মডাল -->
+    <!-- Friday Offers ফুল স্ক্রিন পেজ -->
     <div id="fridayModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('fridayModal')">&times;</span>
-            <h3 style="color: #ff5722; margin-top: 0; margin-bottom: 15px; font-size: 16px; text-align: center;">Friday Offers Packages</h3>
-            <div class="card-grid-2">
-                <div class="pro-card" onclick="startOrderProcess('Friday Weekly', '১০০ টাকা')">
-                    <div class="card-top"><span class="package-name">Weekly</span><span class="package-price">100 TK</span></div>
-                    <div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>
-                </div>
-                <div class="pro-card" onclick="startOrderProcess('Friday Monthly', '৬০০ টাকা')">
-                    <div class="card-top"><span class="package-name">Monthly</span><span class="package-price">600 TK</span></div>
-                    <div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>
-                </div>
-            </div>
+            <h3 style="color: #ff5722; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">Friday Offers Packages</h3>
+            <div id="fridayListContainer" class="card-grid-2"></div>
         </div>
     </div>
 
-    <!-- Level Up Pass পপআপ মডাল -->
+    <!-- Level Up Pass ফুল স্ক্রিন পেজ -->
     <div id="levelUpModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('levelUpModal')">&times;</span>
-            <h3 style="color: #ff5722; margin-top: 0; margin-bottom: 15px; font-size: 16px; text-align: center;">Level Up Pass Packages</h3>
-            <div class="card-grid-2">
-                <div class="pro-card" onclick="startOrderProcess('Level Up Pass (1x - 150 Diamonds)', '৭০ টাকা')">
-                    <div class="card-top"><span class="package-name">150 Diamond (1x)</span><span class="package-price">70 TK</span></div>
-                    <div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>
-                </div>
-                <div class="pro-card" onclick="startOrderProcess('Level Up Pass (2x - 300 Diamonds)', '১৪০ টাকা')">
-                    <div class="card-top"><span class="package-name">300 Diamond (2x)</span><span class="package-price">140 TK</span></div>
-                    <div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>
-                </div>
-                <div class="pro-card" onclick="startOrderProcess('Level Up Pass (3x - 450 Diamonds)', '২১০ টাকা')">
-                    <div class="card-top"><span class="package-name">450 Diamond (3x)</span><span class="package-price">210 TK</span></div>
-                    <div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>
-                </div>
-                <div class="pro-card" onclick="startOrderProcess('Level Up Pass (4x - 600 Diamonds)', '২৮০ টাকা')">
-                    <div class="card-top"><span class="package-name">600 Diamond (4x)</span><span class="package-price">280 TK</span></div>
-                    <div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>
-                </div>
-            </div>
+            <h3 style="color: #ff5722; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">Level Up Pass Packages</h3>
+            <div id="levelUpListContainer" class="card-grid-2"></div>
         </div>
     </div>
 
-    <!-- ধাপ ১: Player UID ইনপুট পেজ -->
+    <!-- ধাপ ১: Player UID ইনপুট ফুল স্ক্রিন পেজ -->
     <div id="uidModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('uidModal')">&times;</span>
-            <h3 style="color: #ff5722; margin-top: 0; margin-bottom: 10px; font-size: 16px; text-align: center;">Account Info</h3>
+            <h3 style="color: #ff5722; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">Account Info</h3>
             
             <div class="input-group">
                 <label>নির্বাচিত প্যাকেজ:</label>
@@ -559,11 +518,11 @@
         </div>
     </div>
 
-    <!-- ধাপ ২: বিকাশ পেমেন্ট ও Transaction ID ইনপুট পেজ -->
+    <!-- ধাপ ২: বিকাশ পেমেন্ট ও Transaction ID ইনপুট ফুল স্ক্রিন পেজ -->
     <div id="trxModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('trxModal')">&times;</span>
-            <h3 style="color: #e2136e; margin-top: 0; margin-bottom: 10px; font-size: 16px; text-align: center;">বিকাশ পেমেন্ট ও ট্রানজেকশন আইডি</h3>
+            <h3 style="color: #e2136e; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">বিকাশ পেমেন্ট ও ট্রানজেকশন আইডি</h3>
             
             <div class="bkash-payment-box">
                 <h4>bKash Personal</h4>
@@ -582,11 +541,11 @@
         </div>
     </div>
 
-    <!-- লগইন পপআপ মডাল -->
+    <!-- লগইন ফুল স্ক্রিন পেজ -->
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
-            <h3 style="color: #ff5722; margin-top: 0; margin-bottom: 15px; font-size: 16px; text-align: center;">অ্যাকাউন্ট লগইন</h3>
+            <h3 style="color: #ff5722; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">অ্যাকাউন্ট লগইন</h3>
 
             <div class="input-group">
                 <label>মোবাইল নম্বর / ইমেল:</label>
@@ -634,6 +593,7 @@
 
         let selectedPkgInfo = "";
 
+        // সঠিক দাম এবং ১ থেকে ৪ গুণ হিসাব করে প্যাক লোড করার ফাংশন
         function openPackageOptions(categoryName) {
             document.getElementById("packageModalTitle").innerText = categoryName + " Packages";
             const container = document.getElementById("packageListContainer");
@@ -643,12 +603,18 @@
 
             if (categoryName.includes('Mystery Shop')) {
                 unitPrice = 20;
-            } else if (categoryName.includes('UID')) {
+            } else if (categoryName.includes('UID Offer')) {
                 unitPrice = 80;
-            } else if (categoryName.includes('Weekly/Monthly') || categoryName.includes('Combo')) {
+            } else if (categoryName.includes('Uid TOPUP [BD]')) {
+                unitPrice = 60;
+            } else if (categoryName.includes('Weekly/Monthly Combo') || categoryName.includes('Weekly Monthly Combo')) {
                 unitPrice = 770;
             } else if (categoryName.includes('Weekly Lite')) {
                 unitPrice = 80;
+            } else if (categoryName === 'Weekly') {
+                unitPrice = 120;
+            } else if (categoryName === 'Monthly') {
+                unitPrice = 650;
             }
 
             for (let i = 1; i <= 4; i++) {
@@ -671,15 +637,68 @@
                 container.appendChild(card);
             }
 
-            document.getElementById("packageModal").style.display = "flex";
+            document.getElementById("packageModal").style.display = "block";
         }
 
+        // Friday Offers অপশন (Weekly ১০০ টাকা ও Monthly ৬০০ টাকা - ১ থেকে ৪ গুণ)
         function openFridayModal() {
-            document.getElementById("fridayModal").style.display = "flex";
+            const container = document.getElementById("fridayListContainer");
+            container.innerHTML = "";
+
+            for (let i = 1; i <= 4; i++) {
+                let p = 100 * i;
+                let title = `Friday Weekly (${i}x)`;
+                let card = document.createElement('div');
+                card.className = 'pro-card';
+                card.onclick = function() {
+                    closeModal('fridayModal');
+                    startOrderProcess(title, p + " টাকা");
+                };
+                card.innerHTML = `<div class="card-top"><span class="package-name">${title}</span><span class="package-price">${p} TK</span></div><div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>`;
+                container.appendChild(card);
+            }
+
+            for (let i = 1; i <= 4; i++) {
+                let p = 600 * i;
+                let title = `Friday Monthly (${i}x)`;
+                let card = document.createElement('div');
+                card.className = 'pro-card';
+                card.onclick = function() {
+                    closeModal('fridayModal');
+                    startOrderProcess(title, p + " টাকা");
+                };
+                card.innerHTML = `<div class="card-top"><span class="package-name">${title}</span><span class="package-price">${p} TK</span></div><div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>`;
+                container.appendChild(card);
+            }
+
+            document.getElementById("fridayModal").style.display = "block";
         }
 
+        // Level Up Pass অপশন (৭০ টাকা - ১ থেকে ৪ গুণ)
         function openLevelUpModal() {
-            document.getElementById("levelUpModal").style.display = "flex";
+            const container = document.getElementById("levelUpListContainer");
+            container.innerHTML = "";
+
+            const diamondSteps = [150, 300, 450, 600];
+            const priceSteps = [70, 140, 210, 280];
+
+            for (let i = 0; i < 4; i++) {
+                let d = diamondSteps[i];
+                let p = priceSteps[i];
+                let x = i + 1;
+                let title = `Level Up Pass (${d} Diamonds - ${x}x)`;
+
+                let card = document.createElement('div');
+                card.className = 'pro-card';
+                card.onclick = function() {
+                    closeModal('levelUpModal');
+                    startOrderProcess(title, p + " টাকা");
+                };
+                card.innerHTML = `<div class="card-top"><span class="package-name">${title}</span><span class="package-price">${p} TK</span></div><div class="card-bottom"><span class="stock-icon">⚡</span> 5.0M available</div>`;
+                container.appendChild(card);
+            }
+
+            document.getElementById("levelUpModal").style.display = "block";
         }
 
         function startOrderProcess(pkgName, pkgPrice) {
@@ -689,7 +708,7 @@
             closeModal('fridayModal');
             closeModal('levelUpModal');
             document.getElementById("gameUid").value = "";
-            document.getElementById("uidModal").style.display = "flex";
+            document.getElementById("uidModal").style.display = "block";
         }
 
         function goToTrxModal() {
@@ -700,11 +719,11 @@
             }
             closeModal('uidModal');
             document.getElementById("trxId").value = "";
-            document.getElementById("trxModal").style.display = "flex";
+            document.getElementById("trxModal").style.display = "block";
         }
 
         function openLogin() {
-            document.getElementById("loginModal").style.display = "flex";
+            document.getElementById("loginModal").style.display = "block";
         }
 
         function closeModal(modalId) {
