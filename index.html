@@ -15,7 +15,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #0f172a;
             color: #f8fafc;
-            padding-bottom: 40px;
+            padding-bottom: 70px; /* নিচের নেভিগেশন বারের জন্য জায়গা */
         }
 
         /* হেডার ডিজাইন */
@@ -41,7 +41,7 @@
         }
 
         .main-container {
-            max-width: 480px;
+            max-width: 440px;
             margin: 15px auto;
             padding: 0 10px;
         }
@@ -71,6 +71,40 @@
             border-bottom: 1px solid #334155;
             padding-bottom: 5px;
             font-weight: bold;
+        }
+
+        /* লাকি স্পিন সেকশন */
+        .spinner-section {
+            background: #1e293b;
+            border: 1px solid #6366f1;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .spinner-section h3 {
+            font-size: 15px;
+            color: #a5b4fc;
+        }
+
+        .spin-btn {
+            background-color: #6366f1;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        #spinResult {
+            margin-top: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #10b981;
         }
 
         /* প্যাকেজ বা কার্ড ডিজাইন */
@@ -119,86 +153,85 @@
             font-weight: bold;
         }
 
-        .select-btn:hover {
-            background-color: #2563eb;
-        }
-
-        /* লাকি স্পিন সেকশন */
-        .spinner-section {
+        /* পেমেন্ট ও অর্ডার সেকশন */
+        .payment-box-card {
             background: #1e293b;
-            border: 1px solid #6366f1;
-            padding: 12px;
+            border: 1px solid #334155;
             border-radius: 8px;
-            text-align: center;
+            padding: 12px;
             margin-bottom: 15px;
         }
 
-        .spinner-section h3 {
-            font-size: 15px;
-            color: #a5b4fc;
-        }
-
-        .spin-btn {
-            background-color: #6366f1;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            font-size: 13px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 8px;
-        }
-
-        .spin-btn:hover {
-            background-color: #4f46e5;
-        }
-
-        #spinResult {
-            margin-top: 8px;
-            font-size: 12px;
-            font-weight: bold;
-            color: #10b981;
-        }
-
-        /* পেমেন্ট ও অর্ডার সেকশন */
-        .payment-container {
-            background: #1e293b;
-            padding: 15px;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            border: 1px solid #334155;
-        }
-
-        .bkash-box {
-            background-color: #331422;
-            border: 1px solid #e2136e;
+        .bkash-header {
             color: #f43f5e;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 10px;
+            background: #331422;
+            border: 1px solid #e2136e;
             padding: 10px;
             border-radius: 6px;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .payment-elements {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .b-logo {
+            border: 2px solid #e2136e;
+            background-color: #331422;
+            color: #e2136e;
             font-weight: bold;
             text-align: center;
+            padding: 10px 4px;
+            border-radius: 6px;
+            width: 25%;
             font-size: 13px;
-            line-height: 1.5;
+        }
+
+        .trx-input {
+            border: 1px solid #475569;
+            background: #0f172a;
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            width: 40%;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .whatsapp-action-btn {
+            background-color: #25d366;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            padding: 10px 6px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 11px;
+            width: 35%;
+            display: inline-block;
         }
 
         .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+            margin-top: 10px;
         }
 
         .input-group label {
             font-size: 12px;
             color: #94a3b8;
+            display: block;
+            margin-bottom: 4px;
         }
 
-        input {
+        .full-input {
             width: 100%;
             padding: 10px;
-            font-size: 14px;
+            font-size: 13px;
             background: #0f172a;
             border: 1px solid #475569;
             color: white;
@@ -206,35 +239,35 @@
             outline: none;
         }
 
-        input:focus {
-            border-color: #e2136e;
-        }
-
-        .whatsapp-btn {
+        /* একদম নিচের বটম নেভিগেশন বার */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
             width: 100%;
-            background-color: #25d366;
-            color: white;
+            background: #1e293b;
+            border-top: 1px solid #334155;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            z-index: 1000;
+        }
+
+        .nav-item {
             text-align: center;
-            font-weight: bold;
-            padding: 12px;
-            font-size: 15px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
             text-decoration: none;
-            display: inline-block;
+            color: #94a3b8;
+            font-size: 11px;
         }
 
-        .whatsapp-btn:hover {
-            background-color: #22bf5b;
+        .nav-item.active {
+            color: #e2136e;
+            font-weight: bold;
         }
 
-        /* ফুটার */
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 12px;
-            color: #64748b;
+        .nav-item div {
+            font-size: 16px;
+            margin-bottom: 2px;
         }
     </style>
 </head>
@@ -248,7 +281,7 @@
     <div class="main-container">
         <!-- নোটিশ বোর্ড -->
         <div class="notice-board">
-            <span>জরুরি নোটিশ:</span> টাকা পাঠানোর পর অবশ্যই সঠিক UID এবং TrxID দিয়ে WhatsApp-এ অর্ডার নিশ্চিত করুন।
+            <span>জরুরি নোটিশ:</span> টাকা পাঠানোর পর সঠিক UID ও TrxID দিয়ে WhatsApp-এ অর্ডার নিশ্চিত করুন।
         </div>
 
         <!-- লাকি স্পিন হুইল -->
@@ -286,44 +319,59 @@
 
         <!-- পেমেন্ট ও অর্ডার সেকশন -->
         <div class="section-title">🛒 পেমেন্ট ও তথ্য পূরণ</div>
-        <div class="payment-container">
-            <div class="bkash-box">
-                বিকাশ পার্সোনাল (Send Money):<br>01781511654
+        <div class="payment-box-card">
+            <div class="bkash-header">
+                পেমেন্ট পদ্ধতি (bKash Personal):<br>01781511654
             </div>
 
             <div class="input-group">
                 <label>নির্বাচিত প্যাকেজ:</label>
-                <input type="text" id="selectedPackageName" placeholder="উপরে থেকে প্যাকেজ সিলেক্ট করুন" readonly>
+                <input type="text" class="full-input" id="selectedPackageName" placeholder="ওপর থেকে প্যাকেজ সিলেক্ট করুন" readonly>
             </div>
-            
+
             <div class="input-group">
                 <label>গেম UID:</label>
-                <input type="text" id="gameUid" placeholder="আপনার গেম UID লিখুন">
+                <input type="text" class="full-input" id="gameUid" placeholder="আপনার গেম UID লিখুন">
             </div>
 
             <div class="input-group">
                 <label>বিকাশ TrxID:</label>
-                <input type="text" id="trxId" placeholder="টাকা পাঠিয়ে TrxID দিন">
+                <div class="payment-elements" style="margin-top: 4px;">
+                    <div class="b-logo">bKash</div>
+                    <input type="text" class="trx-input" placeholder="TrxID" id="trxId" style="width: 55%;">
+                    <a href="javascript:void(0);" class="whatsapp-action-btn" onclick="sendWhatsApp()" style="width: 35%; padding: 10px 4px; font-size: 10px; text-align: center;">
+                        অর্ডার কনফার্ম
+                    </a>
+                </div>
             </div>
-            
-            <a href="javascript:void(0);" class="whatsapp-btn" onclick="sendToWhatsApp()">
-                WhatsApp-এ অর্ডার নিশ্চিত করুন
-            </a>
         </div>
+    </div>
 
-        <footer>
-            &copy; 2026 JHG TopUp BD. All Rights Reserved.
-        </footer>
+    <!-- নিচের ফিক্সড নেভিগেশন বার -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active">
+            <div>🏠</div>হোম
+        </a>
+        <a href="#" class="nav-item">
+            <div>📦</div>আমার অর্ডার
+        </a>
+        <a href="#" class="nav-item">
+            <div>➕</div>অ্যাড মানি
+        </a>
+        <a href="#" class="nav-item">
+            <div>👛</div>ওয়ালেট
+        </a>
+        <a href="#" class="nav-item">
+            <div>👤</div>প্রোফাইল
+        </a>
     </div>
 
     <script>
-        // প্যাকেজ সিলেক্ট করার ফাংশন
         function selectPackage(packageName) {
             document.getElementById("selectedPackageName").value = packageName;
-            alert(packageName + " সিলেক্ট করা হয়েছে। এখন পেমেন্ট করে তথ্য পূরণ করুন।");
+            alert(packageName + " সিলেক্ট করা হয়েছে।");
         }
 
-        // স্পিন হুইল ফাংশন
         function spinWheel() {
             const results = [
                 "🎉 অভিনন্দন! আপনি পরবর্তী অর্ডারে ১০ টাকা ডিসকাউন্ট জিতেছেন!", 
@@ -335,22 +383,21 @@
             document.getElementById("spinResult").innerText = results[randomIndex];
         }
 
-        // হোয়াটসঅ্যাপে অর্ডার পাঠানোর ফাংশন
-        function sendToWhatsApp() {
+        function sendWhatsApp() {
             const pkg = document.getElementById("selectedPackageName").value;
             const uid = document.getElementById("gameUid").value;
             const trx = document.getElementById("trxId").value;
 
             if(!pkg) {
-                alert("দয়া করে প্রথমে ওপরের লিস্ট থেকে একটি প্যাকেজ সিলেক্ট করুন!");
+                alert("দয়া করে ওপর থেকে প্যাকেজ সিলেক্ট করুন!");
                 return;
             }
             if(!uid.trim()) {
-                alert("দয়া করে আপনার গেম UID লিখুন!");
+                alert("দয়া করে গেম UID লিখুন!");
                 return;
             }
             if(!trx.trim()) {
-                alert("দয়া করে বিকাশ TrxID লিখুন!");
+                alert("দয়া করে TrxID লিখুন!");
                 return;
             }
 
