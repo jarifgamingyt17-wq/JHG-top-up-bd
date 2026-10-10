@@ -3,240 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ᴊʜɢ ᭄Jarif YT - JHG TopUp BD</title>
+    <title>JHG TopUp BD</title>
     <style>
-        * {
-            box-sizing: border-box;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
-            padding-bottom: 70px; /* নিচের নেভিগেশন বারের জন্য জায়গা */
+            padding-bottom: 70px;
+            color: #333;
         }
 
         /* হেডার ডিজাইন */
-        header {
-            background: linear-gradient(135deg, #1e293b, #0f172a);
-            border-bottom: 2px solid #e2136e;
-            padding: 15px;
-            text-align: center;
+        .header {
+            background-color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
         }
 
-        header h1 {
-            color: #e2136e;
-            font-size: 20px;
-            margin-bottom: 4px;
+        .header h1 {
+            color: #f95325;
+            font-size: 22px;
+            margin: 0;
         }
 
-        header p {
-            font-size: 12px;
-            color: #94a3b8;
-        }
-
-        .main-container {
-            max-width: 440px;
-            margin: 15px auto;
-            padding: 0 10px;
-        }
-
-        /* নোটিশ বোর্ড */
-        .notice-board {
-            background: #1e293b;
-            border-left: 4px solid #e2136e;
-            padding: 10px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            margin-bottom: 15px;
-            color: #cbd5e1;
-            line-height: 1.4;
-        }
-
-        .notice-board span {
-            color: #e2136e;
-            font-weight: bold;
-        }
-
-        /* সেকশন হেডিং */
-        .section-title {
-            font-size: 15px;
-            color: #38bdf8;
-            margin: 15px 0 10px 0;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 5px;
-            font-weight: bold;
-        }
-
-        /* লাকি স্পিন সেকশন */
-        .spinner-section {
-            background: #1e293b;
-            border: 1px solid #6366f1;
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .spinner-section h3 {
-            font-size: 15px;
-            color: #a5b4fc;
-        }
-
-        .spin-btn {
-            background-color: #6366f1;
+        .login-btn {
+            background-color: #ff5722;
             color: white;
             border: none;
-            padding: 8px 16px;
-            font-size: 13px;
-            font-weight: bold;
+            padding: 8px 18px;
             border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
             cursor: pointer;
-            margin-top: 8px;
-        }
-
-        #spinResult {
-            margin-top: 8px;
-            font-size: 12px;
-            font-weight: bold;
-            color: #10b981;
-        }
-
-        /* প্যাকেজ বা কার্ড ডিজাইন */
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .package-card {
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            padding: 12px;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .package-card:hover {
-            border-color: #e2136e;
-        }
-
-        .package-card h3 {
-            font-size: 13px;
-            margin-bottom: 6px;
-            color: #f1f5f9;
-        }
-
-        .package-card .price {
-            font-size: 15px;
-            color: #e2136e;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .select-btn {
-            background-color: #3b82f6;
-            color: white;
-            border: none;
-            padding: 6px 10px;
-            font-size: 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            font-weight: bold;
-        }
-
-        /* পেমেন্ট ও অর্ডার সেকশন */
-        .payment-box-card {
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 15px;
-        }
-
-        .bkash-header {
-            color: #f43f5e;
-            font-weight: bold;
-            font-size: 13px;
-            margin-bottom: 10px;
-            background: #331422;
-            border: 1px solid #e2136e;
-            padding: 10px;
-            border-radius: 6px;
-            text-align: center;
-            line-height: 1.4;
-        }
-
-        .payment-elements {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .b-logo {
-            border: 2px solid #e2136e;
-            background-color: #331422;
-            color: #e2136e;
-            font-weight: bold;
-            text-align: center;
-            padding: 10px 4px;
-            border-radius: 6px;
-            width: 25%;
-            font-size: 13px;
-        }
-
-        .trx-input {
-            border: 1px solid #475569;
-            background: #0f172a;
-            color: white;
-            padding: 10px;
-            border-radius: 6px;
-            width: 40%;
-            font-size: 13px;
-            outline: none;
-        }
-
-        .whatsapp-action-btn {
-            background-color: #25d366;
-            color: white;
-            text-align: center;
-            font-weight: bold;
-            padding: 10px 6px;
-            border-radius: 6px;
             text-decoration: none;
-            font-size: 11px;
-            width: 35%;
-            display: inline-block;
+        }
+
+        .container {
+            padding: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 15px 0 10px 0;
+            color: #111;
+        }
+
+        /* অফার কার্ড গ্রিড */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .offer-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .offer-card:hover {
+            border-color: #ff5722;
+        }
+
+        .offer-card img {
+            width: 100%;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 6px;
+        }
+
+        .offer-card span {
+            font-size: 12px;
+            font-weight: bold;
+            color: #333;
+            display: block;
+        }
+
+        /* পেমেন্ট সেকশন কার্ড */
+        .payment-box {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .bkash-info {
+            color: #e2136e;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 12px;
+            text-align: center;
+            background: #fdf2f4;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #e2136e;
         }
 
         .input-group {
-            margin-top: 10px;
+            margin-bottom: 10px;
         }
 
         .input-group label {
             font-size: 12px;
-            color: #94a3b8;
+            color: #666;
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
 
-        .full-input {
+        .input-group input {
             width: 100%;
             padding: 10px;
-            font-size: 13px;
-            background: #0f172a;
-            border: 1px solid #475569;
-            color: white;
+            font-size: 14px;
+            border: 1px solid #ccc;
             border-radius: 6px;
             outline: none;
+            box-sizing: border-box;
+        }
+
+        .whatsapp-btn {
+            width: 100%;
+            background-color: #25d366;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 5px;
         }
 
         /* একদম নিচের বটম নেভিগেশন বার */
@@ -245,8 +158,8 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: #1e293b;
-            border-top: 1px solid #334155;
+            background: #fff;
+            border-top: 1px solid #ddd;
             display: flex;
             justify-content: space-around;
             padding: 8px 0;
@@ -256,12 +169,12 @@
         .nav-item {
             text-align: center;
             text-decoration: none;
-            color: #94a3b8;
+            color: #666;
             font-size: 11px;
         }
 
         .nav-item.active {
-            color: #e2136e;
+            color: #ff5722;
             font-weight: bold;
         }
 
@@ -273,81 +186,77 @@
 </head>
 <body>
 
-    <header>
-        <h1>ᴊʜɢ ᭄Jarif YT - TopUp BD</h1>
-        <p>১০০% বিশ্বস্ত ও দ্রুত ফ্রি ফায়ার টপ-আপ শপ</p>
-    </header>
+    <!-- হেডার -->
+    <div class="header">
+        <h1>JHG TopUp BD</h1>
+        <a href="#" class="login-btn">লগইন</a>
+    </div>
 
-    <div class="main-container">
-        <!-- নোটিশ বোর্ড -->
-        <div class="notice-board">
-            <span>জরুরি নোটিশ:</span> টাকা পাঠানোর পর সঠিক UID ও TrxID দিয়ে WhatsApp-এ অর্ডার নিশ্চিত করুন।
-        </div>
-
-        <!-- লাকি স্পিন হুইল -->
-        <div class="spinner-section">
-            <h3>🎁 লাকি স্পিন ও ডিসকাউন্ট</h3>
-            <p style="font-size: 12px; color: #94a3b8; margin: 4px 0;">স্পিন করে জিতে নিন বিশেষ ছাড়!</p>
-            <button class="spin-btn" onclick="spinWheel()">স্পিন করুন</button>
-            <div id="spinResult"></div>
-        </div>
-
-        <!-- গেম প্যাকেজ সেকশন -->
-        <div class="section-title">🔥 ডায়মন্ড ও মেম্বারশিপ অফার</div>
-        <div class="packages-grid">
-            <div class="package-card">
-                <h3>Weekly Membership</h3>
-                <div class="price">১০০ টাকা</div>
-                <button class="select-btn" onclick="selectPackage('Weekly Membership - 100 BDT')">সিলেক্ট করুন</button>
+    <div class="container">
+        <!-- Offer Offer Section -->
+        <div class="section-title">Offer Offer</div>
+        <div class="card-grid">
+            <div class="offer-card" onclick="selectPackage('Mystery Shop')">
+                <img src="https://i.ibb.co/3W6m6Wc/mystery-shop.jpg" alt="Mystery Shop" onerror="this.src='https://via.placeholder.com/150/ff5722/fff?text=Mystery+Shop'">
+                <span>Mystery Shop</span>
             </div>
-            <div class="package-card">
-                <h3>Monthly Membership</h3>
-                <div class="price">৫০০ টাকা</div>
-                <button class="select-btn" onclick="selectPackage('Monthly Membership - 500 BDT')">সিলেক্ট করুন</button>
+            <div class="offer-card" onclick="selectPackage('[BD] UID OFFER')">
+                <img src="https://i.ibb.co/9v9Z9Z9/uid-offer.jpg" alt="UID Offer" onerror="this.src='https://via.placeholder.com/150/ff5722/fff?text=UID+OFFER'">
+                <span>[BD] UID OFFER</span>
             </div>
-            <div class="package-card">
-                <h3>25 Diamonds</h3>
-                <div class="price">২৫ টাকা</div>
-                <button class="select-btn" onclick="selectPackage('25 Diamonds - 25 BDT')">সিলেক্ট করুন</button>
+            <div class="offer-card" onclick="selectPackage('Weekly/Monthly Offer')">
+                <img src="https://via.placeholder.com/150/ff5722/fff?text=Weekly" alt="Weekly">
+                <span>Weekly/Monthly Offer</span>
             </div>
-            <div class="package-card">
-                <h3>115 Diamonds</h3>
-                <div class="price">৮৫ টাকা</div>
-                <button class="select-btn" onclick="selectPackage('115 Diamonds - 85 BDT')">সিলেক্ট করুন</button>
+            <div class="offer-card" onclick="selectPackage('Friday Offers')">
+                <img src="https://via.placeholder.com/150/ff5722/fff?text=Friday" alt="Friday">
+                <span>Friday Offers 🔥</span>
             </div>
         </div>
 
-        <!-- পেমেন্ট ও অর্ডার সেকশন -->
-        <div class="section-title">🛒 পেমেন্ট ও তথ্য পূরণ</div>
-        <div class="payment-box-card">
-            <div class="bkash-header">
+        <!-- Top-up Section -->
+        <div class="section-title">Top-up</div>
+        <div class="card-grid">
+            <div class="offer-card" onclick="selectPackage('Uid TOPUP [BD]')">
+                <img src="https://via.placeholder.com/150/ff5722/fff?text=UID+Topup" alt="UID Topup">
+                <span>Uid TOPUP [BD]</span>
+            </div>
+            <div class="offer-card" onclick="selectPackage('Weekly Monthly Combo')">
+                <img src="https://via.placeholder.com/150/ff5722/fff?text=Combo" alt="Combo">
+                <span>Weekly Monthly Combo</span>
+            </div>
+            <div class="offer-card" onclick="selectPackage('Weekly Lite')">
+                <img src="https://via.placeholder.com/150/ff5722/fff?text=Lite" alt="Lite">
+                <span>Weekly Lite</span>
+            </div>
+        </div>
+
+        <!-- পেমেন্ট ও অর্ডার বক্স -->
+        <div class="payment-box">
+            <div class="bkash-info">
                 পেমেন্ট পদ্ধতি (bKash Personal):<br>01781511654
             </div>
 
             <div class="input-group">
-                <label>নির্বাচিত প্যাকেজ:</label>
-                <input type="text" class="full-input" id="selectedPackageName" placeholder="ওপর থেকে প্যাকেজ সিলেক্ট করুন" readonly>
+                <label>নির্বাচিত অফার/প্যাকেজ:</label>
+                <input type="text" id="selectedPackage" placeholder="ওপর থেকে যেকোনো অফার ক্লিক করুন" readonly>
             </div>
 
             <div class="input-group">
                 <label>গেম UID:</label>
-                <input type="text" class="full-input" id="gameUid" placeholder="আপনার গেম UID লিখুন">
+                <input type="text" id="gameUid" placeholder="আপনার গেম UID লিখুন">
             </div>
 
             <div class="input-group">
                 <label>বিকাশ TrxID:</label>
-                <div class="payment-elements" style="margin-top: 4px;">
-                    <div class="b-logo">bKash</div>
-                    <input type="text" class="trx-input" placeholder="TrxID" id="trxId" style="width: 55%;">
-                    <a href="javascript:void(0);" class="whatsapp-action-btn" onclick="sendWhatsApp()" style="width: 35%; padding: 10px 4px; font-size: 10px; text-align: center;">
-                        অর্ডার কনফার্ম
-                    </a>
-                </div>
+                <input type="text" id="trxId" placeholder="টাকা পাঠিয়ে TrxID দিন">
             </div>
+
+            <button class="whatsapp-btn" onclick="sendWhatsApp()">WhatsApp-এ অর্ডার নিশ্চিত করুন</button>
         </div>
     </div>
 
-    <!-- নিচের ফিক্সড নেভিগেশন বার -->
+    <!-- নিচের বটম নেভিগেশন বার -->
     <div class="bottom-nav">
         <a href="#" class="nav-item active">
             <div>🏠</div>হোম
@@ -368,40 +277,29 @@
 
     <script>
         function selectPackage(packageName) {
-            document.getElementById("selectedPackageName").value = packageName;
+            document.getElementById("selectedPackage").value = packageName;
             alert(packageName + " সিলেক্ট করা হয়েছে।");
         }
 
-        function spinWheel() {
-            const results = [
-                "🎉 অভিনন্দন! আপনি পরবর্তী অর্ডারে ১০ টাকা ডিসকাউন্ট জিতেছেন!", 
-                "😢 হাড়িকেন! পরের বার চেষ্টা করুন।", 
-                "🔥 দারুন! আপনি একটি স্পেশাল গিফট জিতলেন!",
-                "🎉 অভিনন্দন! আপনি ফ্রি উইকলি অফার জিতেছেন!"
-            ];
-            const randomIndex = Math.floor(Math.random() * results.length);
-            document.getElementById("spinResult").innerText = results[randomIndex];
-        }
-
         function sendWhatsApp() {
-            const pkg = document.getElementById("selectedPackageName").value;
+            const pkg = document.getElementById("selectedPackage").value;
             const uid = document.getElementById("gameUid").value;
             const trx = document.getElementById("trxId").value;
 
             if(!pkg) {
-                alert("দয়া করে ওপর থেকে প্যাকেজ সিলেক্ট করুন!");
+                alert("দয়া করে ওপরের কার্ডগুলো থেকে একটি অফার সিলেক্ট করুন!");
                 return;
             }
             if(!uid.trim()) {
-                alert("দয়া করে গেম UID লিখুন!");
+                alert("দয়া করে আপনার গেম UID লিখুন!");
                 return;
             }
             if(!trx.trim()) {
-                alert("দয়া করে TrxID লিখুন!");
+                alert("দয়া করে বিকাশ TrxID লিখুন!");
                 return;
             }
 
-            const message = `Hello, I want to order Top-Up.%0A*Package:* ${encodeURIComponent(pkg)}%0A*UID:* ${encodeURIComponent(uid)}%0A*TrxID:* ${encodeURIComponent(trx)}`;
+            const message = `Hello, I want to order Top-Up.%0A*Offer:* ${encodeURIComponent(pkg)}%0A*UID:* ${encodeURIComponent(uid)}%0A*TrxID:* ${encodeURIComponent(trx)}`;
             window.open(`https://wa.me/8801781511654?text=${message}`, '_blank');
         }
     </script>
