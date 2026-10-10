@@ -94,7 +94,7 @@
             color: #111;
         }
 
-        /* স্ক্রিনশটের মতো গ্রিড লেআউট */
+        /* কার্ড গ্রিড লেআউট */
         .card-grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -140,7 +140,7 @@
             display: block;
         }
 
-        /* প্রফেশনাল সাব-প্যাকেজ কার্ড (স্ক্রিনশটের মতো স্টাইল) */
+        /* প্রফেশনাল সাব-প্যাকেজ কার্ড */
         .pro-card {
             background: #fff;
             border: 1px solid #e0e0e0;
@@ -228,7 +228,7 @@
             display: inline-block;
         }
 
-        /* পপআপ মডাল */
+        /* ফুল সাইজ প্রফেশনাল মডাল উইন্ডো */
         .modal {
             display: none;
             position: fixed;
@@ -239,32 +239,34 @@
             background: rgba(0,0,0,0.6);
             z-index: 2000;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end; /* মোবাইল ফ্রেন্ডলি করার জন্য নিচে থেকে উপরে আসবে */
         }
 
         .modal-content {
             background: #fff;
-            width: 90%;
-            max-width: 400px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 500px;
+            padding: 20px 15px 30px 15px;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
             position: relative;
-            max-height: 85vh;
+            max-height: 90vh;
             overflow-y: auto;
+            box-sizing: border-box;
         }
 
         .close-btn {
             position: absolute;
-            top: 10px;
+            top: 12px;
             right: 15px;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
             color: #888;
             cursor: pointer;
         }
 
-        /* বিকাশ পেমেন্ট কার্ড বক্স (স্ক্রিনশটের মতো গোলাপি ডিজাইন) */
+        /* বিকাশ পেমেন্ট কার্ড বক্স */
         .bkash-payment-box {
             background: #e2136e;
             color: white;
@@ -304,13 +306,11 @@
             box-sizing: border-box;
         }
 
-        /* ১. Player UID ইনপুট - কমলা কালার বর্ডার */
         .orange-input {
             border: 2px solid #ff5722 !important;
             background-color: #fffaf8;
         }
 
-        /* ২. Transaction ID ইনপুট - সবুজ কালার বর্ডার */
         .green-input {
             border: 2px solid #25d366 !important;
             background-color: #f2fbf6;
@@ -330,7 +330,6 @@
             margin-top: 5px;
         }
 
-        /* WhatsApp বাটন (ভেরিফাই এর বদলে) */
         .whatsapp-order-btn {
             background-color: #25d366 !important;
         }
@@ -475,14 +474,12 @@
         </div>
     </div>
 
-    <!-- প্যাকেজ অপশন পপআপ (সাদা ব্যাকগ্রাউন্ড) -->
+    <!-- প্যাকেজ অপশন পপআপ -->
     <div id="packageModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('packageModal')">&times;</span>
             <h3 id="packageModalTitle" style="color: #ff5722; margin-top: 0; margin-bottom: 15px; font-size: 16px; text-align: center;">প্যাকেজ নির্বাচন করুন</h3>
-            <div id="packageListContainer" class="card-grid-2">
-                <!-- ডায়নামিক্যালি প্যাকগুলো এখানে লোড হবে -->
-            </div>
+            <div id="packageListContainer" class="card-grid-2"></div>
         </div>
     </div>
 
@@ -530,7 +527,7 @@
         </div>
     </div>
 
-    <!-- ধাপ ১: Player UID ইনপুট পেজ (সাদা ব্যাকগ্রাউন্ড ও কমলা কালার ইনপুট) -->
+    <!-- ধাপ ১: Player UID ইনপুট পেজ -->
     <div id="uidModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('uidModal')">&times;</span>
@@ -550,13 +547,12 @@
         </div>
     </div>
 
-    <!-- ধাপ ২: বিকাশ পেমেন্ট ও Transaction ID ইনপুট পেজ (সাদা ব্যাকগ্রাউন্ড ও সবুজ কালার ইনপুট) -->
+    <!-- ধাপ ২: বিকাশ পেমেন্ট ও Transaction ID ইনপুট পেজ -->
     <div id="trxModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('trxModal')">&times;</span>
             <h3 style="color: #e2136e; margin-top: 0; margin-bottom: 10px; font-size: 16px; text-align: center;">বিকাশ পেমেন্ট ও ট্রানজেকশন আইডি</h3>
             
-            <!-- স্ক্রিনশটের মতো বিকাশ পেমেন্ট বক্স -->
             <div class="bkash-payment-box">
                 <h4>bKash Personal</h4>
                 • *247# ডায়াল করে অথবা বিকাশ অ্যাপে যান।<br>
@@ -570,7 +566,6 @@
                 <input type="text" id="trxId" class="green-input" placeholder="ট্রানজেকশন আইডি দিন">
             </div>
 
-            <!-- ভেরিফাই এর বদলে সরাসরি WhatsApp অর্ডার বাটন -->
             <button class="action-btn whatsapp-order-btn" onclick="sendWhatsApp()">WhatsApp-এ অর্ডার নিশ্চিত করুন</button>
         </div>
     </div>
@@ -616,7 +611,6 @@
     </div>
 
     <script>
-        // ব্যানার অটো স্লাইড শো
         let currentSlide = 0;
         const slides = document.querySelectorAll('.banner-slide');
         function nextSlide() {
@@ -628,7 +622,6 @@
 
         let selectedPkgInfo = "";
 
-        // ১ থেকে ৪ গুণের প্যাকেজ লিস্ট লোড করার ফাংশন
         function openPackageOptions(categoryName) {
             document.getElementById("packageModalTitle").innerText = categoryName + " Packages";
             const container = document.getElementById("packageListContainer");
@@ -646,7 +639,6 @@
                 unitPrice = 80;
             }
 
-            // ১ থেকে ৪ গুণ তৈরি করা
             for (let i = 1; i <= 4; i++) {
                 let currentPrice = unitPrice * i;
                 let pkgTitle = `${categoryName} (${i}x)`;
