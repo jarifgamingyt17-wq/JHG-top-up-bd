@@ -228,7 +228,7 @@
             display: inline-block;
         }
 
-        /* ফুল সাইজ প্রফেশনাল মডাল উইন্ডো */
+        /* পুরো স্ক্রিন জুড় প্রফেশনাল মডাল উইন্ডো */
         .modal {
             display: none;
             position: fixed;
@@ -239,17 +239,16 @@
             background: rgba(0,0,0,0.6);
             z-index: 2000;
             justify-content: center;
-            align-items: flex-end; /* মোবাইল ফ্রেন্ডলি করার জন্য নিচে থেকে উপরে আসবে */
+            align-items: center;
         }
 
         .modal-content {
             background: #fff;
-            width: 100%;
-            max-width: 500px;
-            padding: 20px 15px 30px 15px;
-            border-top-left-radius: 16px;
-            border-top-right-radius: 16px;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+            width: 95%;
+            max-width: 450px;
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             position: relative;
             max-height: 90vh;
             overflow-y: auto;
@@ -299,7 +298,7 @@
 
         .input-group input {
             width: 100%;
-            padding: 11px;
+            padding: 12px;
             font-size: 14px;
             border-radius: 6px;
             outline: none;
