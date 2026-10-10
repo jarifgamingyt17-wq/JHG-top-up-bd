@@ -105,7 +105,7 @@
             background: #fff;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
-            padding: 8px;
+            padding: 8px 6px;
             text-align: center;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
             cursor: pointer;
@@ -119,10 +119,10 @@
 
         .offer-card img {
             width: 100%;
-            height: 65px;
+            height: 60px;
             object-fit: cover;
             border-radius: 6px;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .offer-card span {
@@ -130,6 +130,13 @@
             font-weight: bold;
             color: #333;
             display: block;
+            margin-bottom: 2px;
+        }
+
+        .offer-card .price {
+            font-size: 11px;
+            color: #e2136e;
+            font-weight: bold;
         }
 
         /* হেল্পলাইন কার্ড সেকশন */
@@ -317,38 +324,60 @@
         <!-- Offer Offer Section -->
         <div class="section-title">Offer Offer</div>
         <div class="card-grid">
-            <div class="offer-card" onclick="openOrder('Mystery Shop')">
+            <div class="offer-card" onclick="openOrder('Mystery Shop', '১৬০ টাকা')">
                 <img src="mystery.png" alt="Mystery Shop">
                 <span>Mystery Shop</span>
+                <div class="price">১৬০ ৳</div>
             </div>
-            <div class="offer-card" onclick="openOrder('[BD] UID OFFER')">
+            <div class="offer-card" onclick="openOrder('[BD] UID OFFER', '৮০ টাকা')">
                 <img src="uid.png" alt="UID Offer">
                 <span>[BD] UID OFFER</span>
+                <div class="price">৮০ ৳</div>
             </div>
-            <div class="offer-card" onclick="openOrder('Weekly/Monthly Offer')">
-                <img src="weekly.png" alt="Weekly">
-                <span>Weekly/Monthly</span>
+            <div class="offer-card" onclick="openOrder('Friday Weekly Offer', '১০০ টাকা')">
+                <img src="friday.png" alt="Friday Weekly">
+                <span>Friday Weekly</span>
+                <div class="price">১০০ ৳</div>
             </div>
-            <div class="offer-card" onclick="openOrder('Friday Offers')">
-                <img src="friday.png" alt="Friday">
-                <span>Friday Offers</span>
+            <div class="offer-card" onclick="openOrder('Friday Monthly Offer', '৬০০ টাকা')">
+                <img src="friday.png" alt="Friday Monthly">
+                <span>Friday Monthly</span>
+                <div class="price">৬০০ ৳</div>
+            </div>
+            <div class="offer-card" onclick="openOrder('Level Up Pass (600 Diamonds)', '২৮০ টাকা')">
+                <img src="levelup.png" alt="Level Up">
+                <span>Level Up Pass</span>
+                <div class="price">২৮০ ৳</div>
             </div>
         </div>
 
         <!-- Top-up Section -->
-        <div class="section-title">Top-up</div>
+        <div class="section-title">Uid TOPUP [BD]</div>
         <div class="card-grid">
-            <div class="offer-card" onclick="openOrder('Level Up Pass')">
-                <img src="levelup.png" alt="Level Up">
-                <span>Level Up Pass</span>
+            <div class="offer-card" onclick="openOrder('100 Diamonds (UID)', '৬০ টাকা')">
+                <img src="uid.png" alt="100 Diamonds">
+                <span>100 Diamonds</span>
+                <div class="price">৬০ ৳</div>
             </div>
-            <div class="offer-card" onclick="openOrder('Weekly Lite')">
+            <div class="offer-card" onclick="openOrder('250 Diamonds (UID)', '১২০ টাকা')">
+                <img src="uid.png" alt="250 Diamonds">
+                <span>250 Diamonds</span>
+                <div class="price">১২০ ৳</div>
+            </div>
+            <div class="offer-card" onclick="openOrder('700 Diamonds (UID)', '৩৫৫ টাকা')">
+                <img src="uid.png" alt="700 Diamonds">
+                <span>700 Diamonds</span>
+                <div class="price">৩৫৫ ৳</div>
+            </div>
+            <div class="offer-card" onclick="openOrder('1200 Diamonds (UID)', '৮০০ টাকা')">
+                <img src="uid.png" alt="1200 Diamonds">
+                <span>1200 Diamonds</span>
+                <div class="price">৮০০ ৳</div>
+            </div>
+            <div class="offer-card" onclick="openOrder('Weekly Lite', '৮০ টাকা')">
                 <img src="weekly-lite.png" alt="Weekly Lite">
                 <span>Weekly Lite</span>
-            </div>
-            <div class="offer-card" onclick="openOrder('Uid TOPUP [BD]')">
-                <img src="uid.png" alt="UID Topup">
-                <span>Uid TOPUP [BD]</span>
+                <div class="price">৮০ ৳</div>
             </div>
         </div>
 
@@ -373,8 +402,8 @@
             </div>
 
             <div class="input-group">
-                <label>নির্বাচিত প্যাকেজ:</label>
-                <input type="text" id="selectedPackage" readonly style="background: #f1f1f1;">
+                <label>নির্বাচিত প্যাকেজ ও দাম:</label>
+                <input type="text" id="selectedPackage" readonly style="background: #f1f1f1; font-weight: bold; color: #e2136e;">
             </div>
 
             <div class="input-group">
@@ -441,8 +470,8 @@
         }
         setInterval(nextSlide, 3000);
 
-        function openOrder(packageName) {
-            document.getElementById("selectedPackage").value = packageName;
+        function openOrder(packageName, packagePrice) {
+            document.getElementById("selectedPackage").value = packageName + " - " + packagePrice;
             document.getElementById("modalTitle").innerText = "অর্ডার করুন: " + packageName;
             document.getElementById("orderModal").style.display = "flex";
         }
@@ -483,7 +512,7 @@
                 return;
             }
 
-            const message = `Hello, I want to order Top-Up.%0A*Offer:* ${encodeURIComponent(pkg)}%0A*UID:* ${encodeURIComponent(uid)}%0A*TrxID:* ${encodeURIComponent(trx)}`;
+            const message = `Hello, I want to order Top-Up.%0A*Package:* ${encodeURIComponent(pkg)}%0A*UID:* ${encodeURIComponent(uid)}%0A*TrxID:* ${encodeURIComponent(trx)}`;
             window.open(`https://wa.me/8801781511654?text=${message}`, '_blank');
         }
     </script>
