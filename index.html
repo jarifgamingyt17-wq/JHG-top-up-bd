@@ -3,289 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JHG TopUp BD</title>
+    <title>ᴊʜɢ ᭄Jarif YT - JHG TopUp BD</title>
     <style>
-        * { box-sizing: border-box; font-family: Arial, sans-serif; }
-        body { margin: 0; padding: 0; background-color: #f4f4f9; color: #333; }
-        .container { max-width: 600px; margin: 0 auto; background: #fff; min-height: 100vh; padding-bottom: 80px; }
-        
-        /* Header */
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
-        .logo-text { font-size: 20px; font-weight: bold; color: #ff5722; text-decoration: none; }
-        .login-btn { background: #ff5722; color: #fff; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-weight: bold; text-decoration: none; font-size: 13px; }
-        
-        /* Notice & Social Bar */
-        .notice-bar { background: #fff8e1; color: #d84315; padding: 10px 15px; font-size: 13px; text-align: center; border-bottom: 1px solid #ffe0b2; }
-        .social-bar { display: flex; justify-content: space-around; padding: 10px 15px; background: #fafafa; border-bottom: 1px solid #eee; }
-        .social-btn { padding: 8px 12px; border-radius: 5px; color: #fff; text-decoration: none; font-size: 12px; font-weight: bold; text-align: center; flex: 1; margin: 0 4px; }
-        .btn-wa { background: #25d366; }
-        .btn-tg { background: #0088cc; }
-        .btn-msg { background: #0084ff; }
-        
-        /* Banner Slider Style */
-        .banner-slider { width: 100%; overflow-x: auto; display: flex; scroll-snap-type: x mandatory; padding: 10px 15px 5px; gap: 10px; scrollbar-width: none; }
-        .banner-slider::-webkit-scrollbar { display: none; }
-        .banner-item { flex: 0 0 100%; scroll-snap-align: start; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .banner-item img { width: 100%; height: 160px; object-fit: cover; display: block; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-        /* Section Header & Grids */
-        .section-title { font-size: 16px; font-weight: bold; padding: 15px 15px 5px; color: #333; }
-        .category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px 15px; }
-        .cat-card { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 10px; text-align: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.2s; }
-        .cat-card:active { transform: scale(0.97); }
-        .cat-icon img { width: 100%; height: 80px; object-fit: cover; border-radius: 6px; }
-        .cat-name { font-size: 12px; margin-top: 6px; font-weight: bold; color: #444; }
-        
-        /* Inner View (Category Detail) */
-        #categoryView { display: none; padding: 15px; }
-        .back-btn { background: #f0f0f0; color: #333; border: 1px solid #ccc; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-bottom: 15px; }
-        .step-box { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; margin-bottom: 15px; }
-        .step-header { font-size: 14px; font-weight: bold; color: #ff5722; margin-bottom: 10px; display: flex; align-items: center; }
-        .step-num { background: #ff5722; color: #fff; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; font-size: 12px; margin-right: 8px; }
-        
-        /* Package Grid */
-        .pkg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .pkg-card { border: 2px solid #e0e0e0; padding: 12px; border-radius: 8px; text-align: center; cursor: pointer; background: #fff; transition: 0.2s; }
-        .pkg-card.selected { border-color: #ff5722; background: #fff5f2; }
-        .pkg-title { font-size: 13px; font-weight: bold; color: #333; }
-        .pkg-price { font-size: 14px; color: #ff5722; font-weight: bold; margin-top: 4px; }
-        
-        /* Inputs & Buttons */
-        .input-field { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; outline: none; }
-        .input-field:focus { border-color: #ff5722; }
-        .pay-options { display: flex; gap: 10px; margin-bottom: 10px; }
-        .pay-btn { flex: 1; padding: 10px; border: 2px solid #ddd; border-radius: 6px; text-align: center; font-weight: bold; cursor: pointer; font-size: 13px; }
-        .pay-btn.selected { border-color: #e91e63; background: #fce4ec; color: #e91e63; }
-        .btn-submit { width: 100%; background: #25d366; color: #fff; border: none; padding: 14px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 10px; }
-        
-        /* Bottom Navigation */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; max-width: 600px; margin: 0 auto; background: #fff; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #ddd; z-index: 100; }
-        .nav-item { text-align: center; font-size: 11px; color: #666; cursor: pointer; }
-        .nav-item.active { color: #ff5722; font-weight: bold; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding-bottom: 60px;
+        }
+
+        /* হেডার ডিজাইন */
+        header {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-bottom: 2px solid #e2136e;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            color: #e2136e;
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        .main-container {
+            max-width: 480px;
+            margin: 15px auto;
+            padding: 0 10px;
+        }
+
+        /* নোটিশ বোর্ড */
+        .notice-board {
+            background: #1e293b;
+            border-left: 4px solid #e2136e;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-bottom: 15px;
+            color: #cbd5e1;
+        }
+
+        .notice-board span {
+            color: #e2136e;
+            font-weight: bold;
+        }
+
+        /* সেকশন হেডিং */
+        .section-title {
+            font-size: 16px;
+            color: #38bdf8;
+            margin: 15px 0 10px 0;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 5px;
+        }
+
+        /* প্যাকেজ বা কার্ড ডিজাইন */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .package-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .package-card:hover {
+            border-color: #e2136e;
+        }
+
+        .package-card h3 {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #f1f5f9;
+        }
+
+        .package-card .price {
+            font-size: 15px;
+            color: #e2136e;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .select-btn {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            font-size: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .select-btn:hover {
+            background-color: #2563eb;
+        }
+
+        /* লাকি স্পিন সেকশন */
+        .spinner-section {
+            background: #1e293b;
+            border: 1px solid #6366f1;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .spin-btn {
+            background-color: #6366f1;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        #spinResult {
+            margin-top: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #10b981;
+        }
+
+        /* পেমেন্ট ও অর্ডার সেকশন */
+        .payment-container {
+            background: #1e293b;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border: 1px solid #334155;
+        }
+
+        .bkash-box {
+            background-color: #331422;
+            border: 1px solid #e2136e;
+            color: #f43f5e;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            background: #0f172a;
+            border: 1px solid #475569;
+            color: white;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-color: #e2136e;
+        }
+
+        .whatsapp-btn {
+            width: 100%;
+            background-color: #25d366;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            padding: 12px;
+            font-size: 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #22bf5b;
+        }
+
+        /* ফুটার */
+        footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 12px;
+            color: #64748b;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- Header -->
-    <div class="header">
-        <a href="#" class="logo-text" onclick="showHome()">JHG TopUp BD</a>
-        <button class="login-btn" onclick="alert('লগইন অপশনটি খুব শীঘ্রই আসছে!')">লগইন</button>
-    </div>
+    <header>
+        <h1>ᴊʜɢ ᭄Jarif YT - TopUp BD</h1>
+        <p>১০০% বিশ্বস্ত ও দ্রুত ফ্রি ফায়ার টপ-আপ শপ</p>
+    </header>
 
-    <!-- Notice -->
-    <div class="notice-bar">
-        📢 <strong>নোটিশ:</strong> প্রতিদিন সকাল <strong>৯:০০</strong> টা থেকে বিকেল <strong>৬:০০</strong> টা পর্যন্ত স্কুলের জন্য টপ-আপ বন্ধ থাকে।
-    </div>
-
-    <!-- Helpline / Social Links -->
-    <div class="social-bar">
-        <a href="https://wa.me/8801314983419" class="social-btn btn-wa" target="_blank">হোয়াটসঅ্যাপ</a>
-        <a href="https://t.me" class="social-btn btn-tg" target="_blank">টেলিগ্রাম</a>
-        <a href="https://m.me" class="social-btn btn-msg" target="_blank">মেসেঞ্জার</a>
-    </div>
-
-    <!-- Home View -->
-    <div id="homeView">
-        <!-- Banner Slider Section -->
-        <div class="banner-slider">
-            <div class="banner-item"><img src="banner1.png" alt="Banner 1"></div>
-            <div class="banner-item"><img src="banner2.png" alt="Banner 2"></div>
-            <div class="banner-item"><img src="banner3.png" alt="Banner 3"></div>
+    <div class="main-container">
+        <!-- নোটিশ বোর্ড -->
+        <div class="notice-board">
+            <span>জরুরি নোটিশ:</span> টাকা পাঠানোর পর অবশ্যই সঠিক UID এবং TrxID দিয়ে WhatsApp-এ অর্ডার নিশ্চিত করুন।
         </div>
 
-        <div class="section-title">Offer Offer</div>
-        <div class="category-grid">
-            <div class="cat-card" onclick="openCategory('mystery')">
-                <div class="cat-icon"><img src="mystery.png" alt="Mystery Shop"></div>
-                <div class="cat-name">Mystery Shop</div>
+        <!-- লাকি স্পিন হুইল -->
+        <div class="spinner-section">
+            <h3>🎁 লাকি স্পিন ও ডিসকাউন্ট</h3>
+            <p style="font-size: 12px; color: #94a3b8; margin: 4px 0;">স্পিন করে জিতে নিন বিশেষ ছাড়!</p>
+            <button class="spin-btn" onclick="spinWheel()">স্পিন করুন</button>
+            <div id="spinResult"></div>
+        </div>
+
+        <!-- গেম প্যাকেজ সেকশন -->
+        <div class="section-title">🔥 ডায়মন্ড ও মেম্বারশিপ অফার</div>
+        <div class="packages-grid">
+            <div class="package-card">
+                <h3>Weekly Membership</h3>
+                <div class="price">১০০ টাকা</div>
+                <button class="select-btn" onclick="selectPackage('Weekly Membership - 100 BDT')">সিলেক্ট করুন</button>
             </div>
-            <div class="cat-card" onclick="openCategory('uid-bd')">
-                <div class="cat-icon"><img src="uid.png" alt="[BD] UID OFFER"></div>
-                <div class="cat-name">[BD] UID OFFER</div>
+            <div class="package-card">
+                <h3>Monthly Membership</h3>
+                <div class="price">৫০০ টাকা</div>
+                <button class="select-btn" onclick="selectPackage('Monthly Membership - 500 BDT')">সিলেক্ট করুন</button>
             </div>
-            <div class="cat-card" onclick="openCategory('weekly-monthly')">
-                <div class="cat-icon"><img src="weekly.png" alt="Weekly/Monthly Offer"></div>
-                <div class="cat-name">Weekly/Monthly Offer</div>
+            <div class="package-card">
+                <h3>25 Diamonds</h3>
+                <div class="price">২৫ টাকা</div>
+                <button class="select-btn" onclick="selectPackage('25 Diamonds - 25 BDT')">সিলেক্ট করুন</button>
             </div>
-            <div class="cat-card" onclick="openCategory('weekly-lite')">
-                <div class="cat-icon"><img src="friday.png" alt="Friday Offers"></div>
-                <div class="cat-name">Friday Offers 🔥</div>
+            <div class="package-card">
+                <h3>115 Diamonds</h3>
+                <div class="price">৮৫ টাকা</div>
+                <button class="select-btn" onclick="selectPackage('115 Diamonds - 85 BDT')">সিলেক্ট করুন</button>
             </div>
         </div>
 
-        <div class="section-title">Top-up</div>
-        <div class="category-grid">
-            <div class="cat-card" onclick="openCategory('uid-bd')">
-                <div class="cat-icon"><img src="uid.png" alt="Uid TOPUP BD"></div>
-                <div class="cat-name">Uid TOPUP [BD]</div>
+        <!-- পেমেন্ট ও অর্ডার সেকশন -->
+        <div class="section-title">🛒 পেমেন্ট ও তথ্য পূরণ</div>
+        <div class="payment-container">
+            <div class="bkash-box">
+                বিকাশ পার্সোনাল (Send Money):<br>01781511654
             </div>
-            <div class="cat-card" onclick="openCategory('weekly-monthly')">
-                <div class="cat-icon"><img src="weekly.png" alt="Weekly Monthly Combo"></div>
-                <div class="cat-name">Weekly Monthly Combo</div>
+
+            <div>
+                <label style="font-size: 12px; color: #94a3b8; display: block; margin-bottom: 4px;">নির্বাচিত প্যাকেজ:</label>
+                <input type="text" id="selectedPackageName" placeholder="উপরে থেকে প্যাকেজ সিলেক্ট করুন" readonly>
             </div>
-            <div class="cat-card" onclick="openCategory('weekly-lite')">
-                <div class="cat-icon"><img src="weekly-lite.png" alt="Weekly Lite"></div>
-                <div class="cat-name">Weekly Lite</div>
+            
+            <div>
+                <label style="font-size: 12px; color: #94a3b8; display: block; margin-bottom: 4px;">গেম UID:</label>
+                <input type="text" id="gameUid" placeholder="আপনার গেম UID লিখুন">
             </div>
-            <div class="cat-card" onclick="openCategory('levelup-pass')">
-                <div class="cat-icon"><img src="levelup.png" alt="Level Up Pass"></div>
-                <div class="cat-name">Level Up Pass</div>
+
+            <div>
+                <label style="font-size: 12px; color: #94a3b8; display: block; margin-bottom: 4px;">বিকাশ TrxID:</label>
+                <input type="text" id="trxId" placeholder="টাকা পাঠিয়ে TrxID দিন">
             </div>
+            
+            <a href="javascript:void(0);" class="whatsapp-btn" onclick="sendToWhatsApp()">
+                WhatsApp-এ অর্ডার নিশ্চিত করুন
+            </a>
         </div>
+
+        <footer>
+            &copy; 2026 JHG TopUp BD. All Rights Reserved.
+        </footer>
     </div>
 
-    <!-- Category Detail View -->
-    <div id="categoryView">
-        <button class="back-btn" onclick="showHome()">⬅ হোম পেজে যান</button>
-        <h2 id="catTitle" style="color: #ff5722; margin-top: 0; font-size: 18px;"></h2>
-
-        <!-- Step 1: Package Selection -->
-        <div class="step-box">
-            <div class="step-header"><span class="step-num">১</span>প্যাকেজ নির্বাচন করুন</div>
-            <div id="pkgContainer" class="pkg-grid"></div>
-        </div>
-
-        <!-- Step 2: Player UID -->
-        <div class="step-box">
-            <div class="step-header"><span class="step-num">২</span>প্লেয়ার আইডি (Player UID)</div>
-            <input type="number" id="playerUid" class="input-field" placeholder="Player UID দিন (যেমন: 12345678)">
-        </div>
-
-        <!-- Step 3: Payment Method -->
-        <div class="step-box">
-            <div class="step-header"><span class="step-num">৩</span>পেমেন্ট পদ্ধতি (bKash Personal: 01781511654)</div>
-            <div class="pay-options">
-                <div class="pay-btn selected" onclick="selectPayment('bKash', this)">bKash</div
-            </div>
-            <input type="text" id="trxId" class="input-field" placeholder="Transaction ID (TrxID) দিন">
-            <button class="btn-submit" onclick="submitOrder()">WhatsApp-এ অর্ডার নিশ্চিত করুন</button>
-        </div>
-    </div>
-
-    <!-- Bottom Nav -->
-    <div class="bottom-nav">
-        <div class="nav-item active" onclick="showHome()">🏠<br>হোম</div>
-        <div class="nav-item">📦<br>আমার অর্ডার</div>
-        <div class="nav-item">➕<br>অ্যাড মানি</div>
-        <div class="nav-item">👛<br>ওয়ালেট</div>
-        <div class="nav-item">👤<br>প্রোফাইল</div>
-    </div>
-</div>
-
-<script>
-    const packageData = {
-        'mystery': {
-            title: 'Mystery Shop',
-            items: [
-                { name: "Mystery Offer 1", price: "20 TK" },
-                { name: "Mystery Offer 2", price: "60 TK" },
-                { name: "Mystery Offer 3", price: "100 TK" },
-                { name: "Mystery Offer 4", price: "150 TK" }
-            ]
-        },
-        'uid-bd': {
-            title: '[BD] UID TOPUP',
-            items: [
-                { name: "100 Diamond", price: "60 TK" },
-                { name: "200 Diamond", price: "110 TK" },
-                { name: "300 Diamond", price: "220 TK" },
-                { name: "800 Diamond", price: "550 TK" },
-                { name: "1200 Diamond", price: "890 TK" },
-                { name: "4900 Diamond", price: "2950 TK" }
-            ]
-        },
-        'weekly-monthly': {
-            title: 'Weekly / Monthly Offers',
-            items: [
-                { name: "WEEKLY 🌸", price: "120 TK" },
-                { name: "Monthly 🌸", price: "650 TK" },
-                { name: "2X WEEKLY", price: "240 TK" },
-                { name: "2X Monthly", price: "1300 TK" },
-                { name: "1 Weekly + 1 Monthly", price: "770 TK" }
-            ]
-        },
-        'weekly-lite': {
-            title: 'Weekly Lite / Friday Offers',
-            items: [
-                { name: "Weekly Lite", price: "20 TK" },
-                { name: "Weekly Lite 2x", price: "40 TK" },
-                { name: "Weekly Lite 3x", price: "60 TK" },
-                { name: "Weekly Lite 4x", price: "80 TK" }
-            ]
-        },
-        'levelup-pass': {
-            title: 'Level Up Pass',
-            items: [
-                { name: "Level Up Pass 1x", price: "90 TK" },
-                { name: "Level Up Pass 2x", price: "180 TK" },
-                { name: "Level Up Pass 3x", price: "270 TK" },
-                { name: "Level Up Pass 4x", price: "360 TK" }
-            ]
-        }
-    };
-
-    let selectedPkg = null;
-    let selectedPayMethod = 'bKash';
-
-    function openCategory(catKey) {
-        const data = packageData[catKey];
-        if(!data) return;
-
-        document.getElementById('homeView').style.display = 'none';
-        document.getElementById('categoryView').style.display = 'block';
-        document.getElementById('catTitle').innerText = data.title;
-        window.scrollTo(0, 0);
-
-        const pkgContainer = document.getElementById('pkgContainer');
-        pkgContainer.innerHTML = '';
-        selectedPkg = null;
-
-        data.items.forEach((item) => {
-            const card = document.createElement('div');
-            card.className = 'pkg-card';
-            card.innerHTML = `<div class="pkg-title">${item.name}</div><div class="pkg-price">${item.price}</div>`;
-            card.onclick = () => {
-                document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('selected'));
-                card.classList.add('selected');
-                selectedPkg = item;
-            };
-            pkgContainer.appendChild(card);
-        });
-    }
-
-    function showHome() {
-        document.getElementById('homeView').style.display = 'block';
-        document.getElementById('categoryView').style.display = 'none';
-        window.scrollTo(0, 0);
-    }
-
-    function selectPayment(method, element) {
-        selectedPayMethod = method;
-        document.querySelectorAll('.pay-btn').forEach(b => b.classList.remove('selected'));
-        element.classList.add('selected');
-    }
-
-    function submitOrder() {
-        const uid = document.getElementById('playerUid').value.trim();
-        const trxId = document.getElementById('trxId').value.trim();
-
-        if (!selectedPkg) {
-            alert('অনুগ্রহ করে একটি প্যাকেজ সিলেক্ট করুন!');
-            return;
-        }
-        if (!uid) {
-            alert('অনুগ্রহ করে আপনার Player UID দিন!');
-            return;
-        }
-        if (!trxId) {
-            alert('অনুগ্রহ করে Transaction ID (TrxID) দিন!');
-            return;
+    <script>
+        // প্যাকেজ সিলেক্ট করার ফাংশন
+        function selectPackage(packageName) {
+            document.getElementById("selectedPackageName").value = packageName;
+            alert(packageName + " সিলেক্ট করা হয়েছে। এখন পেমেন্ট করে তথ্য পূরণ করুন।");
         }
 
-        const message = `হ্যালো! আমি একটি অর্ডার করতে চাই:\n\nপ্যাকেজ: ${selectedPkg.name}\nমূল্য: ${selectedPkg.price}\nPlayer UID: ${uid}\nপেমেন্ট মেথড: ${selectedPayMethod}\nTrxID: ${trxId}`;
-        window.open(`https://wa.me/8801314983419?text=${encodeURIComponent(message)}`, '_blank');
-    }
-</script>
+        // স্পিন হুইল ফাংশন
+        function spinWheel() {
+            const results = [
+                "🎉 অভিনন্দন! আপনি পরবর্তী অর্ডারে ১০ টাকা ডিসকাউন্ট জিতেছেন!", 
+                "😢 হাড়িকেন! পরের বার চেষ্টা করুন।", 
+                "🔥 দারুন! আপনি একটি স্পেশাল গিফট জিতলেন!",
+                "🎉 অভিনন্দন! আপনি ফ্রি উইকলি অফার জিতেছেন!"
+            ];
+            const randomIndex = Math.floor(Math.random() * results.length);
+            document.getElementById("spinResult").innerText = results[randomIndex];
+        }
+
+        // হোয়াটসঅ্যাপে অর্ডার পাঠানোর ফাংশন
+        function sendToWhatsApp() {
+            const pkg = document.getElementById("selectedPackageName").value;
+            const uid = document.getElementById("gameUid").value;
+            const trx = document.getElementById("trxId").value;
+
+            if(!pkg) {
+                alert("দয়া করে প্রথমে ওপরের লিস্ট থেকে একটি প্যাকেজ সিলেক্ট করুন!");
+                return;
+            }
+            if(!uid.trim()) {
+                alert("দয়া করে আপনার গেম UID লিখুন!");
+                return;
+            }
+            if(!trx.trim()) {
+                alert("দয়া করে বিকাশ TrxID লিখুন!");
+                return;
+            }
+
+            const message = `Hello, I want to order Top-Up.%0A*Package:* ${encodeURIComponent(pkg)}%0A*UID:* ${encodeURIComponent(uid)}%0A*TrxID:* ${encodeURIComponent(trx)}`;
+            window.open(`https://wa.me/8801781511654?text=${message}`, '_blank');
+        }
+    </script>
+
 </body>
 </html>
