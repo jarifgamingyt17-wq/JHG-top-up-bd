@@ -64,6 +64,29 @@
             margin-bottom: 12px;
         }
 
+        /* ব্যানার স্লাইডার স্টাইল */
+        .banner-container {
+            width: 100%;
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            position: relative;
+            background-color: #ddd;
+        }
+
+        .banner-slide {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .banner-slide.active {
+            display: block;
+        }
+
         .section-title {
             font-size: 15px;
             font-weight: bold;
@@ -381,6 +404,13 @@
             🟢 শপ সবসময় খোলা আছে! আপনি যেকোনো সময় অর্ডার করতে পারেন।
         </div>
 
+        <!-- তিনটি ব্যানারের স্লাইডার -->
+        <div class="banner-container">
+            <img src="banner1.png" class="banner-slide active" alt="Banner 1">
+            <img src="banner2.png" class="banner-slide" alt="Banner 2">
+            <img src="banner3.png" class="banner-slide" alt="Banner 3">
+        </div>
+
         <!-- Offer Offer Section -->
         <div class="section-title">Offer Offer</div>
         <div class="card-grid-3">
@@ -398,12 +428,10 @@
             </div>
         </div>
         <div class="card-grid-3" style="margin-top: 8px;">
-            <!-- Friday Offers কার্ড - ক্লিক করলে উইকলি ও মান্থলি অপশন পপআপ আসবে -->
             <div class="main-category-card" onclick="openFridayModal()">
                 <img src="friday.png" alt="Friday Offers">
                 <span>Friday Offers</span>
             </div>
-            <!-- Level Up Pass কার্ড - ক্লিক করলে ডায়মন্ড গুণিতক অপশন পপআপ আসবে -->
             <div class="main-category-card" onclick="openLevelUpModal()">
                 <img src="levelup.png" alt="Level Up Pass">
                 <span>Level Up Pass</span>
@@ -571,6 +599,16 @@
     </div>
 
     <script>
+        // ব্যানার অটো স্লাইড শো স্ক্রিপ্ট
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 3000);
+
         function openFridayModal() {
             document.getElementById("fridayModal").style.display = "flex";
         }
