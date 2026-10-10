@@ -277,7 +277,7 @@
             position: relative;
         }
 
-        /* হুবহু স্ক্রিনশটের মতো বিকাশের থিমযুক্ত স্ক্রিন */
+        /* হুবহু বিকাশের থিমযুক্ত স্ক্রিন */
         .bkash-screen {
             background: #e2136e !important;
         }
@@ -296,7 +296,7 @@
             color: white;
         }
 
-        /* স্ক্রিনশটের মতো বিকাশ পেমেন্ট নির্দেশিকা বক্স */
+        /* বিকাশ পেমেন্ট নির্দেশিকা বক্স */
         .bkash-payment-box {
             background: white;
             color: #333;
@@ -458,7 +458,7 @@
     <div class="header">
         <h1 onclick="goHome()">JHG TopUp BD</h1>
         <div class="header-right">
-            <button onclick="openLogin()" class="login-btn">লগইন</button>
+            <button onclick="openLogin()" id="headerLoginBtn" class="login-btn">লগইন</button>
             <div class="profile-icon-btn" onclick="openProfile()">👤</div>
         </div>
     </div>
@@ -573,19 +573,19 @@
         </div>
     </div>
 
-    <!-- ধাপ ২: স্ক্রিনশটের মতো হুবহু বিকাশ থিম ওয়ালা Transaction ID পেজ -->
+    <!-- ধাপ ২: বিকাশ থিম ওয়ালা Transaction ID পেজ -->
     <div id="trxModal" class="modal">
         <div class="modal-content bkash-screen">
             <span class="close-btn" onclick="closeModal('trxModal')">&times;</span>
             
             <div class="bkash-payment-box">
                 <h4>bKash Personal</h4>
-                • *247# ডায়াল করে আপনার bKash মোবাইল মেনুতে যান অথবা bKash অ্যাপ খুলুন[span_2](start_span)[span_2](end_span)।<br>
-                • Send Money-এ ক্লিক করুন[span_3](start_span)[span_3](end_span)।<br>
-                • এই নম্বরে টাকা পাঠান: <span class="yellow-num">01781511654</span>[span_4](start_span)[span_4](end_span)<br>
+                • *247# ডায়াল করে আপনার bKash মোবাইল মেনুতে যান অথবা bKash অ্যাপ খুলুন[span_0](start_span)[span_0](end_span).<br>
+                • Send Money-এ ক্লিক করুন[span_1](start_span)[span_1](end_span).<br>
+                • এই নম্বরে টাকা পাঠান: <span class="yellow-num">01781511654</span>[span_2](start_span)[span_2](end_span)<br>
                 • টাকার পরিমাণ: <span id="displayAmountBadge" class="white-amount">০ টাকা</span><br>
-                • টাকা পাঠান এবং ট্রানজেকশন আইডি কপি করুন[span_5](start_span)[span_5](end_span)।<br>
-                • ট্রানজেকশন আইডি লিখে নিচের বাটনে চাপুন[span_6](start_span)[span_6](end_span)।
+                • টাকা পাঠান এবং ট্রানজেকশন আইডি কপি করুন[span_3](start_span)[span_3](end_span).<br>
+                • ট্রানজেকশন আইডি লিখে নিচের বাটনে চাপুন[span_4](start_span)[span_4](end_span).
             </div>
 
             <div class="input-group">
@@ -604,17 +604,17 @@
             <h3 style="color: #ff5722; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">অ্যাড মানি (Add Money)</h3>
             <div class="bkash-payment-box" style="background: #e2136e; color: white;">
                 <h4 style="color: white;">bKash Add Money</h4>
-                আমাদের মার্চেন্ট বা পার্সোনাল নাম্বারে ক্যাশ আউট বা সেন্ড মানি করে নিচের বক্সে আপনার ওয়ালেট নাম্বার ও অ্যামাউন্ট দিয়ে রিকোয়েস্ট পাঠান।
+                আমাদের পার্সোনাল নাম্বারে সেন্ড মানি করে নিচের বক্সে আপনার নাম্বার ও অ্যামাউন্ট দিয়ে রিকোয়েস্ট পাঠান।
             </div>
             <div class="input-group">
-                <label>আপনার বিকাশ বা নগদ নাম্বার:</label>
-                <input type="text" class="orange-input" placeholder="নাম্বার লিখুন">
+                <label>আপনার বিকাশ নাম্বার:</label>
+                <input type="text" id="addMoneyUserNum" class="orange-input" placeholder="নাম্বার লিখুন">
             </div>
             <div class="input-group">
                 <label>টাকার পরিমাণ:</label>
-                <input type="text" class="orange-input" placeholder="টাকা (যেমন: 500)">
+                <input type="text" id="addMoneyAmount" class="orange-input" placeholder="টাকা (যেমন: 500)">
             </div>
-            <button class="action-btn" onclick="alert('অ্যাড মানি রিকোয়েস্ট সফলভাবে জমা হয়েছে!'); closeModal('addMoneyModal');">রিকোয়েস্ট পাঠান</button>
+            <button class="action-btn" onclick="submitAddMoney()">রিকোয়েস্ট পাঠান</button>
         </div>
     </div>
 
@@ -638,14 +638,14 @@
             <h3 style="color: #ff5722; margin-top: 10px; margin-bottom: 20px; font-size: 18px; text-align: center;">ইউজার প্রোফাইল</h3>
             <div style="text-align: center; margin-bottom: 20px;">
                 <div style="width: 70px; height: 70px; background: #e2136e; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; margin: 0 auto 10px auto;">👤</div>
-                <div style="font-weight: bold; font-size: 16px;">Jarif YT (Guest User)</div>
+                <div id="profileUserName" style="font-weight: bold; font-size: 16px;">Jarif YT (Guest)</div>
                 <div style="font-size: 13px; color: #666;">ID: #JHG8823</div>
             </div>
             <div class="input-group">
-                <label>মোবাইল নাম্বার:</label>
-                <input type="text" value="01781511654" readonly style="background: #f1f1f1;">
+                <label>মোবাইল নাম্বার / ইমেল:</label>
+                <input type="text" id="profileUserContact" value="লগইন করা নেই" readonly style="background: #f1f1f1;">
             </div>
-            <button class="action-btn" onclick="openLogin()">লগআউট / পরিবর্তন করুন</button>
+            <button class="action-btn" onclick="openLogin()">লগইন / অ্যাকাউন্ট পরিবর্তন</button>
         </div>
     </div>
 
@@ -668,12 +668,12 @@
 
             <div class="input-group">
                 <label>মোবাইল নম্বর / ইমেল:</label>
-                <input type="text" id="loginUser" placeholder="আপনার নম্বর বা ইমেল দিন">
+                <input type="text" id="loginUser" class="orange-input" placeholder="আপনার নম্বর বা ইমেল দিন">
             </div>
 
             <div class="input-group">
                 <label>পাসওয়ার্ড:</label>
-                <input type="password" id="loginPass" placeholder="পাসওয়ার্ড লিখুন">
+                <input type="password" id="loginPass" class="orange-input" placeholder="পাসওয়ার্ড লিখুন">
             </div>
 
             <button class="action-btn" onclick="submitLogin()">লগইন করুন</button>
@@ -712,12 +712,12 @@
 
         let selectedPkgInfo = "";
         let selectedNumericPrice = 0;
+        let loggedInUser = "";
 
         function goHome() {
             closeAllModals();
         }
 
-        // সঠিক দাম এবং ১ থেকে ৪ গুণ হিসাব করে প্যাক লোড করার ফাংশন
         function openPackageOptions(categoryName) {
             document.getElementById("packageModalTitle").innerText = categoryName + " Packages";
             const container = document.getElementById("packageListContainer");
@@ -762,7 +762,6 @@
             document.getElementById("packageModal").style.display = "block";
         }
 
-        // Friday Offers অপশন
         function openFridayModal() {
             const container = document.getElementById("fridayListContainer");
             container.innerHTML = "";
@@ -796,7 +795,6 @@
             document.getElementById("fridayModal").style.display = "block";
         }
 
-        // Level Up Pass অপশন
         function openLevelUpModal() {
             const container = document.getElementById("levelUpListContainer");
             container.innerHTML = "";
@@ -827,8 +825,6 @@
             selectedNumericPrice = pkgPrice;
             selectedPkgInfo = pkgName + " - " + pkgPrice + " টাকা";
             document.getElementById("displayPackageName").value = selectedPkgInfo;
-            
-            // বিকাশ স্ক্রিনের টাকার অ্যামাউন্ট ব্যাজ আপডেট করা
             document.getElementById("displayAmountBadge").innerText = pkgPrice + " টাকা";
 
             closeModal('packageModal');
@@ -856,6 +852,13 @@
 
         function openProfile() {
             closeAllModals();
+            if(loggedInUser) {
+                document.getElementById("profileUserName").innerText = "Jarif YT (Verified)";
+                document.getElementById("profileUserContact").value = loggedInUser;
+            } else {
+                document.getElementById("profileUserName").innerText = "Jarif YT (Guest)";
+                document.getElementById("profileUserContact").value = "লগইন করা নেই";
+            }
             document.getElementById("profileModal").style.display = "block";
         }
 
@@ -885,12 +888,26 @@
 
         function submitLogin() {
             const user = document.getElementById("loginUser").value;
-            if(!user.trim()) {
-                alert("দয়া করে আপনার মোবাইল নম্বর বা ইমেল লিখুন!");
+            const pass = document.getElementById("loginPass").value;
+            if(!user.trim() || !pass.trim()) {
+                alert("দয়া করে আপনার মোবাইল নম্বর/ইমেল এবং পাসওয়ার্ড দিন!");
                 return;
             }
-            alert("লগইন সফল হয়েছে! (ডেমো মোড)");
+            loggedInUser = user;
+            document.getElementById("headerLoginBtn").innerText = "লগআউট";
+            alert("অভিনন্দন! আপনার অ্যাকাউন্ট সফলভাবে লগইন হয়েছে।");
             closeModal('loginModal');
+        }
+
+        function submitAddMoney() {
+            const num = document.getElementById("addMoneyUserNum").value;
+            const amt = document.getElementById("addMoneyAmount").value;
+            if(!num.trim() || !amt.trim()) {
+                alert("দয়া করে সঠিক তথ্য দিন!");
+                return;
+            }
+            alert("আপনার অ্যাড মানি রিকোয়েস্ট সফলভাবে সাবমিট হয়েছে!");
+            closeModal('addMoneyModal');
         }
 
         function sendWhatsApp() {
